@@ -248,7 +248,7 @@ button{cursor:pointer}
 
 /* ---------- footer ---------- */
 .ftr{background:#fff;margin-top:0}
-.ftr__top{display:grid;grid-template-columns:340px minmax(0,1fr);gap:56px;padding-top:64px;padding-bottom:24px}
+.ftr__top{display:grid;grid-template-columns:340px minmax(0,1fr);gap:56px;padding-top:64px;padding-bottom:48px}
 .ftr__brand{min-width:0;display:flex;flex-direction:column;gap:14px}
 .ftr__brand>img{width:150px;height:auto}
 .ftr__tag{font-family:var(--wide);font-size:11.5px;letter-spacing:.14em;line-height:1.7;text-transform:uppercase;color:var(--brand-ink)}
@@ -269,15 +269,6 @@ button{cursor:pointer}
 .ftr__base{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
 .ftr__base-in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;padding-top:18px;padding-bottom:22px}
 .ftr__legal{display:flex;gap:16px}
-.trace{display:flex;align-items:flex-end;height:56px;color:var(--brand)}
-.trace svg{flex:none;display:block}
-.trace__line{flex:1;height:1.5px;background:currentColor;margin-bottom:5.25px}
-.trace__dot{flex:none;width:10px;height:10px;border-radius:50%;background:currentColor;margin-bottom:1px}
-.lh{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;padding-top:6px;padding-bottom:28px;font-size:13px;line-height:1.55;color:var(--muted)}
-.lh h4{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--brand-ink)}
-.lh b{color:var(--ink)}
-.lh a:hover{color:var(--primary)}
-.lh__ids{text-align:right}
 .ftr__legal a:hover,.ftr__stores a:hover{color:var(--primary)}
 .totop{position:fixed;right:20px;bottom:20px;z-index:60;width:46px;height:46px;border-radius:50%;background:#fff;color:var(--primary);border:1px solid var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(60,60,59,.12)}
 .totop:hover{background:var(--primary);color:#fff}
@@ -328,8 +319,6 @@ button{cursor:pointer}
   .about,.contact{margin-top:72px}
   .newsgrid{grid-template-columns:1fr}
   .ftr__cols{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .lh{grid-template-columns:1fr 1fr}
-  .lh__ids{text-align:left}
 }
 @media (max-width:600px){
   :root{--g:16px}
