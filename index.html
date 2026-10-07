@@ -7,24 +7,27 @@
 <title>DESIGN 3 · Cytron | Raspberry Pi, micro:bit, IoT &amp; Robotics</title>
 <link rel="icon" href="https://static.cytron.io/image/favicon/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&amp;family=Michroma&amp;display=swap">
 <style>
 /* =====================================================================
-   DESIGN 3 · Cytron homepage — industrial-brand layout, Cytron colours
-   Brand blue #2BB0E3 (live site) · deeper Cytron blue for buttons/links
-   · Cytron orange #FF7302 as accent · Manrope.
+   DESIGN 3 · Cytron homepage — industrial-brand layout
+   Minimal letterhead palette: Cytron blue #00A4DB + greys on white.
+   Source Sans 3 (Myriad-style) + Michroma for small wide caps labels.
    ===================================================================== */
 :root{
-  --brand:#2BB0E3;          /* Cytron blue (live site) — accents, on-dark text, tints */
-  --brand-ink:#0A8FC7;      /* Cytron blue for large text on white (≥3:1) */
-  --primary:#077DB6;        /* buttons & links — white text passes 4.5:1 */
-  --primary-hover:#06689A;
-  --orange:#FF7302;         /* Cytron orange — small accents only */
-  --navy:#0B2A3C;           /* dark band */
-  --ink:#1E2A33; --text:#333A40; --muted:#5F6B76; --line:#E3E8EE;
-  --soft:#F3F8FB;           /* blue-tinted section bg */
-  --tint:#E6F5FC;
-  --font:'Manrope','Segoe UI',system-ui,-apple-system,sans-serif;
+  /* Letterhead palette: one Cytron blue, warm greys, white */
+  --brand:#00A4DB;          /* Cytron blue from the letterhead — bars, lines, dots, icons */
+  --brand-ink:#007DAA;      /* same blue, deepened so text passes 4.5:1 on white */
+  --primary:#007DAA;        /* buttons & links (white text 4.8:1) */
+  --primary-hover:#00698F;
+  --ink:#3C3C3B;            /* headings — letterhead dark grey */
+  --text:#4A4A49;           /* body */
+  --muted:#6D6D6C;          /* letterhead grey */
+  --line:#E4E7E9;
+  --soft:#F7FBFD;           /* near-white section bg */
+  --tint:#DFF4FA;           /* letterhead light blue */
+  --font:'Source Sans 3','Myriad Pro','Segoe UI',system-ui,-apple-system,sans-serif;
+  --wide:'Michroma','Nulshock','Segoe UI',sans-serif;   /* wide display face for small caps labels */
   --wrap:1240px; --g:24px; --r:8px;
 }
 *{box-sizing:border-box}
@@ -46,7 +49,7 @@ button{cursor:pointer}
 
 /* ---------- buttons ---------- */
 .btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 26px;border-radius:5px;font-weight:700;font-size:15px;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s;cursor:pointer;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 26px;border-radius:4px;font-weight:600;font-size:15px;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s;cursor:pointer;white-space:nowrap}
 .btn--sm{height:38px;padding:0 18px;font-size:14px}
 .btn--primary{background:var(--primary);color:#fff}
 .btn--primary:hover{background:var(--primary-hover)}
@@ -58,9 +61,9 @@ button{cursor:pointer}
 .more:hover{color:var(--primary-hover)}
 
 /* ---------- header ---------- */
-.hdr{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 12px rgba(11,42,60,.04)}
+.hdr{position:sticky;top:0;z-index:100;background:#fff;border-top:5px solid var(--brand);border-bottom:1px solid var(--line)}
 .hdr__in{display:flex;align-items:center;gap:28px;height:72px}
-.logo img{width:108px;height:auto}
+.logo img{width:132px;height:auto}
 .burger{display:none;width:44px;height:44px;border:0;background:none;align-items:center;justify-content:center}
 .nav{display:flex;align-items:center;gap:4px;height:100%}
 .nav__item{display:flex;align-items:center;height:100%;padding:0 12px;font-weight:600;font-size:15px;color:var(--ink);border-bottom:3px solid transparent}
@@ -69,7 +72,7 @@ button{cursor:pointer}
 .nav__item:hover>button,a.nav__item:hover{color:var(--primary)}
 .dd{position:relative}
 .dd--wide{position:static}
-.dd__panel{display:none;position:absolute;top:100%;left:0;z-index:90;background:#fff;border-top:1px solid var(--line);box-shadow:0 18px 40px rgba(11,42,60,.12)}
+.dd__panel{display:none;position:absolute;top:100%;left:0;z-index:90;background:#fff;border-top:1px solid var(--line);box-shadow:0 18px 40px rgba(60,60,59,.12)}
 .dd:hover>.dd__panel,.dd:focus-within>.dd__panel,.dd.open>.dd__panel{display:block}
 .dd__list{min-width:300px;padding:10px;border-radius:0 0 8px 8px}
 .dd__list li a{display:flex;flex-direction:column;padding:10px 14px;border-radius:6px}
@@ -80,14 +83,14 @@ button{cursor:pointer}
 .mm{left:0;right:0}
 .mm__in{display:grid;grid-template-columns:1fr 260px;gap:32px;padding-top:28px;padding-bottom:32px}
 .mm__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 28px}
-.mm__cat{display:block;font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px;padding-left:10px;border-left:3px solid var(--brand)}
+.mm__cat{display:block;font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px;padding-left:10px;border-left:2px solid var(--brand)}
 .mm__cat:hover{color:var(--primary)}
 .mm__grid li a{display:block;padding:3px 0 3px 13px;font-size:13.5px;font-weight:500;color:var(--muted)}
 .mm__grid li a:hover{color:var(--primary)}
 .mm__promo{display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:10px;background:var(--soft)}
 .mm__promo img{width:100%;aspect-ratio:1/1;object-fit:contain;mix-blend-mode:multiply}
 .mm__promo span{display:flex;flex-direction:column}
-.mm__promo small{font-size:12px;font-weight:800;color:var(--orange);text-transform:uppercase;letter-spacing:.06em}
+.mm__promo small{font-family:var(--wide);font-size:10px;color:var(--primary);text-transform:uppercase;letter-spacing:.12em}
 .mm__promo b{font-size:17px;color:var(--ink)}
 .hdr__right{display:flex;align-items:center;gap:18px;margin-left:auto}
 .hdr__link{font-size:14px;font-weight:600;color:var(--muted)}
@@ -96,17 +99,16 @@ button{cursor:pointer}
 .icon-btn:hover{background:var(--soft);color:var(--primary)}
 
 /* ---------- hero ---------- */
-.hero{position:relative;height:560px;overflow:hidden;background:var(--soft)}
+.hero{position:relative;height:560px;overflow:hidden;background:#fff;border-bottom:1px solid var(--line)}
 .hero__slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s;
   background:
-    radial-gradient(circle at 78% 50%,var(--tint) 0,rgba(255,255,255,0) 46%),
-    radial-gradient(rgba(43,176,227,.18) 1px,transparent 1.2px) 0 0/22px 22px,
-    linear-gradient(110deg,#fff 0%,#F7FBFD 55%,var(--tint) 100%)}
+    radial-gradient(circle at 76% 50%,var(--tint) 0,rgba(255,255,255,0) 42%),
+    radial-gradient(rgba(0,164,219,.14) 1px,transparent 1.2px) 0 0/22px 22px,#fff}
 .hero__slide.is-on{opacity:1;visibility:visible}
 .hero__in{height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:40px}
 .hero__text{display:flex;flex-direction:column;gap:18px;max-width:560px}
-.hero__sub{font-size:24px;font-weight:700;color:var(--brand-ink)}
-.hero__title{font-size:44px;line-height:1.18;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.hero__sub{font-family:var(--wide);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink)}
+.hero__title{font-size:46px;line-height:1.14;font-weight:700;color:var(--ink);letter-spacing:-.01em}
 .hero__desc{font-size:17px;color:var(--muted)}
 .hero__text .btns{margin-top:8px}
 .hero__img{display:flex;align-items:center;justify-content:center;height:100%;padding:40px 0}
@@ -115,29 +117,29 @@ button{cursor:pointer}
 .hero__ctrl{position:absolute;left:0;right:0;bottom:28px;z-index:5}
 .hero__dots{display:flex;gap:10px}
 .hero__dot{width:56px;height:24px;padding:0;border:0;background:none;display:flex;align-items:center}
-.hero__dot span{display:block;width:100%;height:3px;background:rgba(30,42,51,.18);position:relative;overflow:hidden;border-radius:2px}
+.hero__dot span{display:block;width:100%;height:2px;background:rgba(60,60,59,.16);position:relative;overflow:hidden;border-radius:2px}
 .hero__dot span::after{content:"";position:absolute;inset:0;width:0;background:var(--brand)}
 .hero__dot.is-on span::after{animation:fill 6s linear forwards}
 @keyframes fill{to{width:100%}}
 
 /* ---------- section heads ---------- */
 .sec{padding-top:96px}
-.sec--soft{margin-top:96px;padding:88px 0 96px;background:var(--soft)}
+.sec--soft{margin-top:96px;padding:88px 0 96px;background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .sec--soft+.sec{padding-top:96px}
 .sec__head{text-align:center;max-width:820px;margin:0 auto 44px;display:flex;flex-direction:column;gap:12px;align-items:center}
 .sec__head--row{text-align:left;max-width:none;flex-direction:row;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}
 .sec__head--row>div{display:flex;flex-direction:column;gap:12px}
-.eyebrow{font-size:15px;font-weight:700;color:var(--primary);display:inline-flex;align-items:center;gap:10px}
-.eyebrow::before{content:"";width:18px;height:3px;border-radius:2px;background:var(--orange)}
+.eyebrow{font-family:var(--wide);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--primary);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:8px;background:linear-gradient(var(--brand),var(--brand)) left center/22px 1.5px no-repeat,radial-gradient(circle,var(--brand) 3px,transparent 3.6px) right center/8px 8px no-repeat}
 .eyebrow--light{color:var(--brand)}
-.sec__head h2{font-size:34px;line-height:1.25;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.sec__head h2{font-size:34px;line-height:1.25;font-weight:700;color:var(--ink)}
 .sec__head p{color:var(--muted);font-size:16px}
 
 /* ---------- product families ---------- */
 .fams{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .fam{display:flex;flex-direction:column;border-radius:var(--r);background:#fff;border:1px solid var(--line);overflow:hidden;transition:box-shadow .25s,transform .25s,border-color .25s}
-.fam:hover{box-shadow:0 14px 34px rgba(11,42,60,.12);transform:translateY(-4px);border-color:transparent}
-.fam__img{aspect-ratio:4/3;background:linear-gradient(160deg,#fff,var(--tint));display:flex;align-items:center;justify-content:center}
+.fam:hover{box-shadow:0 12px 28px rgba(60,60,59,.10);transform:translateY(-3px);border-color:var(--brand)}
+.fam__img{aspect-ratio:4/3;background:var(--soft);display:flex;align-items:center;justify-content:center}
 .fam__img img{width:70%;height:80%;object-fit:contain;mix-blend-mode:multiply;transition:transform .35s}
 .fam:hover .fam__img img{transform:scale(1.05)}
 .fam__body{display:flex;flex-direction:column;gap:8px;padding:22px 22px 24px;flex:1}
@@ -151,14 +153,14 @@ button{cursor:pointer}
 
 /* ---------- use-case explorer ---------- */
 .tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-bottom:28px}
-.tabs button{height:52px;border:0;background:#fff;font-weight:700;font-size:15px;color:var(--ink);border-radius:5px;transition:background .2s,color .2s}
+.tabs button{height:52px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:15px;color:var(--ink);border-radius:5px;transition:background .2s,color .2s}
 .tabs button:hover{color:var(--primary)}
 .tabs button[aria-selected="true"]{background:var(--primary);color:#fff}
 .uc{display:grid;grid-template-columns:360px minmax(0,1fr);gap:28px;align-items:stretch}
 .uc[hidden]{display:none}
 .uc__list{display:flex;flex-direction:column;gap:10px}
 .acc{background:#fff;border-radius:var(--r);border-left:3px solid transparent;transition:border-color .2s,box-shadow .2s}
-.acc.is-open{border-left-color:var(--brand);box-shadow:0 8px 24px rgba(11,42,60,.08)}
+.acc.is-open{border-left-color:var(--brand);box-shadow:0 8px 24px rgba(60,60,59,.08)}
 .acc__head{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;border:0;background:none;text-align:left;font-weight:700;font-size:16px;color:var(--ink)}
 .acc.is-open .acc__head{color:var(--primary)}
 .acc__head svg{flex:none;transition:transform .2s}
@@ -168,13 +170,13 @@ button{cursor:pointer}
 .acc__body p{font-size:14.5px;color:var(--muted)}
 .uc__stage{position:relative;min-height:420px;border-radius:12px;background:
   radial-gradient(circle at 50% 50%,#fff 0,rgba(255,255,255,0) 60%),
-  radial-gradient(rgba(43,176,227,.22) 1px,transparent 1.2px) 0 0/20px 20px,var(--tint);
+  radial-gradient(rgba(0,164,219,.22) 1px,transparent 1.2px) 0 0/20px 20px,var(--tint);
   display:flex;align-items:center;justify-content:center;overflow:hidden}
 .uc__stage>img{max-width:62%;max-height:340px;object-fit:contain;mix-blend-mode:multiply}
 .uc__tags{position:absolute;inset:0;pointer-events:none}
-.ptag{position:absolute;pointer-events:auto;display:flex;align-items:center;gap:8px;padding:8px 12px 8px 10px;border-radius:6px;background:rgba(255,255,255,.94);box-shadow:0 6px 18px rgba(11,42,60,.12);font-size:13px;transition:transform .2s}
+.ptag{position:absolute;pointer-events:auto;display:flex;align-items:center;gap:8px;padding:8px 12px 8px 10px;border-radius:6px;background:rgba(255,255,255,.94);box-shadow:0 6px 18px rgba(60,60,59,.12);font-size:13px;transition:transform .2s}
 .ptag:hover{transform:translateY(-2px)}
-.ptag i{width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(43,176,227,.25);flex:none}
+.ptag i{width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(0,164,219,.25);flex:none}
 .ptag span{display:flex;flex-direction:column;line-height:1.3}
 .ptag b{color:var(--ink);font-weight:700}
 .ptag small{color:var(--muted);font-weight:600}
@@ -185,35 +187,34 @@ button{cursor:pointer}
 
 /* ---------- success stories bento ---------- */
 .bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:150px;gap:20px}
-.story{position:relative;border-radius:10px;overflow:hidden;color:#fff;background:var(--navy)}
+.story{position:relative;border-radius:10px;overflow:hidden;color:#fff;background:#3C3C3B}
 .story--1{grid-column:span 7;grid-row:span 2}
 .story--2{grid-column:span 5;grid-row:span 2}
 .story--3{grid-column:span 6;grid-row:span 1}
 .story--4{grid-column:span 6;grid-row:span 1}
 .story img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .story:hover img{transform:scale(1.04)}
-.story__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,42,60,.05) 20%,rgba(11,42,60,.88) 100%)}
+.story__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,30,30,0) 25%,rgba(30,30,30,.85) 100%)}
 .story__txt{position:absolute;left:0;right:0;bottom:0;padding:22px 24px;display:flex;flex-direction:column;gap:10px}
 .story__tags{display:flex;flex-wrap:wrap;gap:6px}
-.story__tags em{font-style:normal;font-size:12px;font-weight:700;padding:3px 9px;border-radius:4px;background:rgba(43,176,227,.9);color:var(--ink)}
+.story__tags em{font-style:normal;font-size:12px;font-weight:700;padding:3px 9px;border-radius:4px;background:var(--tint);color:#00698F}
 .story__tags em+em{background:rgba(255,255,255,.9)}
 .story b{font-size:19px;line-height:1.35}
 .story--1 b{font-size:24px;max-width:560px}
 .story:hover b{text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- about band ---------- */
-.about{margin-top:96px;background:
-  radial-gradient(circle at 85% 20%,rgba(43,176,227,.28) 0,rgba(43,176,227,0) 40%),
-  radial-gradient(circle at 10% 90%,rgba(255,115,2,.14) 0,rgba(255,115,2,0) 35%),
-  radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px) 0 0/24px 24px,var(--navy);color:#fff}
+.about{margin-top:96px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
 .about__in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;padding-top:96px;padding-bottom:96px}
 .about__text{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
-.about h2{font-size:34px;line-height:1.25;font-weight:700}
-.about p{color:#C8D6E0}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.12);border-radius:10px;overflow:hidden}
-.stat{display:flex;flex-direction:column;gap:6px;padding:30px 28px;background:var(--navy)}
-.stat b{font-size:46px;line-height:1;font-weight:800;color:var(--brand);letter-spacing:-.02em}
-.stat span{font-size:14px;color:#C8D6E0;font-weight:600}
+.about h2{font-size:34px;line-height:1.25;font-weight:700;color:var(--ink)}
+.about p{color:var(--muted)}
+.about__tag{font-family:var(--wide);font-size:12px;letter-spacing:.14em;line-height:1.7;text-transform:uppercase;color:var(--brand-ink)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.stat{display:flex;flex-direction:column;gap:8px;padding:30px 28px;background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
+.stat::before{content:"";position:absolute;left:-1px;top:-1px;width:36px;height:2px;background:var(--brand)}
+.stat b{font-size:46px;line-height:1;font-weight:700;color:var(--brand-ink);letter-spacing:-.01em}
+.stat span{font-size:14px;color:var(--muted);font-weight:600}
 
 /* ---------- partners ---------- */
 .plogos{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:12px}
@@ -226,7 +227,7 @@ button{cursor:pointer}
 /* ---------- news ---------- */
 .newsgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .news{display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--line);overflow:hidden;transition:box-shadow .25s,transform .25s}
-.news:hover{box-shadow:0 14px 34px rgba(11,42,60,.12);transform:translateY(-4px)}
+.news:hover{box-shadow:0 14px 34px rgba(60,60,59,.12);transform:translateY(-4px)}
 .news__img{aspect-ratio:16/9;background:var(--soft);overflow:hidden}
 .news__img img{width:100%;height:100%;object-fit:cover}
 .news__body{display:flex;flex-direction:column;gap:8px;padding:20px 22px 24px}
@@ -236,47 +237,56 @@ button{cursor:pointer}
 .news small{color:var(--muted);font-size:13px;font-weight:600}
 
 /* ---------- contact band ---------- */
-.contact{margin-top:96px;background:linear-gradient(120deg,var(--soft),var(--tint))}
+.contact{margin-top:0;background:var(--soft)}
 .contact__in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;padding-top:80px;padding-bottom:80px;align-items:start}
 .contact__text{display:flex;flex-direction:column;gap:14px}
 .contact__text h2{font-size:34px;line-height:1.25;color:var(--ink)}
 .contact__text p{color:var(--muted)}
 .contact__ways{display:flex;flex-direction:column;gap:6px;margin-top:6px;font-weight:700;color:var(--ink)}
 .contact__ways li::before{content:"";display:inline-block;width:8px;height:8px;margin-right:10px;border-radius:50%;background:var(--brand)}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:28px;border-radius:12px;background:#fff;box-shadow:0 10px 30px rgba(11,42,60,.08)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:28px;border-radius:10px;background:#fff;border:1px solid var(--line)}
 .form label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--ink)}
 .form input,.form select,.form textarea{height:44px;padding:0 12px;border:1px solid var(--line);border-radius:5px;background:#fff;font-size:15px;font-weight:500}
 .form textarea{height:auto;padding:10px 12px;resize:vertical}
-.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(43,176,227,.25)}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,164,219,.25)}
 .form__full{grid-column:1/-1}
 .form__note{font-size:12px;color:var(--muted)}
 
 /* ---------- footer ---------- */
-.ftr{background:#F5F5F5;margin-top:0}
-.ftr__top{display:grid;grid-template-columns:340px minmax(0,1fr);gap:56px;padding-top:64px;padding-bottom:48px}
+.ftr{background:#fff;margin-top:0}
+.ftr__top{display:grid;grid-template-columns:340px minmax(0,1fr);gap:56px;padding-top:64px;padding-bottom:24px}
 .ftr__brand{min-width:0;display:flex;flex-direction:column;gap:14px}
-.ftr__brand>img{width:116px;height:auto}
-.ftr__tag{font-size:20px;font-weight:800;color:var(--ink)}
+.ftr__brand>img{width:150px;height:auto}
+.ftr__tag{font-family:var(--wide);font-size:11.5px;letter-spacing:.14em;line-height:1.7;text-transform:uppercase;color:var(--brand-ink)}
 .sub{display:flex;gap:8px}
-.sub input{flex:1;min-width:0;height:38px;padding:0 12px;border:1px solid #D5DCE3;border-radius:5px;background:#fff}
+.sub input{flex:1;min-width:0;height:38px;padding:0 12px;border:1px solid var(--line);border-radius:5px;background:#fff}
 .ftr__topics-l{font-size:13px;font-weight:600;color:var(--muted)}
 .ftr__topics{display:flex;flex-wrap:wrap;gap:8px}
-.topic{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid #D5DCE3;border-radius:999px;background:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
+.topic{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
 .topic input{accent-color:var(--primary)}
 .ftr__social{display:flex;align-items:center;gap:10px;margin-top:6px;font-size:13px;font-weight:700;color:var(--ink)}
-.ftr__social a{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;border:1px solid #E1E6EB}
+.ftr__social a{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
 .ftr__social a:hover{border-color:var(--brand)}
 .ftr__cols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
 .fcol h3{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:14px}
 .fcol li{margin-bottom:9px}
 .fcol a{font-size:13.5px;font-weight:500;color:var(--muted)}
 .fcol a:hover{color:var(--primary)}
-.ftr__base{border-top:1px solid #E1E1E1;font-size:12.5px;color:var(--muted)}
+.ftr__base{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
 .ftr__base-in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;padding-top:18px;padding-bottom:22px}
 .ftr__legal{display:flex;gap:16px}
+.trace{display:flex;align-items:flex-end;height:56px;color:var(--brand)}
+.trace svg{flex:none;display:block}
+.trace__line{flex:1;height:1.5px;background:currentColor;margin-bottom:5.25px}
+.trace__dot{flex:none;width:10px;height:10px;border-radius:50%;background:currentColor;margin-bottom:1px}
+.lh{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;padding-top:6px;padding-bottom:28px;font-size:13px;line-height:1.55;color:var(--muted)}
+.lh h4{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--brand-ink)}
+.lh b{color:var(--ink)}
+.lh a:hover{color:var(--primary)}
+.lh__ids{text-align:right}
 .ftr__legal a:hover,.ftr__stores a:hover{color:var(--primary)}
-.totop{position:fixed;right:20px;bottom:20px;z-index:60;width:46px;height:46px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(7,125,182,.35)}
-.totop:hover{background:var(--primary-hover)}
+.totop{position:fixed;right:20px;bottom:20px;z-index:60;width:46px;height:46px;border-radius:50%;background:#fff;color:var(--primary);border:1px solid var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(60,60,59,.12)}
+.totop:hover{background:var(--primary);color:#fff}
 
 /* ---------- responsive ---------- */
 @media (max-width:1160px){
@@ -324,6 +334,8 @@ button{cursor:pointer}
   .about,.contact{margin-top:72px}
   .newsgrid{grid-template-columns:1fr}
   .ftr__cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lh{grid-template-columns:1fr 1fr}
+  .lh__ids{text-align:left}
 }
 @media (max-width:600px){
   :root{--g:16px}
@@ -349,7 +361,7 @@ button{cursor:pointer}
 <header class="hdr" id="top">
   <div class="wrap hdr__in">
     <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" data-burger><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <a class="logo" href="#"><img src="https://static.cytron.io/image/catalog/logo/cytron-marketplace-200x100.png" alt="Cytron" width="116" height="58"></a>
+    <a class="logo" href="#"><img src="https://static.cytron.io/image/catalog/logo/Cytron-Logo-LIGHT_BLUE_SM.png" alt="Cytron Technologies" width="132" height="50"></a>
     <nav class="nav" id="nav" aria-label="Main">
       <div class="nav__item dd dd--wide"><button type="button" aria-haspopup="true">Products <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="dd__panel mm"><div class="wrap mm__in"><div class="mm__grid"><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-raspberry-pi">Raspberry Pi</a><ul><li><a href="#">Industrial with Raspberry Pi</a></li><li><a href="#">Raspberry Pi Main Board</a></li><li><a href="#">Raspberry Pi 5 Accessories</a></li><li><a href="#">Expansion for Raspberry Pi Pico</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-micro-bit">micro:bit</a><ul><li><a href="#">micro:bit Main Board</a></li><li><a href="#">micro:bit Kits</a></li><li><a href="#">micro:bit Expansion Board</a></li><li><a href="#">micro:bit Power and Wire</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-arduino-ecosystem">Arduino Ecosystem</a><ul><li><a href="#">Industrial with Arduino</a></li><li><a href="#">Official Arduino Main Board</a></li><li><a href="#">Compatible Arduino Main Board</a></li><li><a href="#">Shields for Arduino</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-artificial-intelligence">Artificial Intelligence</a><ul><li><a href="#">NVIDIA AI</a></li><li><a href="#">RDK X5</a></li><li><a href="#">Other AI Platforms</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-wireless-devices">IoT &amp; Wireless</a><ul><li><a href="#">WiFi</a></li><li><a href="#">Bluetooth &amp; RF</a></li><li><a href="#">LoRa</a></li><li><a href="#">Other Wireless</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-motor-and-motor-driver">Motor &amp; Motor Driver</a><ul><li><a href="#">Motor Driver</a></li><li><a href="#">Motors</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-3d-modeling">3D Modeling</a><ul><li><a href="#">3D Printer</a></li><li><a href="#">Laser Cutter/Engrave</a></li><li><a href="#">Filament</a></li><li><a href="#">3D Accessories</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-industry">Industry</a><ul><li><a href="#">Industrial Edge Controllers</a></li><li><a href="#">HMI</a></li><li><a href="#">Router / Switch / Gateway</a></li><li><a href="#">DC Motor Drivers</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-development-tools">Development Tools</a><ul><li><a href="#">Maker Series</a></li><li><a href="#">PIC Microcontroller &amp; RISC-V</a></li><li><a href="#">Educational Training Kit</a></li><li><a href="#">Computer Interface</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-robotics-electronics">Robotics &amp; Electronics</a><ul><li><a href="#">Sumo Robot / Robot Battle</a></li><li><a href="#">Hardware</a></li><li><a href="#">Robot Accessories</a></li><li><a href="#">Power</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-young-makers">Junior Makers</a><ul><li><a href="#">12 Years Old &amp; Above</a></li><li><a href="#">8 Years Old &amp; Above</a></li><li><a href="#">6 Years Old &amp; Above</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-sensor">Sensors</a><ul><li><a href="#">Sensor Kits</a></li><li><a href="#">Crowtail Modules</a></li><li><a href="#">Infrared / Light</a></li><li><a href="#">Line Tracking</a></li></ul></div></div>
@@ -372,19 +384,19 @@ button{cursor:pointer}
 <main id="main">
 <!-- ================= HERO SLIDER ================= -->
 <section class="hero" aria-roledescription="carousel" aria-label="Highlights">
-  <div class="hero__slide is-on" style="--tint:#EFE9FA" role="group" aria-roledescription="slide" aria-label="1 of 3">
+  <div class="hero__slide is-on" style="--tint:#DFF4FA" role="group" aria-roledescription="slide" aria-label="1 of 3">
   <div class="wrap hero__in">
     <div class="hero__text"><p class="hero__sub">New for beginners</p><h1 class="hero__title">Maker ESP32: Simplifying ESP32 for Beginners</h1><p class="hero__desc">Start your first IoT project with a beginner-friendly ESP32 board and step-by-step tutorials. Bundles from RM29.</p>
       <div class="btns"><a class="btn btn--primary" href="https://my.cytron.io/p-maker-esp32-bundle">Shop Now</a><a class="btn btn--outline" href="https://my.cytron.io/tutorial">View Tutorials</a></div></div>
     <div class="hero__img"><img src="https://static.cytron.io/image/catalog/products/V-MAKER-ESP32/maker-esp32-a.png" alt="" ></div>
   </div>
-</div><div class="hero__slide" style="--tint:#E6F5FC" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+</div><div class="hero__slide" style="--tint:#DFF4FA" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
   <div class="wrap hero__in">
     <div class="hero__text"><p class="hero__sub">Industrial Edge AI</p><h1 class="hero__title">IRIV EdgeAI CM5: Industrial AI, Built on Raspberry Pi</h1><p class="hero__desc">Run vision applications such as PPE detection and packaging inspection right at the edge.</p>
       <div class="btns"><a class="btn btn--primary" href="https://my.cytron.io/p-iriv-edge-ai-cm5">Learn More</a><a class="btn btn--outline" href="https://my.cytron.io/raspberry-pi-for-industry">Book a Meet &amp; Greet</a></div></div>
     <div class="hero__img"><img src="https://static.cytron.io/image/catalog/products/V-IRIV-EAI5/iriv-edgeai-cm5-view-1-1.png" alt="" loading="lazy"></div>
   </div>
-</div><div class="hero__slide" style="--tint:#FFF1E6" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+</div><div class="hero__slide" style="--tint:#DFF4FA" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
   <div class="wrap hero__in">
     <div class="hero__text"><p class="hero__sub">For RBT classrooms</p><h1 class="hero__title">REKA:BIT RBT Project Kits: Robotics &amp; Coding for Every Classroom</h1><p class="hero__desc">Projects for micro:bit with step-by-step guides aligned with the Malaysian school RBT syllabus. From RM219.</p>
       <div class="btns"><a class="btn btn--primary" href="https://my.cytron.io/p-rekabit-rbt-project-kits">Shop the Kit</a><a class="btn btn--outline" href="https://my.cytron.io/education">Open Resource Hub</a></div></div>
@@ -419,9 +431,9 @@ button{cursor:pointer}
 <!-- ================= ABOUT + STATS ================= -->
 <section class="about" aria-labelledby="h-about">
   <div class="wrap about__in">
-    <div class="about__text"><p class="eyebrow eyebrow--light">About Us</p><h2 id="h-about">Cytron: Simplifying Smart Technology</h2>
+    <div class="about__text"><p class="eyebrow">About Us</p><h2 id="h-about">Cytron: Simplifying Smart Technology</h2>
       <p>Cytron Technologies designs and supplies the boards, kits and tools that make smart technology simple for students, educators, makers and industry. From micro:bit classroom kits to IRIV industrial controllers built on Raspberry Pi, every product comes with tutorials and local support.</p>
-      <a class="btn btn--light btn--sm" href="#">Learn More</a></div>
+      <p class="about__tag">Simplifying smart technology<br>for education and industry</p><a class="btn btn--outline btn--sm" href="#">Learn More</a></div>
     <div class="stats">
       <div class="stat"><b data-count="2004" data-plain>2004</b><span>Founded in Malaysia</span></div>
       <div class="stat"><b data-count="5">5</b><span>Regional online stores</span></div>
@@ -466,14 +478,21 @@ button{cursor:pointer}
 <footer class="ftr">
   <div class="wrap ftr__top">
     <div class="ftr__brand">
-      <img src="https://static.cytron.io/image/catalog/logo/cytron-marketplace-200x100.png" alt="Cytron" width="116" height="58">
-      <p class="ftr__tag">Simplifying Smart Technology</p>
+      <img src="https://static.cytron.io/image/catalog/logo/Cytron-Logo-LIGHT_BLUE_SM.png" alt="Cytron Technologies" width="150" height="56">
+      <p class="ftr__tag">Simplifying smart technology<br>for education and industry</p>
       <form class="sub" onsubmit="return false"><label class="sr" for="em">Email</label><input id="em" type="email" placeholder="Enter your email"><button class="btn btn--primary btn--sm" type="submit">Subscribe</button></form>
       <p class="ftr__topics-l">Select the topics you're interested in:</p>
       <div class="ftr__topics"><label class="topic"><input type="checkbox"> Education</label><label class="topic"><input type="checkbox"> Raspberry Pi</label><label class="topic"><input type="checkbox"> Industrial IoT</label><label class="topic"><input type="checkbox"> Robotics</label><label class="topic"><input type="checkbox"> AI</label><label class="topic"><input type="checkbox"> Promotions</label></div>
       <div class="ftr__social"><span>Follow Us</span><a href="https://www.facebook.com/cytronmy" aria-label="Facebook" title="Facebook"><img src="https://static.cytron.io/image/catalog/icon/facebook-24x24.png" alt="" width="18" height="18"></a><a href="https://www.youtube.com/user/cytrontech" aria-label="Youtube" title="Youtube"><img src="https://static.cytron.io/image/catalog/icon/youtube-24x24.png" alt="" width="18" height="18"></a><a href="https://my.cytron.io/cytrons-telegram-channel" aria-label="Telegram" title="Telegram"><img src="https://static.cytron.io/image/catalog/icon/telegram-24x24.png" alt="" width="18" height="18"></a><a href="https://github.com/CytronTechnologies" aria-label="Github" title="Github"><img src="https://static.cytron.io/image/catalog/icon/github-o-24x24.png" alt="" width="18" height="18"></a><a href="https://www.instagram.com/cytrontechmy/" aria-label="Instagram" title="Instagram"><img src="https://static.cytron.io/image/catalog/icon/instagram-24x24.png" alt="" width="18" height="18"></a><a href="https://www.tiktok.com/@cytrontech" aria-label="TikTok" title="TikTok"><img src="https://static.cytron.io/image/catalog/icon/tiktok-24x24.png" alt="" width="18" height="18"></a><a href="https://twitter.com/cytrontech/" aria-label="Twitter" title="Twitter"><img src="https://static.cytron.io/image/catalog/icon/twitter-48x48.png" alt="" width="18" height="18"></a></div>
     </div>
     <div class="ftr__cols"><div class="fcol"><h3>Products</h3><ul><li><a href="https://my.cytron.io/c-raspberry-pi">Raspberry Pi</a></li><li><a href="https://my.cytron.io/c-micro-bit">micro:bit</a></li><li><a href="https://my.cytron.io/c-arduino-ecosystem">Arduino Ecosystem</a></li><li><a href="https://my.cytron.io/c-artificial-intelligence">Artificial Intelligence</a></li><li><a href="https://my.cytron.io/c-wireless-devices">IoT &amp; Wireless</a></li><li><a href="https://my.cytron.io/c-motor-and-motor-driver">Motor &amp; Motor Driver</a></li><li><a href="https://my.cytron.io/c-3d-modeling">3D Modeling</a></li><li><a href="https://my.cytron.io/c-industry">Industry</a></li></ul></div><div class="fcol"><h3>Solutions</h3><ul><li><a href="https://my.cytron.io/education">Education &amp; Schools</a></li><li><a href="https://my.cytron.io/raspberry-pi-for-industry">Industry &amp; Integrators</a></li><li><a href="https://my.cytron.io/c-young-makers">Junior Makers</a></li><li><a href="https://my.cytron.io/maker-selection">Makers &amp; Hobbyists</a></li><li><a href="https://my.cytron.io/education">Cytron RBT Solution</a></li></ul></div><div class="fcol"><h3>Learn</h3><ul><li><a href="https://my.cytron.io/tutorial">Tutorials</a></li><li><a href="https://my.cytron.io/education">Resource hubs</a></li><li><a href="https://my.cytron.io/education">Robotics competitions</a></li><li><a href="#partners">Training partners</a></li></ul></div><div class="fcol"><h3>Support</h3><ul><li><a href="#">Request for Warranty/Return</a></li><li><a href="https://my.cytron.io/accept-lo">Request for Quotation</a></li><li><a href="#">FAQs</a></li><li><a href="#">How to shop at Cytron</a></li><li><a href="https://my.cytron.io/1-to-1-replacement">1 to 1 Replacement Warranty</a></li><li><a href="https://my.cytron.io/delivery-information">Delivery Information</a></li></ul></div><div class="fcol"><h3>Company</h3><ul><li><a href="#">About Us</a></li><li><a href="#">Cytron Membership</a></li><li><a href="https://my.cytron.io/cytroncash">CytronCash</a></li><li><a href="#">Careers at Cytron</a></li><li><a href="#">Contact Us</a></li></ul></div></div>
+  </div>
+  <div class="wrap"><div class="trace" aria-hidden="true"><svg width="60" height="56" viewBox="0 0 60 56" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4.5"/><path d="M6 10.5V36l14 14h40"/></svg><span class="trace__line"></span><span class="trace__dot"></span></div></div>
+  <div class="wrap lh">
+    <div><h4>VISIT</h4><b>CYTRON TECHNOLOGIES SDN BHD</b><br>1, Lorong Industri Impian 1,<br>Taman Industri Impian,<br>14000 Bukit Mertajam,<br>Pulau Pinang, Malaysia.</div>
+    <div><h4>CALL</h4>Tel: <a href="tel:+6045480668">+604-548 0668</a><br>Fax: +604-548 0669</div>
+    <div><h4>WRITE</h4><a href="mailto:sales@cytron.io">sales@cytron.io</a><br><a href="mailto:support@cytron.io">support@cytron.io</a><br><a href="https://www.cytron.io">www.cytron.io</a></div>
+    <div class="lh__ids">BRN: 200601035804</div>
   </div>
   <div class="ftr__base"><div class="wrap ftr__base-in">
     <span>© 2004–2026 Cytron Technologies Sdn Bhd (200601035804). All rights reserved.</span>
