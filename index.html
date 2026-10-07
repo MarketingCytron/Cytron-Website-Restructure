@@ -18,8 +18,8 @@
 <header class="hdr" id="top">
   <div class="aud"><div class="wrap aud__in">
     <span class="aud__label">You&rsquo;re browsing:</span>
-    <nav class="aud__seg" aria-label="Choose your Cytron homepage"><a href="index.html" data-aud="guest" aria-current="page"><span class="aud__long">All Cytron</span><span class="aud__short">All</span></a><a href="education.html" data-aud="edu"><span class="aud__long">Education</span><span class="aud__short">Education</span></a><a href="industry.html" data-aud="ind"><span class="aud__long">Industry &amp; Enterprise</span><span class="aud__short">Industry</span></a></nav>
-    <div class="aud__right"><button class="aud__change" type="button" data-welcome>Change preference</button></div>
+    <nav class="aud__seg" aria-label="Choose your Cytron homepage"><a href="index.html" data-aud="guest" aria-current="page"><span class="aud__long">Store</span><span class="aud__short">Store</span></a><a href="education.html" data-aud="edu"><span class="aud__long">Education</span><span class="aud__short">Education</span></a><a href="industry.html" data-aud="ind"><span class="aud__long">Industry &amp; Enterprise</span><span class="aud__short">Industry</span></a></nav>
+    <div class="aud__right"></div>
   </div></div>
   <div class="wrap hdr__in">
     <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" data-burger><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -37,6 +37,7 @@
       <a class="hdr__link" href="#stories">Success Stories</a>
       <a class="hdr__link" href="#contact">Contact</a>
       <a class="btn btn--primary btn--sm hdr__cta" href="https://my.cytron.io/accept-lo">Request a Quote</a>
+      <button class="icon-btn pz" type="button" data-welcome data-pz aria-label="Personalize Your Content. Change"><span class="pz__ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5V20h16v-9.5"/><path d="M3 10l2-6h14l2 6"/><path d="M3 10a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-5h4v5"/></svg></span><span class="pz__tip" role="tooltip">Personalize Your Content</span></button>
       <a class="icon-btn" href="#" aria-label="Search"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
       <a class="icon-btn" href="#" aria-label="Cart"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L20 8H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg></a>
     </div>
@@ -177,6 +178,7 @@
     </div>
     <button class="wel__guest" type="button" data-guest>Continue as Guest</button>
     <p class="wel__note">Don&rsquo;t worry &mdash; you can switch anytime via the menu.</p>
+    <p class="wel__done" aria-live="polite" hidden><span class="wel__spin" aria-hidden="true"></span>Great! Loading your personalized content&hellip;</p>
   </div>
 </div>
 <script src="site.js"></script>

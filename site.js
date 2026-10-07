@@ -104,8 +104,29 @@
   // Any link with data-aud remembers the choice before navigating
   document.querySelectorAll('[data-aud]').forEach(function (a) {
     if (a === document.body) return;
-    a.addEventListener('click', function () { set(a.getAttribute('data-aud')); });
+    a.addEventListener('click', function (ev) {
+      var v = a.getAttribute('data-aud');
+      set(v);
+      if (v !== 'guest') { try { sessionStorage.setItem('cytron_pz_hint', '1'); } catch (e) {} }
+      // Chooser cards: show the live site's "Loading your personalized content" step first
+      if (a.classList.contains('wel__opt') && dlg) {
+        ev.preventDefault();
+        dlg.classList.add('is-done');
+        var done = dlg.querySelector('.wel__done'); if (done) done.hidden = false;
+        setTimeout(function () { location.href = a.getAttribute('href'); }, 750);
+      }
+    });
   });
+
+  // After switching, briefly show the header tooltip ("Industry Content Personalized")
+  var pzBtn = document.querySelector('[data-pz]');
+  try {
+    if (pzBtn && page !== 'all' && sessionStorage.getItem('cytron_pz_hint')) {
+      sessionStorage.removeItem('cytron_pz_hint');
+      pzBtn.classList.add('pz--hint');
+      setTimeout(function () { pzBtn.classList.remove('pz--hint'); }, 2600);
+    }
+  } catch (e) {}
 
   function openDlg() {
     if (!dlg) return;

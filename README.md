@@ -19,8 +19,9 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 1. On a first visit to `index.html`, a popup asks "What type of project are you working on?" with **Education**, **Industry / Enterprise** and **Continue as Guest**.
 2. The choice is remembered in the browser (`localStorage`, key `cytron_audience`: `edu`, `ind` or `guest`).
 3. A returning visitor who chose Education or Industry is sent straight to that homepage.
-4. A bar at the top of every page ("You're browsing: All Cytron / Education / Industry & Enterprise") lets visitors switch at any time, and "Change preference" reopens the popup.
-5. For review: add `?welcome` to the URL to force the popup, or `?stay` to stop the redirect.
+4. A bar at the top of every page ("You're browsing: Store / Education / Industry & Enterprise") lets visitors switch at any time.
+5. Like the live site, a personalisation icon sits next to search: a factory on the Industry page, a graduation cap on Education and a shop on the Store page. Its tooltip reads "Industry Content Personalized" (or Education), and clicking it reopens the popup. After a choice the popup shows "Great! Loading your personalized content…", and the tooltip appears briefly on arrival.
+6. For review: add `?welcome` to the URL to force the popup, or `?stay` to stop the redirect.
 
 On the live OpenCart site the same choice could be stored in the customer session or account instead of the browser.
 
