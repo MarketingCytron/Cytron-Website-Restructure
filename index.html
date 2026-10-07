@@ -8,366 +8,28 @@
 <link rel="icon" href="https://static.cytron.io/image/favicon/favicon-16x16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&amp;family=Michroma&amp;display=swap">
-<style>
-/* =====================================================================
-   DESIGN 3 · Cytron homepage — industrial-brand layout
-   Minimal letterhead palette: Cytron blue #00A4DB + greys on white.
-   Source Sans 3 (Myriad-style) + Michroma for small wide caps labels.
-   ===================================================================== */
-:root{
-  /* Letterhead palette: one Cytron blue, warm greys, white */
-  --brand:#00A4DB;          /* Cytron blue from the letterhead — bars, lines, dots, icons */
-  --brand-ink:#007DAA;      /* same blue, deepened so text passes 4.5:1 on white */
-  --primary:#007DAA;        /* buttons & links (white text 4.8:1) */
-  --primary-hover:#00698F;
-  --ink:#3C3C3B;            /* headings — letterhead dark grey */
-  --text:#4A4A49;           /* body */
-  --muted:#6D6D6C;          /* letterhead grey */
-  --line:#E4E7E9;
-  --soft:#F7FBFD;           /* near-white section bg */
-  --tint:#DFF4FA;           /* letterhead light blue */
-  --font:'Source Sans 3','Myriad Pro','Segoe UI',system-ui,-apple-system,sans-serif;
-  --wide:'Michroma','Nulshock','Segoe UI',sans-serif;   /* wide display face for small caps labels */
-  --wrap:1240px; --g:24px; --r:8px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-html,body{margin:0}
-body{font-family:var(--font);color:var(--text);background:#fff;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-ul{list-style:none;margin:0;padding:0}
-h1,h2,h3,p{margin:0}
-button,input,select,textarea{font:inherit;color:inherit}
-button{cursor:pointer}
-:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:4px}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--g)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--ink);color:#fff;padding:8px 12px;border-radius:6px}
-.skip:focus{left:8px}
-.mock{position:fixed;left:8px;bottom:8px;z-index:999;background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:6px 9px;border-radius:5px;opacity:.85;pointer-events:none}
-
-/* ---------- buttons ---------- */
-.btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 26px;border-radius:4px;font-weight:600;font-size:15px;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s;cursor:pointer;white-space:nowrap}
-.btn--sm{height:38px;padding:0 18px;font-size:14px}
-.btn--primary{background:var(--primary);color:#fff}
-.btn--primary:hover{background:var(--primary-hover)}
-.btn--outline{border-color:var(--primary);color:var(--primary);background:#fff}
-.btn--outline:hover{background:var(--primary);color:#fff}
-.btn--light{background:#fff;color:var(--ink)}
-.btn--light:hover{background:var(--brand);color:var(--ink)}
-.more{display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-weight:700;font-size:14px}
-.more:hover{color:var(--primary-hover)}
-
-/* ---------- header ---------- */
-.hdr{position:sticky;top:0;z-index:100;background:#fff;border-top:5px solid var(--brand);border-bottom:1px solid var(--line)}
-.hdr__in{display:flex;align-items:center;gap:28px;height:72px}
-.logo img{width:132px;height:auto}
-.burger{display:none;width:44px;height:44px;border:0;background:none;align-items:center;justify-content:center}
-.nav{display:flex;align-items:center;gap:4px;height:100%}
-.nav__item{display:flex;align-items:center;height:100%;padding:0 12px;font-weight:600;font-size:15px;color:var(--ink);border-bottom:3px solid transparent}
-.nav__item>button{display:inline-flex;align-items:center;gap:4px;height:100%;background:none;border:0;padding:0;font-weight:600;font-size:15px;color:var(--ink)}
-.nav__item:hover,.dd.open{border-bottom-color:var(--brand)}
-.nav__item:hover>button,a.nav__item:hover{color:var(--primary)}
-.dd{position:relative}
-.dd--wide{position:static}
-.dd__panel{display:none;position:absolute;top:100%;left:0;z-index:90;background:#fff;border-top:1px solid var(--line);box-shadow:0 18px 40px rgba(60,60,59,.12)}
-.dd:hover>.dd__panel,.dd:focus-within>.dd__panel,.dd.open>.dd__panel{display:block}
-.dd__list{min-width:300px;padding:10px;border-radius:0 0 8px 8px}
-.dd__list li a{display:flex;flex-direction:column;padding:10px 14px;border-radius:6px}
-.dd__list li a b{font-size:15px;color:var(--ink)}
-.dd__list li a span{font-size:13px;font-weight:500;color:var(--muted)}
-.dd__list li a:hover{background:var(--soft)}
-.dd__list li a:hover b{color:var(--primary)}
-.mm{left:0;right:0}
-.mm__in{display:grid;grid-template-columns:1fr 260px;gap:32px;padding-top:28px;padding-bottom:32px}
-.mm__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 28px}
-.mm__cat{display:block;font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px;padding-left:10px;border-left:2px solid var(--brand)}
-.mm__cat:hover{color:var(--primary)}
-.mm__grid li a{display:block;padding:3px 0 3px 13px;font-size:13.5px;font-weight:500;color:var(--muted)}
-.mm__grid li a:hover{color:var(--primary)}
-.mm__promo{display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:10px;background:var(--soft)}
-.mm__promo img{width:100%;aspect-ratio:1/1;object-fit:contain;mix-blend-mode:multiply}
-.mm__promo span{display:flex;flex-direction:column}
-.mm__promo small{font-family:var(--wide);font-size:10px;color:var(--primary);text-transform:uppercase;letter-spacing:.12em}
-.mm__promo b{font-size:17px;color:var(--ink)}
-.hdr__right{display:flex;align-items:center;gap:18px;margin-left:auto}
-.hdr__link{font-size:14px;font-weight:600;color:var(--muted)}
-.hdr__link:hover{color:var(--primary)}
-.icon-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;color:var(--ink)}
-.icon-btn:hover{background:var(--soft);color:var(--primary)}
-
-/* ---------- hero ---------- */
-.hero{position:relative;height:560px;overflow:hidden;background:#fff;border-bottom:1px solid var(--line)}
-.hero__slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s;
-  background:
-    radial-gradient(circle at 76% 50%,var(--tint) 0,rgba(255,255,255,0) 42%),
-    radial-gradient(rgba(0,164,219,.14) 1px,transparent 1.2px) 0 0/22px 22px,#fff}
-.hero__slide.is-on{opacity:1;visibility:visible}
-.hero__in{height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:40px}
-.hero__text{display:flex;flex-direction:column;gap:18px;max-width:560px}
-.hero__sub{font-family:var(--wide);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-ink)}
-.hero__title{font-size:46px;line-height:1.14;font-weight:700;color:var(--ink);letter-spacing:-.01em}
-.hero__desc{font-size:17px;color:var(--muted)}
-.hero__text .btns{margin-top:8px}
-.hero__img{display:flex;align-items:center;justify-content:center;height:100%;padding:40px 0}
-.hero__img img{max-height:420px;width:auto;object-fit:contain;mix-blend-mode:multiply;transform:translateY(12px);transition:transform 1s ease}
-.hero__slide.is-on .hero__img img{transform:none}
-.hero__ctrl{position:absolute;left:0;right:0;bottom:28px;z-index:5}
-.hero__dots{display:flex;gap:10px}
-.hero__dot{width:56px;height:24px;padding:0;border:0;background:none;display:flex;align-items:center}
-.hero__dot span{display:block;width:100%;height:2px;background:rgba(60,60,59,.16);position:relative;overflow:hidden;border-radius:2px}
-.hero__dot span::after{content:"";position:absolute;inset:0;width:0;background:var(--brand)}
-.hero__dot.is-on span::after{animation:fill 6s linear forwards}
-@keyframes fill{to{width:100%}}
-
-/* ---------- section heads ---------- */
-.sec{padding-top:96px}
-.sec--soft{margin-top:96px;padding:88px 0 96px;background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.sec--soft+.sec{padding-top:96px}
-.sec__head{text-align:center;max-width:820px;margin:0 auto 44px;display:flex;flex-direction:column;gap:12px;align-items:center}
-.sec__head--row{text-align:left;max-width:none;flex-direction:row;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}
-.sec__head--row>div{display:flex;flex-direction:column;gap:12px}
-.eyebrow{font-family:var(--wide);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--primary);display:inline-flex;align-items:center;gap:10px}
-.eyebrow::before{content:"";width:28px;height:8px;background:linear-gradient(var(--brand),var(--brand)) left center/22px 1.5px no-repeat,radial-gradient(circle,var(--brand) 3px,transparent 3.6px) right center/8px 8px no-repeat}
-.eyebrow--light{color:var(--brand)}
-.sec__head h2{font-size:34px;line-height:1.25;font-weight:700;color:var(--ink)}
-.sec__head p{color:var(--muted);font-size:16px}
-
-/* ---------- product families ---------- */
-.fams{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.fam{display:flex;flex-direction:column;border-radius:var(--r);background:#fff;border:1px solid var(--line);overflow:hidden;transition:box-shadow .25s,transform .25s,border-color .25s}
-.fam:hover{box-shadow:0 12px 28px rgba(60,60,59,.10);transform:translateY(-3px);border-color:var(--brand)}
-.fam__img{aspect-ratio:4/3;background:var(--soft);display:flex;align-items:center;justify-content:center}
-.fam__img img{width:70%;height:80%;object-fit:contain;mix-blend-mode:multiply;transition:transform .35s}
-.fam:hover .fam__img img{transform:scale(1.05)}
-.fam__body{display:flex;flex-direction:column;gap:8px;padding:22px 22px 24px;flex:1}
-.fam__body b{font-size:18px;line-height:1.35;color:var(--ink)}
-.fam__body>span:not(.btn){font-size:14px;color:var(--muted)}
-.fam__body .btn{margin-top:auto;align-self:flex-start;background:var(--primary);color:#fff}
-.fam:hover .fam__body .btn{background:var(--primary-hover)}
-.more-cats{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:28px;font-size:14px;color:var(--muted);font-weight:600}
-.chip{padding:7px 14px;border-radius:999px;border:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--ink)}
-.chip:hover{border-color:var(--brand);color:var(--primary);background:var(--soft)}
-
-/* ---------- use-case explorer ---------- */
-.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-bottom:28px}
-.tabs button{height:52px;border:1px solid var(--line);background:#fff;font-weight:700;font-size:15px;color:var(--ink);border-radius:5px;transition:background .2s,color .2s}
-.tabs button:hover{color:var(--primary)}
-.tabs button[aria-selected="true"]{background:var(--primary);color:#fff}
-.uc{display:grid;grid-template-columns:360px minmax(0,1fr);gap:28px;align-items:stretch}
-.uc[hidden]{display:none}
-.uc__list{display:flex;flex-direction:column;gap:10px}
-.acc{background:#fff;border-radius:var(--r);border-left:3px solid transparent;transition:border-color .2s,box-shadow .2s}
-.acc.is-open{border-left-color:var(--brand);box-shadow:0 8px 24px rgba(60,60,59,.08)}
-.acc__head{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;border:0;background:none;text-align:left;font-weight:700;font-size:16px;color:var(--ink)}
-.acc.is-open .acc__head{color:var(--primary)}
-.acc__head svg{flex:none;transition:transform .2s}
-.acc.is-open .acc__head svg{transform:rotate(180deg)}
-.acc__body{display:none;padding:0 20px 18px}
-.acc.is-open .acc__body{display:flex;flex-direction:column;gap:10px}
-.acc__body p{font-size:14.5px;color:var(--muted)}
-.uc__stage{position:relative;min-height:420px;border-radius:12px;background:
-  radial-gradient(circle at 50% 50%,#fff 0,rgba(255,255,255,0) 60%),
-  radial-gradient(rgba(0,164,219,.22) 1px,transparent 1.2px) 0 0/20px 20px,var(--tint);
-  display:flex;align-items:center;justify-content:center;overflow:hidden}
-.uc__stage>img{max-width:62%;max-height:340px;object-fit:contain;mix-blend-mode:multiply}
-.uc__tags{position:absolute;inset:0;pointer-events:none}
-.ptag{position:absolute;pointer-events:auto;display:flex;align-items:center;gap:8px;padding:8px 12px 8px 10px;border-radius:6px;background:rgba(255,255,255,.94);box-shadow:0 6px 18px rgba(60,60,59,.12);font-size:13px;transition:transform .2s}
-.ptag:hover{transform:translateY(-2px)}
-.ptag i{width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(0,164,219,.25);flex:none}
-.ptag span{display:flex;flex-direction:column;line-height:1.3}
-.ptag b{color:var(--ink);font-weight:700}
-.ptag small{color:var(--muted);font-weight:600}
-.ptag:nth-child(1){top:8%;left:5%}
-.ptag:nth-child(2){top:14%;right:5%}
-.ptag:nth-child(3){bottom:12%;left:7%}
-.ptag:nth-child(4){bottom:8%;right:6%}
-
-/* ---------- success stories bento ---------- */
-.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:150px;gap:20px}
-.story{position:relative;border-radius:10px;overflow:hidden;color:#fff;background:#3C3C3B}
-.story--1{grid-column:span 7;grid-row:span 2}
-.story--2{grid-column:span 5;grid-row:span 2}
-.story--3{grid-column:span 6;grid-row:span 1}
-.story--4{grid-column:span 6;grid-row:span 1}
-.story img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.story:hover img{transform:scale(1.04)}
-.story__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,30,30,0) 25%,rgba(30,30,30,.85) 100%)}
-.story__txt{position:absolute;left:0;right:0;bottom:0;padding:22px 24px;display:flex;flex-direction:column;gap:10px}
-.story__tags{display:flex;flex-wrap:wrap;gap:6px}
-.story__tags em{font-style:normal;font-size:12px;font-weight:700;padding:3px 9px;border-radius:4px;background:var(--tint);color:#00698F}
-.story__tags em+em{background:rgba(255,255,255,.9)}
-.story b{font-size:19px;line-height:1.35}
-.story--1 b{font-size:24px;max-width:560px}
-.story:hover b{text-decoration:underline;text-underline-offset:3px}
-
-/* ---------- about band ---------- */
-.about{margin-top:96px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
-.about__in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;padding-top:96px;padding-bottom:96px}
-.about__text{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
-.about h2{font-size:34px;line-height:1.25;font-weight:700;color:var(--ink)}
-.about p{color:var(--muted)}
-.about__tag{font-family:var(--wide);font-size:12px;letter-spacing:.14em;line-height:1.7;text-transform:uppercase;color:var(--brand-ink)}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.stat{display:flex;flex-direction:column;gap:8px;padding:30px 28px;background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
-.stat::before{content:"";position:absolute;left:-1px;top:-1px;width:36px;height:2px;background:var(--brand)}
-.stat b{font-size:46px;line-height:1;font-weight:700;color:var(--brand-ink);letter-spacing:-.01em}
-.stat span{font-size:14px;color:var(--muted);font-weight:600}
-
-/* ---------- partners ---------- */
-.plogos{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:12px}
-.plogos--sm{margin-top:12px}
-.plogo{aspect-ratio:1/1;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:12px;background:#fff}
-.plogo img{max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.7;transition:.2s}
-.plogo:hover{border-color:var(--brand)}
-.plogo:hover img{filter:none;opacity:1}
-
-/* ---------- news ---------- */
-.newsgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.news{display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--line);overflow:hidden;transition:box-shadow .25s,transform .25s}
-.news:hover{box-shadow:0 14px 34px rgba(60,60,59,.12);transform:translateY(-4px)}
-.news__img{aspect-ratio:16/9;background:var(--soft);overflow:hidden}
-.news__img img{width:100%;height:100%;object-fit:cover}
-.news__body{display:flex;flex-direction:column;gap:8px;padding:20px 22px 24px}
-.news__cat{font-size:12.5px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em}
-.news b{font-size:17px;line-height:1.4;color:var(--ink)}
-.news:hover b{color:var(--primary)}
-.news small{color:var(--muted);font-size:13px;font-weight:600}
-
-/* ---------- contact band ---------- */
-.contact{margin-top:0;background:var(--soft)}
-.contact__in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;padding-top:80px;padding-bottom:80px;align-items:start}
-.contact__text{display:flex;flex-direction:column;gap:14px}
-.contact__text h2{font-size:34px;line-height:1.25;color:var(--ink)}
-.contact__text p{color:var(--muted)}
-.contact__ways{display:flex;flex-direction:column;gap:6px;margin-top:6px;font-weight:700;color:var(--ink)}
-.contact__ways li::before{content:"";display:inline-block;width:8px;height:8px;margin-right:10px;border-radius:50%;background:var(--brand)}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:28px;border-radius:10px;background:#fff;border:1px solid var(--line)}
-.form label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--ink)}
-.form input,.form select,.form textarea{height:44px;padding:0 12px;border:1px solid var(--line);border-radius:5px;background:#fff;font-size:15px;font-weight:500}
-.form textarea{height:auto;padding:10px 12px;resize:vertical}
-.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,164,219,.25)}
-.form__full{grid-column:1/-1}
-.form__note{font-size:12px;color:var(--muted)}
-
-/* ---------- footer ---------- */
-.ftr{background:#fff;margin-top:0}
-.ftr__top{display:grid;grid-template-columns:340px minmax(0,1fr);gap:56px;padding-top:64px;padding-bottom:24px}
-.ftr__brand{min-width:0;display:flex;flex-direction:column;gap:14px}
-.ftr__brand>img{width:150px;height:auto}
-.ftr__tag{font-family:var(--wide);font-size:11.5px;letter-spacing:.14em;line-height:1.7;text-transform:uppercase;color:var(--brand-ink)}
-.sub{display:flex;gap:8px}
-.sub input{flex:1;min-width:0;height:38px;padding:0 12px;border:1px solid var(--line);border-radius:5px;background:#fff}
-.ftr__topics-l{font-size:13px;font-weight:600;color:var(--muted)}
-.ftr__topics{display:flex;flex-wrap:wrap;gap:8px}
-.topic{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
-.topic input{accent-color:var(--primary)}
-.ftr__social{display:flex;align-items:center;gap:10px;margin-top:6px;font-size:13px;font-weight:700;color:var(--ink)}
-.ftr__social a{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
-.ftr__social a:hover{border-color:var(--brand)}
-.ftr__cols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
-.fcol h3{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:14px}
-.fcol li{margin-bottom:9px}
-.fcol a{font-size:13.5px;font-weight:500;color:var(--muted)}
-.fcol a:hover{color:var(--primary)}
-.ftr__base{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
-.ftr__base-in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;padding-top:18px;padding-bottom:22px}
-.ftr__legal{display:flex;gap:16px}
-.trace{display:flex;align-items:flex-end;height:56px;color:var(--brand)}
-.trace svg{flex:none;display:block}
-.trace__line{flex:1;height:1.5px;background:currentColor;margin-bottom:5.25px}
-.trace__dot{flex:none;width:10px;height:10px;border-radius:50%;background:currentColor;margin-bottom:1px}
-.lh{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;padding-top:6px;padding-bottom:28px;font-size:13px;line-height:1.55;color:var(--muted)}
-.lh h4{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--brand-ink)}
-.lh b{color:var(--ink)}
-.lh a:hover{color:var(--primary)}
-.lh__ids{text-align:right}
-.ftr__legal a:hover,.ftr__stores a:hover{color:var(--primary)}
-.totop{position:fixed;right:20px;bottom:20px;z-index:60;width:46px;height:46px;border-radius:50%;background:#fff;color:var(--primary);border:1px solid var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(60,60,59,.12)}
-.totop:hover{background:var(--primary);color:#fff}
-
-/* ---------- responsive ---------- */
-@media (max-width:1160px){
-  .hdr__link{display:none}
-  .mm__in{grid-template-columns:1fr}
-  .mm__promo{display:none}
-  .fams{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .plogos{grid-template-columns:repeat(5,minmax(0,1fr))}
-  .ftr__top{grid-template-columns:minmax(0,1fr)}
-}
-@media (max-width:900px){
-  .hdr__in{gap:10px;height:64px}
-  .burger{display:flex}
-  .logo{margin-right:auto}
-  .hdr__cta{display:none}
-  .nav{display:none;position:absolute;top:64px;left:0;right:0;max-height:calc(100vh - 64px);overflow:auto;flex-direction:column;align-items:stretch;gap:0;height:auto;padding:0 var(--g) 16px;background:#fff;border-bottom:1px solid var(--line)}
-  .nav.open{display:flex}
-  .nav__item{height:auto;min-height:52px;padding:0;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;justify-content:center}
-  .nav__item>button{width:100%;min-height:52px;justify-content:space-between}
-  .dd__panel{position:static;box-shadow:none;border:0}
-  .dd:hover>.dd__panel{display:none}
-  .dd.open>.dd__panel{display:block}
-  .mm__in{padding:0 0 16px}
-  .mm__grid{grid-template-columns:1fr 1fr}
-  .hero{height:auto}
-  .hero__slide{position:relative;display:none}
-  .hero__slide.is-on{display:block}
-  .hero__in{grid-template-columns:1fr;padding-top:36px;padding-bottom:72px;gap:12px}
-  .hero__img{order:-1;padding:0;height:240px}
-  .hero__img img{max-height:240px}
-  .hero__title{font-size:32px}
-  .hero__sub{font-size:19px}
-  .sec,.sec--soft+.sec{padding-top:72px}
-  .sec--soft{margin-top:72px;padding:64px 0 72px}
-  .sec__head h2,.about h2,.contact__text h2{font-size:27px}
-  .tabs{display:flex;overflow-x:auto;scrollbar-width:none}
-  .tabs::-webkit-scrollbar{display:none}
-  .tabs button{flex:none;padding:0 18px}
-  .uc{grid-template-columns:1fr}
-  .uc__stage{min-height:340px;order:-1}
-  .bento{grid-template-columns:1fr;grid-auto-rows:220px}
-  .story--1,.story--2,.story--3,.story--4{grid-column:auto;grid-row:auto}
-  .story--1 b{font-size:20px}
-  .about__in,.contact__in{grid-template-columns:1fr;gap:36px;padding-top:64px;padding-bottom:64px}
-  .about,.contact{margin-top:72px}
-  .newsgrid{grid-template-columns:1fr}
-  .ftr__cols{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .lh{grid-template-columns:1fr 1fr}
-  .lh__ids{text-align:left}
-}
-@media (max-width:600px){
-  :root{--g:16px}
-  .fams{grid-template-columns:1fr}
-  .hero__title{font-size:28px}
-  .hero__text .btn{flex:1 1 100%}
-  .ptag{font-size:12px;padding:6px 10px 6px 8px}
-  .ptag:nth-child(n){max-width:46%}
-  .stat{padding:22px 18px}
-  .stat b{font-size:36px}
-  .plogos{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .form{grid-template-columns:1fr;padding:20px}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;scroll-behavior:auto !important}}
-
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
-<div class="mock">DESIGN 3 · internal mockup · not the live site</div>
+<body data-aud="all">
+<div class="mock">GENERAL HOMEPAGE · internal mockup · not the live site</div>
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- ================= HEADER ================= -->
 <header class="hdr" id="top">
+  <div class="aud"><div class="wrap aud__in">
+    <span class="aud__label">You&rsquo;re browsing:</span>
+    <nav class="aud__seg" aria-label="Choose your Cytron homepage"><a href="index.html" data-aud="guest" aria-current="page"><span class="aud__long">All Cytron</span><span class="aud__short">All</span></a><a href="education.html" data-aud="edu"><span class="aud__long">Education</span><span class="aud__short">Education</span></a><a href="industry.html" data-aud="ind"><span class="aud__long">Industry &amp; Enterprise</span><span class="aud__short">Industry</span></a></nav>
+    <div class="aud__right"><button class="aud__change" type="button" data-welcome>Change preference</button></div>
+  </div></div>
   <div class="wrap hdr__in">
     <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" data-burger><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <a class="logo" href="#"><img src="https://static.cytron.io/image/catalog/logo/Cytron-Logo-LIGHT_BLUE_SM.png" alt="Cytron Technologies" width="132" height="50"></a>
+    <a class="logo" href="index.html?stay"><img src="https://static.cytron.io/image/catalog/logo/Cytron-Logo-LIGHT_BLUE_SM.png" alt="Cytron Technologies" width="132" height="50"></a>
     <nav class="nav" id="nav" aria-label="Main">
       <div class="nav__item dd dd--wide"><button type="button" aria-haspopup="true">Products <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="dd__panel mm"><div class="wrap mm__in"><div class="mm__grid"><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-raspberry-pi">Raspberry Pi</a><ul><li><a href="#">Industrial with Raspberry Pi</a></li><li><a href="#">Raspberry Pi Main Board</a></li><li><a href="#">Raspberry Pi 5 Accessories</a></li><li><a href="#">Expansion for Raspberry Pi Pico</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-micro-bit">micro:bit</a><ul><li><a href="#">micro:bit Main Board</a></li><li><a href="#">micro:bit Kits</a></li><li><a href="#">micro:bit Expansion Board</a></li><li><a href="#">micro:bit Power and Wire</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-arduino-ecosystem">Arduino Ecosystem</a><ul><li><a href="#">Industrial with Arduino</a></li><li><a href="#">Official Arduino Main Board</a></li><li><a href="#">Compatible Arduino Main Board</a></li><li><a href="#">Shields for Arduino</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-artificial-intelligence">Artificial Intelligence</a><ul><li><a href="#">NVIDIA AI</a></li><li><a href="#">RDK X5</a></li><li><a href="#">Other AI Platforms</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-wireless-devices">IoT &amp; Wireless</a><ul><li><a href="#">WiFi</a></li><li><a href="#">Bluetooth &amp; RF</a></li><li><a href="#">LoRa</a></li><li><a href="#">Other Wireless</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-motor-and-motor-driver">Motor &amp; Motor Driver</a><ul><li><a href="#">Motor Driver</a></li><li><a href="#">Motors</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-3d-modeling">3D Modeling</a><ul><li><a href="#">3D Printer</a></li><li><a href="#">Laser Cutter/Engrave</a></li><li><a href="#">Filament</a></li><li><a href="#">3D Accessories</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-industry">Industry</a><ul><li><a href="#">Industrial Edge Controllers</a></li><li><a href="#">HMI</a></li><li><a href="#">Router / Switch / Gateway</a></li><li><a href="#">DC Motor Drivers</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-development-tools">Development Tools</a><ul><li><a href="#">Maker Series</a></li><li><a href="#">PIC Microcontroller &amp; RISC-V</a></li><li><a href="#">Educational Training Kit</a></li><li><a href="#">Computer Interface</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-robotics-electronics">Robotics &amp; Electronics</a><ul><li><a href="#">Sumo Robot / Robot Battle</a></li><li><a href="#">Hardware</a></li><li><a href="#">Robot Accessories</a></li><li><a href="#">Power</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-young-makers">Junior Makers</a><ul><li><a href="#">12 Years Old &amp; Above</a></li><li><a href="#">8 Years Old &amp; Above</a></li><li><a href="#">6 Years Old &amp; Above</a></li></ul></div><div class="mm__col"><a class="mm__cat" href="https://my.cytron.io/c-sensor">Sensors</a><ul><li><a href="#">Sensor Kits</a></li><li><a href="#">Crowtail Modules</a></li><li><a href="#">Infrared / Light</a></li><li><a href="#">Line Tracking</a></li></ul></div></div>
           <a class="mm__promo" href="https://my.cytron.io/p-maker-esp32-bundle"><img src="https://static.cytron.io/image/cache/catalog/products/V-MAKER-ESP32/maker-esp32-a-268x268.png" alt=""><span><small>New</small><b>Maker ESP32 Bundle</b><span>From RM29.00</span></span></a></div></div></div>
-      <div class="nav__item dd"><button type="button" aria-haspopup="true">Solutions <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><ul class="dd__panel dd__list"><li><a href="https://my.cytron.io/education"><b>Education &amp; Schools</b><span>RBT-aligned kits, resource hubs, LO / PO</span></a></li><li><a href="https://my.cytron.io/raspberry-pi-for-industry"><b>Industry &amp; Integrators</b><span>Raspberry Pi for Industry, IRIV controllers</span></a></li><li><a href="https://my.cytron.io/c-young-makers"><b>Junior Makers</b><span>Kits sorted by age: 6+, 8+, 12+</span></a></li><li><a href="https://my.cytron.io/maker-selection"><b>Makers &amp; Hobbyists</b><span>Boards, sensors, drivers and parts</span></a></li></ul></div>
-      <div class="nav__item dd"><button type="button" aria-haspopup="true">Learn <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><ul class="dd__panel dd__list"><li><a href="https://my.cytron.io/tutorial"><b>Tutorials</b></a></li><li><a href="https://my.cytron.io/education"><b>Resource hubs</b></a></li><li><a href="https://my.cytron.io/education"><b>Robotics competitions</b></a></li><li><a href="#partners"><b>Training partners</b></a></li></ul></div>
+      <div class="nav__item dd"><button type="button" aria-haspopup="true">Solutions <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><ul class="dd__panel dd__list"><li><a href="education.html"><b>Education &amp; Schools</b><span>RBT-aligned kits, resource hubs, LO / PO</span></a></li><li><a href="industry.html"><b>Industry &amp; Integrators</b><span>Raspberry Pi for Industry, IRIV controllers</span></a></li><li><a href="https://my.cytron.io/c-young-makers"><b>Junior Makers</b><span>Kits sorted by age: 6+, 8+, 12+</span></a></li><li><a href="https://my.cytron.io/maker-selection"><b>Makers &amp; Hobbyists</b><span>Boards, sensors, drivers and parts</span></a></li></ul></div>
+      <div class="nav__item dd"><button type="button" aria-haspopup="true">Learn <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><ul class="dd__panel dd__list"><li><a href="https://my.cytron.io/tutorial"><b>Tutorials</b></a></li><li><a href="education.html"><b>Resource hubs</b></a></li><li><a href="education.html"><b>Robotics competitions</b></a></li><li><a href="#partners"><b>Training partners</b></a></li></ul></div>
       <a class="nav__item" href="#partners">Partners</a>
       <div class="nav__item dd"><button type="button" aria-haspopup="true">Company <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><ul class="dd__panel dd__list"><li><a href="#"><b>About Cytron</b></a></li><li><a href="#stories"><b>Success stories</b></a></li><li><a href="#"><b>Careers</b></a></li><li><a href="#contact"><b>Contact us</b></a></li></ul></div>
     </nav>
@@ -393,13 +55,13 @@ button{cursor:pointer}
 </div><div class="hero__slide" style="--tint:#DFF4FA" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
   <div class="wrap hero__in">
     <div class="hero__text"><p class="hero__sub">Industrial Edge AI</p><h1 class="hero__title">IRIV EdgeAI CM5: Industrial AI, Built on Raspberry Pi</h1><p class="hero__desc">Run vision applications such as PPE detection and packaging inspection right at the edge.</p>
-      <div class="btns"><a class="btn btn--primary" href="https://my.cytron.io/p-iriv-edge-ai-cm5">Learn More</a><a class="btn btn--outline" href="https://my.cytron.io/raspberry-pi-for-industry">Book a Meet &amp; Greet</a></div></div>
+      <div class="btns"><a class="btn btn--primary" href="https://my.cytron.io/p-iriv-edge-ai-cm5">Learn More</a><a class="btn btn--outline" href="industry.html">Book a Meet &amp; Greet</a></div></div>
     <div class="hero__img"><img src="https://static.cytron.io/image/catalog/products/V-IRIV-EAI5/iriv-edgeai-cm5-view-1-1.png" alt="" loading="lazy"></div>
   </div>
 </div><div class="hero__slide" style="--tint:#DFF4FA" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
   <div class="wrap hero__in">
     <div class="hero__text"><p class="hero__sub">For RBT classrooms</p><h1 class="hero__title">REKA:BIT RBT Project Kits: Robotics &amp; Coding for Every Classroom</h1><p class="hero__desc">Projects for micro:bit with step-by-step guides aligned with the Malaysian school RBT syllabus. From RM219.</p>
-      <div class="btns"><a class="btn btn--primary" href="https://my.cytron.io/p-rekabit-rbt-project-kits">Shop the Kit</a><a class="btn btn--outline" href="https://my.cytron.io/education">Open Resource Hub</a></div></div>
+      <div class="btns"><a class="btn btn--primary" href="https://my.cytron.io/p-rekabit-rbt-project-kits">Shop the Kit</a><a class="btn btn--outline" href="education.html">Open Resource Hub</a></div></div>
     <div class="hero__img"><img src="https://static.cytron.io/image/catalog/products/V-KIT-REKABIT-RBT/kit-rekabit-rbt-d.png" alt="" loading="lazy"></div>
   </div>
 </div>
@@ -418,13 +80,13 @@ button{cursor:pointer}
   <div class="wrap">
     <div class="sec__head"><p class="eyebrow">The Cytron Advantage</p><h2 id="h-uc">Built for How You Learn and Work: Find Your Path</h2></div>
     <div class="tabs" role="tablist" aria-label="Who are you shopping for"><button type="button" role="tab" id="tab-edu" aria-controls="panel-edu" aria-selected="true">Education &amp; Schools</button><button type="button" role="tab" id="tab-maker" aria-controls="panel-maker" aria-selected="false">Makers &amp; Hobbyists</button><button type="button" role="tab" id="tab-ind" aria-controls="panel-ind" aria-selected="false">Industry &amp; Integrators</button><button type="button" role="tab" id="tab-jr" aria-controls="panel-jr" aria-selected="false">Junior Makers</button></div>
-    <div class="uc" role="tabpanel" id="panel-edu" aria-labelledby="tab-edu"><div class="uc__list"><div class="acc is-open"><button type="button" class="acc__head" aria-expanded="true">RBT-Aligned Project Kits<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Robotics and coding kits for micro:bit, matched to the Malaysian school RBT syllabus.</p><a class="more" href="https://my.cytron.io/education">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Resource Hubs for Teachers<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Lesson guides and videos for REKA:BIT, ZOOM:BIT, EDU:BIT, EDU PICO and more.</p><a class="more" href="https://my.cytron.io/education">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">LO / PO Purchasing<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Schools and institutions can order with a local order or purchase order.</p><a class="more" href="https://my.cytron.io/accept-lo">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div><div class="uc__stage"><img src="https://static.cytron.io/image/catalog/products/V-KIT-REKABIT-RBT/kit-rekabit-rbt-d.png" alt="" loading="lazy"><div class="uc__tags"><a class="ptag" href="https://my.cytron.io/p-rekabit-rbt-project-kits"><i></i><span><b>REKA:BIT RBT Project Kits</b><small>From RM219.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-zoombit-robot-car-kits-for-microbit"><i></i><span><b>ZOOM:BIT Robot Car Kit</b><small>From RM190.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-auto-plant-watering-kit-for-microbit"><i></i><span><b>Auto Plant Watering Kit</b><small>From RM108.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-edu-pico-2-project-and-innovation-kit-with-pico-2w"><i></i><span><b>EDU PICO 2</b><small>RM313.95</small></span></a></div></div></div><div class="uc" role="tabpanel" id="panel-maker" aria-labelledby="tab-maker" hidden><div class="uc__list"><div class="acc is-open"><button type="button" class="acc__head" aria-expanded="true">Boards for Every Project<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Raspberry Pi, Arduino-compatible Maker UNO and Maker ESP32, plus sensors and drivers.</p><a class="more" href="https://my.cytron.io/maker-selection">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Free Step-by-Step Tutorials<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>New guides from our engineers every week, from first blink to edge AI.</p><a class="more" href="https://my.cytron.io/tutorial">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Buy with Confidence<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>1-to-1 replacement, 1–3% CytronCash and delivery in 1–3 working days.</p><a class="more" href="https://my.cytron.io/1-to-1-replacement">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div><div class="uc__stage"><img src="https://static.cytron.io/image/catalog/products/V-RASPBERRY-PI-5/v-raspberry-pi-5-main.jpg" alt="" loading="lazy"><div class="uc__tags"><a class="ptag" href="https://my.cytron.io/p-raspberry-pi-5"><i></i><span><b>Raspberry Pi 5</b><small>From RM202.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-maker-uno-simplifying-arduino-for-education"><i></i><span><b>Maker UNO</b><small>RM37.80</small></span></a><a class="ptag" href="https://my.cytron.io/p-maker-esp32-bundle"><i></i><span><b>Maker ESP32 Bundle</b><small>From RM29.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-raspberry-pi-camera-module-3-12mp-with-auto-focus-lens"><i></i><span><b>Camera Module 3</b><small>From RM112.00</small></span></a></div></div></div><div class="uc" role="tabpanel" id="panel-ind" aria-labelledby="tab-ind" hidden><div class="uc__list"><div class="acc is-open"><button type="button" class="acc__head" aria-expanded="true">IRIV Industrial Controllers<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Reliable IO, flexible software and Raspberry Pi power to automate, monitor and scale.</p><a class="more" href="https://my.cytron.io/c-industrial-edge-controller">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Raspberry Pi Approved Reseller &amp; Design Partner<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Certified hardware and engineering support for production deployments.</p><a class="more" href="https://my.cytron.io/raspberry-pi-for-industry">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Edge AI Applications<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>PPE detection, packaging inspection and machine fault alerts on IRIV EdgeAI.</p><a class="more" href="https://my.cytron.io/tutorial/industrial-edge-ai-iriv-edgeai-cm5">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div><div class="uc__stage"><img src="https://static.cytron.io/image/catalog/products/V-IRIV-PICONTROL/v-iriv-picontrol-main-3.jpg" alt="" loading="lazy"><div class="uc__tags"><a class="ptag" href="https://my.cytron.io/p-iriv-picontrol-cm4-industrial-controller"><i></i><span><b>IRIV PiControl</b></span></a><a class="ptag" href="https://my.cytron.io/p-iriv-io-controller"><i></i><span><b>IRIV IO Controller</b></span></a><a class="ptag" href="https://my.cytron.io/p-iriv-edge-ai-cm5"><i></i><span><b>IRIV EdgeAI CM5</b></span></a><a class="ptag" href="https://my.cytron.io/p-iriv-smarthub-cm5"><i></i><span><b>IRIV SmartHub CM5</b></span></a></div></div></div><div class="uc" role="tabpanel" id="panel-jr" aria-labelledby="tab-jr" hidden><div class="uc__list"><div class="acc is-open"><button type="button" class="acc__head" aria-expanded="true">Kits Sorted by Age<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Start right with kits for ages 6+, 8+ and 12+.</p><a class="more" href="https://my.cytron.io/c-young-makers">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Robot Competitions<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Build, code and compete with SUMO:BIT and STRIKER:BIT robot kits.</p><a class="more" href="https://my.cytron.io/education">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Student Benefit Program<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Register as a student for free shipping and member perks.</p><a class="more" href="#">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div><div class="uc__stage"><img src="https://static.cytron.io/image/catalog/products/KIT-MICROBIT-RBT/KIT-MICROBIT-RBT%20Iso.jpg" alt="" loading="lazy"><div class="uc__tags"><a class="ptag" href="https://my.cytron.io/p-microbit-quick-start-kits"><i></i><span><b>micro:bit Quick Start Kit</b><small>From RM39.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-sumobit-robot-kits-1kg-sumo-robot-for-microbit"><i></i><span><b>SUMO:BIT Robot Kit</b><small>From RM80.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-zoombit-robot-car-kits-for-microbit"><i></i><span><b>ZOOM:BIT Robot Car Kit</b><small>From RM190.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-pikabot-maker-uno-smart-car-kit"><i></i><span><b>PikaBot Smart Car Kit</b><small>RM128.00</small></span></a></div></div></div>
+    <div class="uc" role="tabpanel" id="panel-edu" aria-labelledby="tab-edu"><div class="uc__list"><div class="acc is-open"><button type="button" class="acc__head" aria-expanded="true">RBT-Aligned Project Kits<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Robotics and coding kits for micro:bit, matched to the Malaysian school RBT syllabus.</p><a class="more" href="education.html">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Resource Hubs for Teachers<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Lesson guides and videos for REKA:BIT, ZOOM:BIT, EDU:BIT, EDU PICO and more.</p><a class="more" href="education.html">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">LO / PO Purchasing<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Schools and institutions can order with a local order or purchase order.</p><a class="more" href="https://my.cytron.io/accept-lo">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div><div class="uc__stage"><img src="https://static.cytron.io/image/catalog/products/V-KIT-REKABIT-RBT/kit-rekabit-rbt-d.png" alt="" loading="lazy"><div class="uc__tags"><a class="ptag" href="https://my.cytron.io/p-rekabit-rbt-project-kits"><i></i><span><b>REKA:BIT RBT Project Kits</b><small>From RM219.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-zoombit-robot-car-kits-for-microbit"><i></i><span><b>ZOOM:BIT Robot Car Kit</b><small>From RM190.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-auto-plant-watering-kit-for-microbit"><i></i><span><b>Auto Plant Watering Kit</b><small>From RM108.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-edu-pico-2-project-and-innovation-kit-with-pico-2w"><i></i><span><b>EDU PICO 2</b><small>RM313.95</small></span></a></div></div></div><div class="uc" role="tabpanel" id="panel-maker" aria-labelledby="tab-maker" hidden><div class="uc__list"><div class="acc is-open"><button type="button" class="acc__head" aria-expanded="true">Boards for Every Project<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Raspberry Pi, Arduino-compatible Maker UNO and Maker ESP32, plus sensors and drivers.</p><a class="more" href="https://my.cytron.io/maker-selection">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Free Step-by-Step Tutorials<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>New guides from our engineers every week, from first blink to edge AI.</p><a class="more" href="https://my.cytron.io/tutorial">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Buy with Confidence<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>1-to-1 replacement, 1–3% CytronCash and delivery in 1–3 working days.</p><a class="more" href="https://my.cytron.io/1-to-1-replacement">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div><div class="uc__stage"><img src="https://static.cytron.io/image/catalog/products/V-RASPBERRY-PI-5/v-raspberry-pi-5-main.jpg" alt="" loading="lazy"><div class="uc__tags"><a class="ptag" href="https://my.cytron.io/p-raspberry-pi-5"><i></i><span><b>Raspberry Pi 5</b><small>From RM202.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-maker-uno-simplifying-arduino-for-education"><i></i><span><b>Maker UNO</b><small>RM37.80</small></span></a><a class="ptag" href="https://my.cytron.io/p-maker-esp32-bundle"><i></i><span><b>Maker ESP32 Bundle</b><small>From RM29.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-raspberry-pi-camera-module-3-12mp-with-auto-focus-lens"><i></i><span><b>Camera Module 3</b><small>From RM112.00</small></span></a></div></div></div><div class="uc" role="tabpanel" id="panel-ind" aria-labelledby="tab-ind" hidden><div class="uc__list"><div class="acc is-open"><button type="button" class="acc__head" aria-expanded="true">IRIV Industrial Controllers<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Reliable IO, flexible software and Raspberry Pi power to automate, monitor and scale.</p><a class="more" href="https://my.cytron.io/c-industrial-edge-controller">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Raspberry Pi Approved Reseller &amp; Design Partner<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Certified hardware and engineering support for production deployments.</p><a class="more" href="industry.html">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Edge AI Applications<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>PPE detection, packaging inspection and machine fault alerts on IRIV EdgeAI.</p><a class="more" href="https://my.cytron.io/tutorial/industrial-edge-ai-iriv-edgeai-cm5">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div><div class="uc__stage"><img src="https://static.cytron.io/image/catalog/products/V-IRIV-PICONTROL/v-iriv-picontrol-main-3.jpg" alt="" loading="lazy"><div class="uc__tags"><a class="ptag" href="https://my.cytron.io/p-iriv-picontrol-cm4-industrial-controller"><i></i><span><b>IRIV PiControl</b></span></a><a class="ptag" href="https://my.cytron.io/p-iriv-io-controller"><i></i><span><b>IRIV IO Controller</b></span></a><a class="ptag" href="https://my.cytron.io/p-iriv-edge-ai-cm5"><i></i><span><b>IRIV EdgeAI CM5</b></span></a><a class="ptag" href="https://my.cytron.io/p-iriv-smarthub-cm5"><i></i><span><b>IRIV SmartHub CM5</b></span></a></div></div></div><div class="uc" role="tabpanel" id="panel-jr" aria-labelledby="tab-jr" hidden><div class="uc__list"><div class="acc is-open"><button type="button" class="acc__head" aria-expanded="true">Kits Sorted by Age<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Start right with kits for ages 6+, 8+ and 12+.</p><a class="more" href="https://my.cytron.io/c-young-makers">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Robot Competitions<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Build, code and compete with SUMO:BIT and STRIKER:BIT robot kits.</p><a class="more" href="education.html">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div><div class="acc"><button type="button" class="acc__head" aria-expanded="false">Student Benefit Program<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="acc__body"><p>Register as a student for free shipping and member perks.</p><a class="more" href="#">Learn More <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></div><div class="uc__stage"><img src="https://static.cytron.io/image/catalog/products/KIT-MICROBIT-RBT/KIT-MICROBIT-RBT%20Iso.jpg" alt="" loading="lazy"><div class="uc__tags"><a class="ptag" href="https://my.cytron.io/p-microbit-quick-start-kits"><i></i><span><b>micro:bit Quick Start Kit</b><small>From RM39.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-sumobit-robot-kits-1kg-sumo-robot-for-microbit"><i></i><span><b>SUMO:BIT Robot Kit</b><small>From RM80.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-zoombit-robot-car-kits-for-microbit"><i></i><span><b>ZOOM:BIT Robot Car Kit</b><small>From RM190.00</small></span></a><a class="ptag" href="https://my.cytron.io/p-pikabot-maker-uno-smart-car-kit"><i></i><span><b>PikaBot Smart Car Kit</b><small>RM128.00</small></span></a></div></div></div>
   </div>
 </section>
 
 <!-- ================= SUCCESS STORIES ================= -->
 <section class="sec wrap" id="stories" aria-labelledby="h-st">
-  <div class="sec__head sec__head--row"><div><p class="eyebrow">Success Stories</p><h2 id="h-st">How Malaysian Teams Build with Cytron</h2></div><a class="btn btn--outline btn--sm" href="https://my.cytron.io/raspberry-pi-for-industry">See All Success Stories</a></div>
+  <div class="sec__head sec__head--row"><div><p class="eyebrow">Success Stories</p><h2 id="h-st">How Malaysian Teams Build with Cytron</h2></div><a class="btn btn--outline btn--sm" href="industry.html">See All Success Stories</a></div>
   <div class="bento"><a class="story story--1" href="https://my.cytron.io/tutorial/iriv-customization-nexoprima-cm4"><img src="https://static.cytron.io/image/tutorial/iriv-customization-nexoprima-cm4/industrial-thumbnail-5.png" alt="" loading="lazy"><span class="story__shade"></span><span class="story__txt"><span class="story__tags"><em>Healthcare</em><em>Raspberry Pi CM4</em></span><b>Raspberry Pi CM4 Success Story: NexoPrima mCare for Labor Room Information System</b></span></a><a class="story story--2" href="https://my.cytron.io/tutorial/p-retrofitting-a-1mw-solar-famr-for-efficency-with-iriv-picontrol"><img src="https://static.cytron.io/image/tutorial/p-retrofitting-a-1mw-solar-famr-for-efficency-with/industrial-thumbnail-12.png" alt="" loading="lazy"><span class="story__shade"></span><span class="story__txt"><span class="story__tags"><em>Energy</em><em>IRIV PiControl</em></span><b>Retrofitting a 1MW Solar Farm for Efficiency with IRIV PiControl</b></span></a><a class="story story--3" href="https://my.cytron.io/tutorial/iriv-cm4-smartfarming"><img src="https://static.cytron.io/image/tutorial/iriv-cm4-smartfarming/industrial-thumbnail-6.png" alt="" loading="lazy"><span class="story__shade"></span><span class="story__txt"><span class="story__tags"><em>Agriculture</em><em>IRIV PiControl</em></span><b>Empowering Modern Farming with IRIV PiControl: MyAgriTech System</b></span></a><a class="story story--4" href="https://my.cytron.io/tutorial/iriv-edgeai-workshop-drb-hicom"><img src="https://static.cytron.io/image/tutorial/iriv-edgeai-workshop-drb-hicom/iriv-edge-ai-workshop-with-drb-hicom-port-klang.png" alt="" loading="lazy"><span class="story__shade"></span><span class="story__txt"><span class="story__tags"><em>Edge AI</em><em>Workshop</em></span><b>IRIV EdgeAI Workshop with DRB-HICOM Port Klang</b></span></a></div>
 </section>
 
@@ -485,7 +147,7 @@ button{cursor:pointer}
       <div class="ftr__topics"><label class="topic"><input type="checkbox"> Education</label><label class="topic"><input type="checkbox"> Raspberry Pi</label><label class="topic"><input type="checkbox"> Industrial IoT</label><label class="topic"><input type="checkbox"> Robotics</label><label class="topic"><input type="checkbox"> AI</label><label class="topic"><input type="checkbox"> Promotions</label></div>
       <div class="ftr__social"><span>Follow Us</span><a href="https://www.facebook.com/cytronmy" aria-label="Facebook" title="Facebook"><img src="https://static.cytron.io/image/catalog/icon/facebook-24x24.png" alt="" width="18" height="18"></a><a href="https://www.youtube.com/user/cytrontech" aria-label="Youtube" title="Youtube"><img src="https://static.cytron.io/image/catalog/icon/youtube-24x24.png" alt="" width="18" height="18"></a><a href="https://my.cytron.io/cytrons-telegram-channel" aria-label="Telegram" title="Telegram"><img src="https://static.cytron.io/image/catalog/icon/telegram-24x24.png" alt="" width="18" height="18"></a><a href="https://github.com/CytronTechnologies" aria-label="Github" title="Github"><img src="https://static.cytron.io/image/catalog/icon/github-o-24x24.png" alt="" width="18" height="18"></a><a href="https://www.instagram.com/cytrontechmy/" aria-label="Instagram" title="Instagram"><img src="https://static.cytron.io/image/catalog/icon/instagram-24x24.png" alt="" width="18" height="18"></a><a href="https://www.tiktok.com/@cytrontech" aria-label="TikTok" title="TikTok"><img src="https://static.cytron.io/image/catalog/icon/tiktok-24x24.png" alt="" width="18" height="18"></a><a href="https://twitter.com/cytrontech/" aria-label="Twitter" title="Twitter"><img src="https://static.cytron.io/image/catalog/icon/twitter-48x48.png" alt="" width="18" height="18"></a></div>
     </div>
-    <div class="ftr__cols"><div class="fcol"><h3>Products</h3><ul><li><a href="https://my.cytron.io/c-raspberry-pi">Raspberry Pi</a></li><li><a href="https://my.cytron.io/c-micro-bit">micro:bit</a></li><li><a href="https://my.cytron.io/c-arduino-ecosystem">Arduino Ecosystem</a></li><li><a href="https://my.cytron.io/c-artificial-intelligence">Artificial Intelligence</a></li><li><a href="https://my.cytron.io/c-wireless-devices">IoT &amp; Wireless</a></li><li><a href="https://my.cytron.io/c-motor-and-motor-driver">Motor &amp; Motor Driver</a></li><li><a href="https://my.cytron.io/c-3d-modeling">3D Modeling</a></li><li><a href="https://my.cytron.io/c-industry">Industry</a></li></ul></div><div class="fcol"><h3>Solutions</h3><ul><li><a href="https://my.cytron.io/education">Education &amp; Schools</a></li><li><a href="https://my.cytron.io/raspberry-pi-for-industry">Industry &amp; Integrators</a></li><li><a href="https://my.cytron.io/c-young-makers">Junior Makers</a></li><li><a href="https://my.cytron.io/maker-selection">Makers &amp; Hobbyists</a></li><li><a href="https://my.cytron.io/education">Cytron RBT Solution</a></li></ul></div><div class="fcol"><h3>Learn</h3><ul><li><a href="https://my.cytron.io/tutorial">Tutorials</a></li><li><a href="https://my.cytron.io/education">Resource hubs</a></li><li><a href="https://my.cytron.io/education">Robotics competitions</a></li><li><a href="#partners">Training partners</a></li></ul></div><div class="fcol"><h3>Support</h3><ul><li><a href="#">Request for Warranty/Return</a></li><li><a href="https://my.cytron.io/accept-lo">Request for Quotation</a></li><li><a href="#">FAQs</a></li><li><a href="#">How to shop at Cytron</a></li><li><a href="https://my.cytron.io/1-to-1-replacement">1 to 1 Replacement Warranty</a></li><li><a href="https://my.cytron.io/delivery-information">Delivery Information</a></li></ul></div><div class="fcol"><h3>Company</h3><ul><li><a href="#">About Us</a></li><li><a href="#">Cytron Membership</a></li><li><a href="https://my.cytron.io/cytroncash">CytronCash</a></li><li><a href="#">Careers at Cytron</a></li><li><a href="#">Contact Us</a></li></ul></div></div>
+    <div class="ftr__cols"><div class="fcol"><h3>Products</h3><ul><li><a href="https://my.cytron.io/c-raspberry-pi">Raspberry Pi</a></li><li><a href="https://my.cytron.io/c-micro-bit">micro:bit</a></li><li><a href="https://my.cytron.io/c-arduino-ecosystem">Arduino Ecosystem</a></li><li><a href="https://my.cytron.io/c-artificial-intelligence">Artificial Intelligence</a></li><li><a href="https://my.cytron.io/c-wireless-devices">IoT &amp; Wireless</a></li><li><a href="https://my.cytron.io/c-motor-and-motor-driver">Motor &amp; Motor Driver</a></li><li><a href="https://my.cytron.io/c-3d-modeling">3D Modeling</a></li><li><a href="https://my.cytron.io/c-industry">Industry</a></li></ul></div><div class="fcol"><h3>Solutions</h3><ul><li><a href="education.html">Education &amp; Schools</a></li><li><a href="industry.html">Industry &amp; Integrators</a></li><li><a href="https://my.cytron.io/c-young-makers">Junior Makers</a></li><li><a href="https://my.cytron.io/maker-selection">Makers &amp; Hobbyists</a></li><li><a href="education.html">Cytron RBT Solution</a></li></ul></div><div class="fcol"><h3>Learn</h3><ul><li><a href="https://my.cytron.io/tutorial">Tutorials</a></li><li><a href="education.html">Resource hubs</a></li><li><a href="education.html">Robotics competitions</a></li><li><a href="#partners">Training partners</a></li></ul></div><div class="fcol"><h3>Support</h3><ul><li><a href="#">Request for Warranty/Return</a></li><li><a href="https://my.cytron.io/accept-lo">Request for Quotation</a></li><li><a href="#">FAQs</a></li><li><a href="#">How to shop at Cytron</a></li><li><a href="https://my.cytron.io/1-to-1-replacement">1 to 1 Replacement Warranty</a></li><li><a href="https://my.cytron.io/delivery-information">Delivery Information</a></li></ul></div><div class="fcol"><h3>Company</h3><ul><li><a href="#">About Us</a></li><li><a href="#">Cytron Membership</a></li><li><a href="https://my.cytron.io/cytroncash">CytronCash</a></li><li><a href="#">Careers at Cytron</a></li><li><a href="#">Contact Us</a></li></ul></div></div>
   </div>
   <div class="wrap"><div class="trace" aria-hidden="true"><svg width="60" height="56" viewBox="0 0 60 56" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4.5"/><path d="M6 10.5V36l14 14h40"/></svg><span class="trace__line"></span><span class="trace__dot"></span></div></div>
   <div class="wrap lh">
@@ -503,96 +165,20 @@ button{cursor:pointer}
 
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></a>
 
-<script>
-(function () {
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // ---- Hero slider: auto-advance every 6s with progress bars; pauses on hover/focus
-  var slides = [].slice.call(document.querySelectorAll('.hero__slide'));
-  var dots = [].slice.call(document.querySelectorAll('.hero__dot'));
-  var cur = 0, timer = null;
-  function show(n) {
-    cur = (n + slides.length) % slides.length;
-    slides.forEach(function (s, i) { s.classList.toggle('is-on', i === cur); s.setAttribute('aria-hidden', i === cur ? 'false' : 'true'); });
-    dots.forEach(function (d, i) {
-      d.classList.remove('is-on'); void d.offsetWidth; // restart progress animation
-      d.classList.toggle('is-on', i === cur);
-    });
-  }
-  function start() { if (!reduce) { stop(); timer = setInterval(function () { show(cur + 1); }, 6000); } }
-  function stop() { if (timer) clearInterval(timer); timer = null; }
-  dots.forEach(function (d) { d.addEventListener('click', function () { show(+d.dataset.i); start(); }); });
-  var hero = document.querySelector('.hero');
-  hero.addEventListener('mouseenter', stop); hero.addEventListener('mouseleave', start);
-  hero.addEventListener('focusin', stop); hero.addEventListener('focusout', start);
-  start();
-
-  // ---- Use-case tabs
-  var tabs = [].slice.call(document.querySelectorAll('.tabs [role="tab"]'));
-  tabs.forEach(function (t) {
-    t.addEventListener('click', function () {
-      tabs.forEach(function (x) {
-        var on = x === t;
-        x.setAttribute('aria-selected', on ? 'true' : 'false');
-        document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
-      });
-    });
-  });
-
-  // ---- Accordions inside each tab (one open at a time)
-  document.querySelectorAll('.uc__list').forEach(function (list) {
-    var items = [].slice.call(list.querySelectorAll('.acc'));
-    items.forEach(function (it) {
-      it.querySelector('.acc__head').addEventListener('click', function () {
-        items.forEach(function (o) {
-          var on = o === it;
-          o.classList.toggle('is-open', on);
-          o.querySelector('.acc__head').setAttribute('aria-expanded', on ? 'true' : 'false');
-        });
-      });
-    });
-  });
-
-  // ---- Stats count-up when visible
-  var stats = document.querySelectorAll('[data-count]');
-  function run(el) {
-    var end = +el.dataset.count, suf = el.dataset.suffix || '', plain = el.hasAttribute('data-plain');
-    if (reduce) { el.textContent = end + suf; return; }
-    var startV = plain ? end - 22 : 0, t0 = null;
-    function step(ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min(1, (ts - t0) / 1400), v = Math.round(startV + (end - startV) * (1 - Math.pow(1 - p, 3)));
-      el.textContent = v + suf;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (en) {
-      en.forEach(function (x) { if (x.isIntersecting) { run(x.target); io.unobserve(x.target); } });
-    }, { threshold: .6 });
-    stats.forEach(function (s) { io.observe(s); });
-  }
-
-  // ---- Mobile menu + tap dropdowns
-  var burger = document.querySelector('[data-burger]'), nav = document.getElementById('nav');
-  burger.addEventListener('click', function () {
-    var open = nav.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  function closeAll() { document.querySelectorAll('.dd.open').forEach(function (d) { d.classList.remove('open'); }); }
-  document.querySelectorAll('.dd > button').forEach(function (b) {
-    b.addEventListener('click', function (ev) {
-      ev.stopPropagation();
-      var dd = b.parentElement, open = !dd.classList.contains('open');
-      closeAll(); dd.classList.toggle('open', open);
-      b.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  });
-  document.addEventListener('click', closeAll);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
-})();
-
-</script>
+<div class="wel" id="welcome" role="dialog" aria-modal="true" aria-labelledby="wel-h" hidden>
+  <div class="wel__box">
+    <button class="wel__x" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <p class="eyebrow">Welcome!</p>
+    <h2 id="wel-h">Let&rsquo;s Personalize Your Cytron Experience</h2>
+    <p class="wel__q">What type of project are you working on?</p>
+    <div class="wel__opts">
+      <a class="wel__opt" href="education.html" data-aud="edu"><img src="https://static.cytron.io/image/catalog/products/V-KIT-REKABIT-RBT/kit-rekabit-rbt-d.png" alt=""><span class="wel__txt"><b>Education</b><span>For Students / Teachers / Makers</span></span><span class="more">Go to Education <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="wel__opt" href="industry.html" data-aud="ind"><img src="https://static.cytron.io/image/catalog/products/V-IRIV-PICONTROL/v-iriv-picontrol-main-3.jpg" alt=""><span class="wel__txt"><b>Industry / Enterprise</b><span>For Engineers / Business Owners / Professionals</span></span><span class="more">Go to Industry <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+    <button class="wel__guest" type="button" data-guest>Continue as Guest</button>
+    <p class="wel__note">Don&rsquo;t worry &mdash; you can switch anytime via the menu.</p>
+  </div>
+</div>
+<script src="site.js"></script>
 </body>
 </html>
