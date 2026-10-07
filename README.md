@@ -13,6 +13,7 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 | `industry.html` | Industry / Enterprise homepage | Engineers, business owners, professionals |
 | `site.css` | Shared styles and design tokens | |
 | `site.js` | Shared behaviour (menus, slider, tabs, chooser) | |
+| `fonts/` | Roboto web fonts (woff2) | |
 
 ## How the chooser works
 
@@ -44,4 +45,4 @@ All colours and fonts are CSS variables at the top of `site.css`:
 | `--tint` | `#DFF4FA` | Light blue panels |
 | `--ink` / `--text` / `--muted` | `#3C3C3B` / `#4A4A49` / `#6D6D6C` | Headings / body / secondary text |
 | `--line` / `--soft` | `#E4E7E9` / `#F7FBFD` | Borders / section backgrounds |
-| Fonts | Source Sans 3, Michroma | Web stand-ins for Myriad Pro and Nulshock |
+| Font | Roboto (Regular 400, Medium 500, Bold 700) | Self-hosted in `fonts/` as woff2, converted from Cytron's Roboto pack (Latin subset) |

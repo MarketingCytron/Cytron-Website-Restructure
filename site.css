@@ -1,8 +1,12 @@
 /* Cytron audience homepages (Design 3, letterhead palette) - shared by index, education, industry */
+/* ---------- Roboto (self-hosted from the Cytron font pack, woff2, Latin subset) ---------- */
+@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/Roboto-Regular.woff2) format('woff2')}
+@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/Roboto-Medium.woff2) format('woff2')}
+@font-face{font-family:'Roboto';font-style:normal;font-weight:600 900;font-display:swap;src:url(fonts/Roboto-Bold.woff2) format('woff2')}
 /* =====================================================================
    DESIGN 3 · Cytron homepage — industrial-brand layout
    Minimal letterhead palette: Cytron blue #00A4DB + greys on white.
-   Source Sans 3 (Myriad-style) + Michroma for small wide caps labels.
+   Roboto (self-hosted) for all text.
    ===================================================================== */
 :root{
   /* Letterhead palette: one Cytron blue, warm greys, white */
@@ -16,8 +20,8 @@
   --line:#E4E7E9;
   --soft:#F7FBFD;           /* near-white section bg */
   --tint:#DFF4FA;           /* letterhead light blue */
-  --font:'Source Sans 3','Myriad Pro','Segoe UI',system-ui,-apple-system,sans-serif;
-  --wide:'Michroma','Nulshock','Segoe UI',sans-serif;   /* wide display face for small caps labels */
+  --font:'Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+  --wide:var(--font);   /* small uppercase labels */
   --wrap:1240px; --g:24px; --r:8px;
 }
 *{box-sizing:border-box}
@@ -541,3 +545,21 @@ body.wel-open{overflow:hidden}
 .wel__spin{width:16px;height:16px;border-radius:50%;border:2px solid var(--tint);border-top-color:var(--brand);animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .wel.is-done .wel__opts,.wel.is-done .wel__guest,.wel.is-done .wel__note{opacity:.35;pointer-events:none}
+
+/* ---------- Roboto typography tuning ---------- */
+
+body{font-size:15.5px;line-height:1.62}
+/* small uppercase labels (uppercase, letter-spaced): Roboto Medium, a touch larger */
+.eyebrow{font-size:12.5px;font-weight:500;letter-spacing:.14em}
+.hero__sub{font-size:14px;font-weight:500;letter-spacing:.12em}
+.about__tag,.ftr__tag{font-size:13px;font-weight:500;letter-spacing:.12em}
+.mm__promo small,.card__kicker{font-size:11px;font-weight:500}
+.pcard__tag{font-size:10.5px;font-weight:500}
+.point i{font-size:12px;font-weight:500}
+/* Roboto has no 600/800: headings use Bold (700), footer column titles Bold too */
+.fcol h3{font-weight:700}
+.hero__title{letter-spacing:-.015em}
+.sec__head h2,.about h2,.contact__text h2,.split__text h2,.wel h2{letter-spacing:-.01em}
+/* Roboto Medium (500) for UI text that used 600, so the header and buttons stay light */
+.nav__item,.nav__item>button,.hdr__link,.aud__seg a,.btn,.chip,.topic,.dd__list li a span,.mm__grid li a,.more,.tabs button{font-weight:500}
+.btn{letter-spacing:.01em}
