@@ -223,42 +223,44 @@ a{color:var(--primary)}
   }
 
   // ---- scroll sync by relative position ----
-  var mute = { old: 0, neu: 0 };
-  function ratioOld() { var m = oldBody.scrollHeight - oldBody.clientHeight; return m > 0 ? oldBody.scrollTop / m : 0; }
+  // A short lock stops the side being moved from echoing back. Scrolls are instant
+  // because the mockup uses smooth scrolling.
+  var lock = { old: 0, neu: 0 };
+  function now() { return Date.now(); }
   function fwin() { try { return frame.contentWindow; } catch (e) { return null; } }
+  function ratioOld() { var m = oldBody.scrollHeight - oldBody.clientHeight; return m > 0 ? oldBody.scrollTop / m : 0; }
   function ratioNew() {
     var w = fwin(); if (!w || !w.document || !w.document.documentElement) return 0;
     var m = w.document.documentElement.scrollHeight - w.innerHeight; return m > 0 ? w.scrollY / m : 0;
   }
-  oldBody.addEventListener('scroll', function () {
-    if (mute.old) { mute.old--; return; }
-    if (!syncBox.checked) return;
-    var w = fwin(); if (!w) return;
+  function pushToNew() {
+    var w = fwin(); if (!w || !w.document || !w.document.documentElement) return;
     var m = w.document.documentElement.scrollHeight - w.innerHeight;
-    mute.neu++; w.scrollTo(0, ratioOld() * m);
+    lock.neu = now() + 150; w.scrollTo({ top: ratioOld() * m, behavior: 'instant' });
+  }
+  oldBody.addEventListener('scroll', function () {
+    if (now() < lock.old || !syncBox.checked) return;
+    pushToNew();
   }, { passive: true });
   function onFrameScroll() {
-    if (mute.neu) { mute.neu--; return; }
-    if (!syncBox.checked) return;
-    var m = oldBody.scrollHeight - oldBody.clientHeight;
-    mute.old++; oldBody.scrollTop = ratioNew() * m;
+    if (now() < lock.neu || !syncBox.checked) return;
+    lock.old = now() + 150; oldBody.scrollTop = ratioNew() * (oldBody.scrollHeight - oldBody.clientHeight);
   }
   frame.addEventListener('load', function () {
     $('newLoad').hidden = true;
-    mute.old = mute.neu = 0;
     var w = fwin(); if (!w) return;
     w.addEventListener('scroll', onFrameScroll, { passive: true });
     // Links inside the mockup can switch page: follow along on the left
     var file = (w.location.pathname.split('/').pop() || 'index.html');
     for (var k in PAGES) if (PAGES[k].file === file && k !== state.page) { state.page = k; render(false); break; }
-    oldBody.scrollTop = 0;
+    lock.old = now() + 150; oldBody.scrollTop = 0;
   });
 
   // ---- controls ----
   $('segPage').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b || b.dataset.page === state.page) return; state.page = b.dataset.page; render(true); });
   $('segDev').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b || b.dataset.dev === state.dev) return; state.dev = b.dataset.dev; render(true); });
   $('segShow').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; state.show = b.dataset.show; render(false); });
-  syncBox.addEventListener('change', function () { if (syncBox.checked) { var w = fwin(); if (w) { mute.neu++; w.scrollTo(0, ratioOld() * (w.document.documentElement.scrollHeight - w.innerHeight)); } } });
+  syncBox.addEventListener('change', function () { if (syncBox.checked) pushToNew(); });
   document.addEventListener('click', function (e) { var d = document.querySelector('.about[open]'); if (d && !d.contains(e.target)) d.removeAttribute('open'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { var d = document.querySelector('.about[open]'); if (d) { d.removeAttribute('open'); d.querySelector('summary').focus(); } } });
   var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(layout, 80); });
