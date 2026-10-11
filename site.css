@@ -534,6 +534,7 @@ body.wel-open{overflow:hidden}
 .wel__spin{width:16px;height:16px;border-radius:50%;border:2px solid var(--tint);border-top-color:var(--brand);animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .wel.is-done .wel__opts,.wel.is-done .wel__guest,.wel.is-done .wel__note{opacity:.35;pointer-events:none}
+.is-compare .mock{display:none}
 
 /* ---------- Roboto typography tuning ---------- */
 
