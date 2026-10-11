@@ -101,6 +101,17 @@
   var dlg = document.getElementById('welcome');
   var lastFocus = null;
 
+  // ?compare: shown inside compare.html. No chooser, no redirect, no mockup badge,
+  // and links between the three homepages keep the flag.
+  var compare = /[?&]compare\b/.test(qs);
+  if (compare) {
+    document.documentElement.classList.add('is-compare');
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var m = a.getAttribute('href').match(/^(index|education|industry)\.html(?:\?[^#]*)?(#.*)?$/);
+      if (m) a.setAttribute('href', m[1] + '.html?compare' + (m[2] || ''));
+    });
+  }
+
   // Any link with data-aud remembers the choice before navigating
   document.querySelectorAll('[data-aud]').forEach(function (a) {
     if (a === document.body) return;
@@ -163,7 +174,7 @@
   }
 
   // General homepage: first visit -> show chooser; returning visitor -> their homepage
-  if (page === 'all') {
+  if (page === 'all' && !compare) {
     var pref = get();
     if (/[?&]welcome\b/.test(qs) || !pref) openDlg();
     else if ((pref === 'edu' || pref === 'ind') && !/[?&]stay\b/.test(qs)) location.replace(PAGES[pref]);
