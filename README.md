@@ -4,6 +4,8 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 
 **Live preview:** https://marketingcytron.github.io/Cytron-Website-Restructure/
 
+**Compare with the current site:** https://marketingcytron.github.io/Cytron-Website-Restructure/compare.html
+
 ## Pages
 
 | File | Page | Who it is for |
@@ -14,6 +16,8 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 | `site.css` | Shared styles and design tokens | |
 | `site.js` | Shared behaviour (menus, slider, tabs, chooser) | |
 | `fonts/` | Roboto web fonts (woff2) | |
+| `compare.html` | Side-by-side: current my.cytron.io vs the new design | Marketing and IT reviewers |
+| `compare/` | Full-page screenshots of the current my.cytron.io pages (desktop and mobile), used by `compare.html` | |
 
 ## How the chooser works
 
@@ -25,6 +29,15 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 6. For review: add `?welcome` to the URL to force the popup, or `?stay` to stop the redirect.
 
 On the live OpenCart site the same choice could be stored in the customer session or account instead of the browser.
+
+## Side-by-side comparison
+
+`compare.html` shows the current my.cytron.io page on the left and the new design on the right, for the Store homepage, Education and Industry & Enterprise, on desktop or mobile.
+
+- The left side is a full-page screenshot captured on 12 Oct 2026. The live site sends `X-Frame-Options: sameorigin`, so it can't be shown live inside another page.
+- The right side is the live mockup, loaded with `?compare` (no chooser popup, no redirect, no mockup badge).
+- "Sync scroll" keeps both sides at the same relative position.
+- Links such as `compare.html?page=edu&device=mobile` open a specific view.
 
 ## Notes
 
