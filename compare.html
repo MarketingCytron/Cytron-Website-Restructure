@@ -114,7 +114,7 @@ a{color:var(--primary)}
       <button type="button" data-page="product">Product</button>
     </div>
     <div class="seg" role="group" aria-label="New design" id="segDesign">
-      <button type="button" data-design="3">Design 3</button>
+      <button type="button" data-design="c">Design C</button>
       <button type="button" data-design="d">Design D</button>
     </div>
     <div class="seg" role="group" aria-label="Device" id="segDev">
@@ -131,7 +131,7 @@ a{color:var(--primary)}
       <div class="about__pop">
         <h2>About this comparison</h2>
         <p><b>Left:</b> full-page screenshots of the live my.cytron.io pages, captured on 12 Oct 2026 at 1440px (desktop) and 390px (mobile). The live site doesn't allow itself to be shown inside another page, so screenshots stand in for it. The Industry hero video appears as a still frame, and the floating chat buttons are hidden. On the product page, the YouTube cover can&rsquo;t be captured, so it is shown as the product photo with a play button, and the &ldquo;Recently Viewed&rdquo; box shows only the product itself, as a first-time visitor would see it.</p>
-        <p><b>Right:</b> a new design, live and clickable. <b>Design 3</b> is the new layout. <b>Design D</b> keeps the original page structure, section by section, in the Design 3 look. Links between Store, Education and Industry stay inside the comparison. The Product tab uses the Maker ESP32 Bundle page.</p>
+        <p><b>Right:</b> a new design, live and clickable. <b>Design C</b> is the new layout. <b>Design D</b> keeps the original page structure, section by section, in the Design C look. Links between Store, Education and Industry stay inside the comparison. The Product tab uses the Maker ESP32 Bundle page.</p>
         <p>On phones, the live site's menu links overlap the search bar in the header. That is how the live pages rendered at 390px wide on the capture date, not a screenshot error.</p>
         <p>Sync scroll matches the relative position on each page, so sections line up roughly, not exactly.</p>
       </div>
@@ -148,7 +148,7 @@ a{color:var(--primary)}
     </div>
   </section>
   <section class="pane pane--new" aria-label="New design">
-    <div class="lab"><span class="tag">New</span><span class="lab__url" id="newUrl">Design 3</span><span class="lab__meta">· live mockup</span><a class="lnk" id="newLink" href="index.html" target="_blank" rel="noopener">Open full page ↗</a></div>
+    <div class="lab"><span class="tag">New</span><span class="lab__url" id="newUrl">Design C</span><span class="lab__meta">· live mockup</span><a class="lnk" id="newLink" href="index.html" target="_blank" rel="noopener">Open full page ↗</a></div>
     <div class="body" id="newBody">
       <div class="phone" id="newPhone"><div class="fw" id="fw"><iframe id="frame" title="New design"></iframe></div></div>
       <div class="load" id="newLoad">Loading new design…</div>
@@ -175,7 +175,7 @@ a{color:var(--primary)}
     page: PAGES[q.get('page')] ? q.get('page') : 'store',
     dev: q.get('device') === 'mobile' || q.get('device') === 'desktop' ? q.get('device') : (small.matches ? 'mobile' : 'desktop'),
     show: q.get('show') === 'old' ? 'old' : 'new',
-    design: q.get('design') === 'd' ? 'd' : '3'
+    design: q.get('design') === 'd' ? 'd' : 'c'
   };
   function fileOf(P) { return state.design === 'd' ? P.fileD : P.file; }
 
@@ -216,7 +216,7 @@ a{color:var(--primary)}
     press('segShow', 'data-show', state.show);
     stage.setAttribute('data-show', state.show);
     $('oldUrl').textContent = P.short; $('oldLink').href = P.live;
-    $('newUrl').textContent = (state.design === 'd' ? 'Design D · ' : 'Design 3 · ') + P.name; $('newLink').href = fileOf(P);
+    $('newUrl').textContent = (state.design === 'd' ? 'Design D · ' : 'Design C · ') + P.name; $('newLink').href = fileOf(P);
     var src = 'compare/' + P.shot + '-' + state.dev + '.' + (P.ext || 'webp');
     if (oldImg.getAttribute('src') !== src) {
       $('oldLoad').hidden = false;
@@ -261,7 +261,7 @@ a{color:var(--primary)}
     w.addEventListener('scroll', onFrameScroll, { passive: true });
     // Links inside the mockup can switch page: follow along on the left
     var file = (w.location.pathname.split('/').pop() || 'index.html');
-    for (var k in PAGES) { var dz = PAGES[k].fileD === file ? 'd' : (PAGES[k].file === file ? '3' : null); if (dz && (k !== state.page || dz !== state.design)) { state.page = k; state.design = dz; render(false); break; } }
+    for (var k in PAGES) { var dz = PAGES[k].fileD === file ? 'd' : (PAGES[k].file === file ? 'c' : null); if (dz && (k !== state.page || dz !== state.design)) { state.page = k; state.design = dz; render(false); break; } }
     lock.old = now() + 150; oldBody.scrollTop = 0;
   });
 

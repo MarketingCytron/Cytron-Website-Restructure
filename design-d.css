@@ -1,5 +1,5 @@
 /* Design D: the original my.cytron.io page structure (same sections, same order)
-   drawn in the Design 3 theme. Loaded after site.css, which supplies the tokens,
+   drawn in the Design C theme. Loaded after site.css, which supplies the tokens,
    header, buttons, hero slider, cards and footer base. Classes here use a d- prefix. */
 
 /* ---------- header: context tabs, store switcher, search box ---------- */
@@ -19,7 +19,7 @@
 .hdr__right .d-search{margin-right:2px}
 .logo--market img{width:auto;height:44px}
 
-/* ---------- section heads: original heading, Design 3 typography ---------- */
+/* ---------- section heads: original heading, Design C typography ---------- */
 .d-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:28px;flex-wrap:wrap}
 .d-head>div{display:flex;flex-direction:column;gap:10px;min-width:0}
 .d-head h2{margin:0}
@@ -127,7 +127,7 @@
 .d-signup input{height:46px;min-width:260px;padding:0 14px;border:1px solid var(--line);border-radius:4px;font:inherit}
 .d-signup input:focus{outline:2px solid var(--brand);outline-offset:0;border-color:var(--brand)}
 
-/* ---------- footer (original columns, Design 3 look) ---------- */
+/* ---------- footer (original columns, Design C look) ---------- */
 .d-ftr .ftr__top{grid-template-columns:minmax(0,1fr)}
 .d-fcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,.9fr);gap:28px}
 .d-fsoc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}

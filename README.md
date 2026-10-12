@@ -1,4 +1,4 @@
-# Cytron Website Restructure: Homepage concept (Design 3)
+# Cytron Website Restructure: Homepage concept (Design C)
 
 A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.io/), prepared by Cytron Marketing for review by the IT team.
 
@@ -16,12 +16,12 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 | `site.css` | Shared styles and design tokens | |
 | `site.js` | Shared behaviour (menus, slider, tabs, chooser) | |
 | `fonts/` | Roboto web fonts (woff2) | |
-| `design-d.html` | Design D: Store homepage | Same sections as the live site, Design 3 look |
+| `design-d.html` | Design D: Store homepage | Same sections as the live site, Design C look |
 | `design-d-education.html` | Design D: Education | |
 | `design-d-industry.html` | Design D: Industry | |
 | `design-d.css`, `design-d.js` | Design D extras (carousels, promo tiles, video hero) | Loaded after `site.css` / `site.js` |
-| `product.html` | Design 3: product page (Maker ESP32 Bundle) | New product page layout |
-| `design-d-product.html` | Design D: product page (Maker ESP32 Bundle) | Same sections as the live product page, Design 3 look |
+| `product.html` | Design C: product page (Maker ESP32 Bundle) | New product page layout |
+| `design-d-product.html` | Design D: product page (Maker ESP32 Bundle) | Same sections as the live product page, Design C look |
 | `pdp.css`, `pdp.js` | Product page styles and behaviour (gallery, bundle picker, quantity, Read More) | Shared by both product pages |
 | `compare.html` | Side-by-side: current my.cytron.io vs the new design | Marketing and IT reviewers |
 | `compare/` | Full-page screenshots of the current my.cytron.io pages (desktop and mobile), used by `compare.html`. The product page screenshots are WebP images wrapped in `.svg` files | |
@@ -39,7 +39,7 @@ On the live OpenCart site the same choice could be stored in the customer sessio
 
 ## Design D
 
-Design D keeps the **original my.cytron.io page structure**, section by section and in the same order, but uses the Design 3 look (letterhead blue, Roboto, light cards).
+Design D keeps the **original my.cytron.io page structure**, section by section and in the same order, but uses the Design C look (letterhead blue, Roboto, light cards).
 
 - Store (`design-d.html`): slider (7 slides, as on the live site), 4 promo tiles, Top Learning Education Kits, Latest Tutorial, Weekly Best Sellers, Maker's Selection, Our Training Partner, Our Top Brands, We do offer, footer.
 - Education (`design-d-education.html`): Welcome Makers banner, Top Learning Education Kits, Which STEM Kits Are Best for Beginners?, Which Platform Is Best for Your STEM Project?, Tutorials / Videos / Resource Hubs, Competitions & Programs, Community, footer.
@@ -51,19 +51,19 @@ Design D keeps the **original my.cytron.io page structure**, section by section 
 
 Both designs use the live [Maker ESP32 Bundle](https://my.cytron.io/p-maker-esp32-bundle) page: same photos, video, prices, bundles, description, features, specification, packing list, resources, tutorials and reviews (snapshot of 12 Oct 2026).
 
-- Design 3 (`product.html`): new layout. Gallery and buy box side by side, bundles shown as picture cards (price, code, stock and photo update when one is picked), warranty and delivery promises under the button, then a sticky section menu (Overview, Features, Specifications, What's in the box, Resources, Tutorials, Reviews). The packing list is one card per bundle, with "Choose this bundle". A buy bar stays at the bottom of the screen once the buy box scrolls away.
+- Design C (`product.html`): new layout. Gallery and buy box side by side, bundles shown as picture cards (price, code, stock and photo update when one is picked), warranty and delivery promises under the button, then a sticky section menu (Overview, Features, Specifications, What's in the box, Resources, Tutorials, Reviews). The packing list is one card per bundle, with "Choose this bundle". A buy bar stays at the bottom of the screen once the buy box scrolls away.
 - Design D (`design-d-product.html`): the live page's structure. Gallery with video first, grey info panel (Brands / Code / Warranty, price range, Cashback, bundle chips, Availability, Add to Cart, Explore More, Accessories), then Description, Features and Packing List with Read More, Resources, Related Tutorials carousel, You May Also Need (See More), Reviews and Tags, with Recently Viewed, New Arrivals and Stock Clearance on the right.
 - The cart, wishlist and share buttons only show a "Mockup only" message.
 
 ## Side-by-side comparison
 
-`compare.html` shows the current my.cytron.io page on the left and a new design (Design 3 or Design D) on the right, for the Store homepage, Education, Industry & Enterprise and the Maker ESP32 Bundle product page, on desktop or mobile.
+`compare.html` shows the current my.cytron.io page on the left and a new design (Design C or Design D) on the right, for the Store homepage, Education, Industry & Enterprise and the Maker ESP32 Bundle product page, on desktop or mobile.
 
 - The left side is a full-page screenshot captured on 12 Oct 2026. The live site sends `X-Frame-Options: sameorigin`, so it can't be shown live inside another page.
 - The right side is the live mockup, loaded with `?compare` (no chooser popup, no redirect, no mockup badge).
 - "Sync scroll" keeps both sides at the same relative position.
-- Use the "Design 3 / Design D" switch to choose which new design appears on the right.
-- Links such as `compare.html?page=edu&design=d&device=mobile` or `compare.html?page=product&design=3` open a specific view.
+- Use the "Design C / Design D" switch to choose which new design appears on the right.
+- Links such as `compare.html?page=edu&design=d&device=mobile` or `compare.html?page=product&design=c` open a specific view.
 - Product page screenshot: the YouTube cover can't be captured, so it shows the product photo with a play button, and "Recently Viewed" shows only the product itself.
 
 ## Notes

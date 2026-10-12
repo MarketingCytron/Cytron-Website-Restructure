@@ -118,7 +118,7 @@
       $$('[data-extra]').forEach(function (x) { x.hidden = false; }); b.parentElement.hidden = true;
     });
   });
-  // Design 3: show all overview images
+  // Design C: show all overview images
   $$('[data-showmore]').forEach(function (b) {
     var items = $$('[data-more]'), label = b.textContent;
     b.addEventListener('click', function () {
@@ -128,7 +128,7 @@
     });
   });
 
-  // ---- Design 3: section nav highlight + sticky buy bar
+  // ---- Design C: section nav highlight + sticky buy bar
   var links = $$('.p-subnav a');
   if (links.length && 'IntersectionObserver' in window) {
     var map = {}; links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });

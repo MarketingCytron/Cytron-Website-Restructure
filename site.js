@@ -1,4 +1,4 @@
-/* Cytron audience homepages (Design 3, letterhead palette) - shared by index, education, industry */
+/* Cytron audience homepages (Design C, letterhead palette) - shared by index, education, industry */
 (function () {
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 

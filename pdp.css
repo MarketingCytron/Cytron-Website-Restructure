@@ -1,4 +1,4 @@
-/* Product page mockups (Maker ESP32 Bundle). Loaded after site.css (Design 3) or
+/* Product page mockups (Maker ESP32 Bundle). Loaded after site.css (Design C) or
    after site.css + design-d.css (Design D). Shared parts use p-, Design D parts use pd-. */
 
 /* ---------- breadcrumb ---------- */
@@ -65,7 +65,7 @@
 .p-bar{height:6px;border-radius:999px;background:var(--line);overflow:hidden}
 .p-bar i{display:block;height:100%;border-radius:999px;background:var(--brand)}
 
-/* =================================================================== DESIGN 3 */
+/* =================================================================== DESIGN C */
 .p-buy{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;padding-top:24px;align-items:start}
 .pdp-3 .p-gal{position:sticky;top:calc(var(--hdr,118px) + 20px)}
 .p-info{min-width:0;display:flex;flex-direction:column}

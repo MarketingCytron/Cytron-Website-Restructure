@@ -1,10 +1,10 @@
-/* Cytron audience homepages (Design 3, letterhead palette) - shared by index, education, industry */
+/* Cytron audience homepages (Design C, letterhead palette) - shared by index, education, industry */
 /* ---------- Roboto (self-hosted from the Cytron font pack, woff2, Latin subset) ---------- */
 @font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/Roboto-Regular.woff2) format('woff2')}
 @font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/Roboto-Medium.woff2) format('woff2')}
 @font-face{font-family:'Roboto';font-style:normal;font-weight:600 900;font-display:swap;src:url(fonts/Roboto-Bold.woff2) format('woff2')}
 /* =====================================================================
-   DESIGN 3 · Cytron homepage — industrial-brand layout
+   DESIGN C · Cytron homepage — industrial-brand layout
    Minimal letterhead palette: Cytron blue #00A4DB + greys on white.
    Roboto (self-hosted) for all text.
    ===================================================================== */

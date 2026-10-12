@@ -43,7 +43,7 @@
     });
   }
 
-  // ---- Chooser "Continue as Guest" returns to the Design D store page, not Design 3
+  // ---- Chooser "Continue as Guest" returns to the Design D store page, not Design C
   document.addEventListener('click', function (ev) {
     var g = ev.target.closest && ev.target.closest('[data-guest]');
     if (!g) return;
