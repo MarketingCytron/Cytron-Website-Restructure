@@ -58,12 +58,12 @@
   var shortStock = stockEl && stockEl.hasAttribute('data-stock-short');
   function current() { for (var i = 0; i < radios.length; i++) if (radios[i].checked) return radios[i]; return null; }
   function apply(r) {
-    var d = r.dataset, out = d.stock === 'out';
+    var d = r.dataset, out = d.avail === 'out';
     $$('[data-price]').forEach(function (el) { el.textContent = d.price; });
     $$('[data-code]').forEach(function (el) { el.textContent = d.code; });
     if (stockEl) {
       stockEl.setAttribute('data-state', out ? 'out' : 'in');
-      stockEl.textContent = shortStock ? (out ? 'Out of Stock' : 'In Stock') : (out ? 'Out of stock' : 'In stock, ready to ship');
+      stockEl.textContent = shortStock ? (out ? 'Out of Stock' : 'In Stock') : (out ? 'Out of stock' : 'In stock');
     }
     addBtns.forEach(function (b) {
       b.disabled = out;
