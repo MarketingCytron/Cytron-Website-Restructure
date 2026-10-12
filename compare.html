@@ -110,7 +110,11 @@ a{color:var(--primary)}
     <div class="seg" role="group" aria-label="Page" id="segPage">
       <button type="button" data-page="store">Store</button>
       <button type="button" data-page="edu">Education</button>
-      <button type="button" data-page="ind">Industry &amp; Enterprise</button>
+      <button type="button" data-page="ind">Industry</button>
+    </div>
+    <div class="seg" role="group" aria-label="New design" id="segDesign">
+      <button type="button" data-design="3">Design 3</button>
+      <button type="button" data-design="d">Design D</button>
     </div>
     <div class="seg" role="group" aria-label="Device" id="segDev">
       <button type="button" data-dev="desktop">Desktop</button>
@@ -126,7 +130,7 @@ a{color:var(--primary)}
       <div class="about__pop">
         <h2>About this comparison</h2>
         <p><b>Left:</b> full-page screenshots of the live my.cytron.io pages, captured on 12 Oct 2026 at 1440px (desktop) and 390px (mobile). The live site doesn't allow itself to be shown inside another page, so screenshots stand in for it. The Industry hero video appears as a still frame, and the floating chat buttons are hidden.</p>
-        <p><b>Right:</b> the new Design 3 mockup, live and clickable. Links between Store, Education and Industry stay inside the comparison.</p>
+        <p><b>Right:</b> a new design, live and clickable. <b>Design 3</b> is the new layout. <b>Design D</b> keeps the original page structure, section by section, in the Design 3 look. Links between Store, Education and Industry stay inside the comparison.</p>
         <p>On phones, the live site's menu links overlap the search bar in the header. That is how the live pages rendered at 390px wide on the capture date, not a screenshot error.</p>
         <p>Sync scroll matches the relative position on each page, so sections line up roughly, not exactly.</p>
       </div>
@@ -154,9 +158,9 @@ a{color:var(--primary)}
 <script>
 (function () {
   var PAGES = {
-    store: { shot: 'store', file: 'index.html', live: 'https://my.cytron.io/', short: 'my.cytron.io', name: 'Store homepage' },
-    edu:   { shot: 'education', file: 'education.html', live: 'https://my.cytron.io/education', short: 'my.cytron.io/education', name: 'Education' },
-    ind:   { shot: 'industry', file: 'industry.html', live: 'https://my.cytron.io/raspberry-pi-for-industry', short: 'my.cytron.io/raspberry-pi-for-industry', name: 'Industry & Enterprise' }
+    store: { shot: 'store', file: 'index.html', fileD: 'design-d.html', live: 'https://my.cytron.io/', short: 'my.cytron.io', name: 'Store homepage' },
+    edu:   { shot: 'education', file: 'education.html', fileD: 'design-d-education.html', live: 'https://my.cytron.io/education', short: 'my.cytron.io/education', name: 'Education' },
+    ind:   { shot: 'industry', file: 'industry.html', fileD: 'design-d-industry.html', live: 'https://my.cytron.io/raspberry-pi-for-industry', short: 'my.cytron.io/raspberry-pi-for-industry', name: 'Industry & Enterprise' }
   };
   var W = { desktop: 1440, mobile: 390 };
   var $ = function (id) { return document.getElementById(id); };
@@ -168,11 +172,13 @@ a{color:var(--primary)}
   var state = {
     page: PAGES[q.get('page')] ? q.get('page') : 'store',
     dev: q.get('device') === 'mobile' || q.get('device') === 'desktop' ? q.get('device') : (small.matches ? 'mobile' : 'desktop'),
-    show: q.get('show') === 'old' ? 'old' : 'new'
+    show: q.get('show') === 'old' ? 'old' : 'new',
+    design: q.get('design') === 'd' ? 'd' : '3'
   };
+  function fileOf(P) { return state.design === 'd' ? P.fileD : P.file; }
 
   function saveUrl() {
-    var p = new URLSearchParams(); p.set('page', state.page); p.set('device', state.dev);
+    var p = new URLSearchParams(); p.set('page', state.page); p.set('design', state.design); p.set('device', state.dev);
     if (small.matches) p.set('show', state.show);
     history.replaceState(null, '', location.pathname + '?' + p.toString());
   }
@@ -204,10 +210,11 @@ a{color:var(--primary)}
     var P = PAGES[state.page];
     press('segPage', 'data-page', state.page);
     press('segDev', 'data-dev', state.dev);
+    press('segDesign', 'data-design', state.design);
     press('segShow', 'data-show', state.show);
     stage.setAttribute('data-show', state.show);
     $('oldUrl').textContent = P.short; $('oldLink').href = P.live;
-    $('newUrl').textContent = 'Design 3 · ' + P.name; $('newLink').href = P.file;
+    $('newUrl').textContent = (state.design === 'd' ? 'Design D · ' : 'Design 3 · ') + P.name; $('newLink').href = fileOf(P);
     var src = 'compare/' + P.shot + '-' + state.dev + '.webp';
     if (oldImg.getAttribute('src') !== src) {
       $('oldLoad').hidden = false;
@@ -217,7 +224,7 @@ a{color:var(--primary)}
     }
     if (reloadFrame) {
       $('newLoad').hidden = false;
-      frame.src = P.file + '?compare';
+      frame.src = fileOf(P) + '?compare';
     }
     layout(); saveUrl();
   }
@@ -252,12 +259,13 @@ a{color:var(--primary)}
     w.addEventListener('scroll', onFrameScroll, { passive: true });
     // Links inside the mockup can switch page: follow along on the left
     var file = (w.location.pathname.split('/').pop() || 'index.html');
-    for (var k in PAGES) if (PAGES[k].file === file && k !== state.page) { state.page = k; render(false); break; }
+    for (var k in PAGES) { var dz = PAGES[k].fileD === file ? 'd' : (PAGES[k].file === file ? '3' : null); if (dz && (k !== state.page || dz !== state.design)) { state.page = k; state.design = dz; render(false); break; } }
     lock.old = now() + 150; oldBody.scrollTop = 0;
   });
 
   // ---- controls ----
   $('segPage').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b || b.dataset.page === state.page) return; state.page = b.dataset.page; render(true); });
+  $('segDesign').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b || b.dataset.design === state.design) return; state.design = b.dataset.design; render(true); });
   $('segDev').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b || b.dataset.dev === state.dev) return; state.dev = b.dataset.dev; render(true); });
   $('segShow').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; state.show = b.dataset.show; render(false); });
   syncBox.addEventListener('change', function () { if (syncBox.checked) pushToNew(); });

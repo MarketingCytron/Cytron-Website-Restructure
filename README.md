@@ -16,6 +16,10 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 | `site.css` | Shared styles and design tokens | |
 | `site.js` | Shared behaviour (menus, slider, tabs, chooser) | |
 | `fonts/` | Roboto web fonts (woff2) | |
+| `design-d.html` | Design D: Store homepage | Same sections as the live site, Design 3 look |
+| `design-d-education.html` | Design D: Education | |
+| `design-d-industry.html` | Design D: Industry | |
+| `design-d.css`, `design-d.js` | Design D extras (carousels, promo tiles, video hero) | Loaded after `site.css` / `site.js` |
 | `compare.html` | Side-by-side: current my.cytron.io vs the new design | Marketing and IT reviewers |
 | `compare/` | Full-page screenshots of the current my.cytron.io pages (desktop and mobile), used by `compare.html` | |
 
@@ -30,14 +34,25 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 
 On the live OpenCart site the same choice could be stored in the customer session or account instead of the browser.
 
+## Design D
+
+Design D keeps the **original my.cytron.io page structure**, section by section and in the same order, but uses the Design 3 look (letterhead blue, Roboto, light cards).
+
+- Store (`design-d.html`): slider (7 slides, as on the live site), 4 promo tiles, Top Learning Education Kits, Latest Tutorial, Weekly Best Sellers, Maker's Selection, Our Training Partner, Our Top Brands, We do offer, footer.
+- Education (`design-d-education.html`): Welcome Makers banner, Top Learning Education Kits, Which STEM Kits Are Best for Beginners?, Which Platform Is Best for Your STEM Project?, Tutorials / Videos / Resource Hubs, Competitions & Programs, Community, footer.
+- Industry (`design-d-industry.html`): IR4.0 video, trust badges, Raspberry Pi for Industry, Why Raspberry Pi, Meet IRIV, Why IRIV, IRIV Product Family, Industry Feedback, Use Cases & Success Stories, Explore Industrial Products, Meet & Greet, Articles, Design and Customization Service, Keep Me Updated, footer.
+- The header keeps the live site's Store / Industry / Education tabs, menus and search box. The footer keeps its Support / About / Resources / Follow Us columns.
+- Banners with text baked into the image were redrawn as text plus product photo, so the words stay sharp and searchable.
+
 ## Side-by-side comparison
 
-`compare.html` shows the current my.cytron.io page on the left and the new design on the right, for the Store homepage, Education and Industry & Enterprise, on desktop or mobile.
+`compare.html` shows the current my.cytron.io page on the left and a new design (Design 3 or Design D) on the right, for the Store homepage, Education and Industry & Enterprise, on desktop or mobile.
 
 - The left side is a full-page screenshot captured on 12 Oct 2026. The live site sends `X-Frame-Options: sameorigin`, so it can't be shown live inside another page.
 - The right side is the live mockup, loaded with `?compare` (no chooser popup, no redirect, no mockup badge).
 - "Sync scroll" keeps both sides at the same relative position.
-- Links such as `compare.html?page=edu&device=mobile` open a specific view.
+- Use the "Design 3 / Design D" switch to choose which new design appears on the right.
+- Links such as `compare.html?page=edu&design=d&device=mobile` open a specific view.
 
 ## Notes
 
