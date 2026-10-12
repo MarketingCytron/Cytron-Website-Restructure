@@ -192,3 +192,10 @@
 }
 .points--stack{grid-template-columns:minmax(0,1fr);gap:18px;width:100%}
 .points--stack .point{padding-top:16px}
+
+/* Orange call-to-action buttons (Design D only): Shop Now, Order Now, Get Quote Now,
+   Learn More, Book Your Slot Now, Submit, Add to Cart. Secondary outline buttons stay blue. */
+:root{--cta:#E8590C;--cta-hover:#C2410C}
+.btn--primary,.btn[data-toast]{background:var(--cta);border-color:var(--cta);color:#fff}
+.btn--primary:hover,.btn[data-toast]:hover{background:var(--cta-hover);border-color:var(--cta-hover);color:#fff}
+.btn--primary:focus-visible,.btn[data-toast]:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
