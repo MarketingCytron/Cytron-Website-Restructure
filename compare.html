@@ -85,6 +85,12 @@ a{color:var(--primary)}
 @media (max-width:1100px){
   .brand b span{display:none}
 }
+@media (max-width:1320px) and (min-width:901px){
+  :root{--bar:auto}
+  .bar{flex-wrap:wrap;gap:8px 16px;padding:8px 16px}
+  .ctl{margin-left:0;width:100%;flex-wrap:wrap;gap:8px 12px}
+  .stage{height:calc(100% - var(--barh,96px))}
+}
 @media (max-width:900px){
   :root{--bar:auto}
   .bar{flex-wrap:wrap;gap:8px 12px;padding:8px 12px}
@@ -116,6 +122,7 @@ a{color:var(--primary)}
     <div class="seg" role="group" aria-label="New design" id="segDesign">
       <button type="button" data-design="c">Design C</button>
       <button type="button" data-design="d">Design D</button>
+      <button type="button" data-design="e">Design E</button>
     </div>
     <div class="seg" role="group" aria-label="Device" id="segDev">
       <button type="button" data-dev="desktop">Desktop</button>
@@ -131,7 +138,7 @@ a{color:var(--primary)}
       <div class="about__pop">
         <h2>About this comparison</h2>
         <p><b>Left:</b> full-page screenshots of the live my.cytron.io pages, captured on 12 Oct 2026 at 1440px (desktop) and 390px (mobile). The live site doesn't allow itself to be shown inside another page, so screenshots stand in for it. The Industry hero video appears as a still frame, and the floating chat buttons are hidden. On the product page, the YouTube cover can&rsquo;t be captured, so it is shown as the product photo with a play button, and the &ldquo;Recently Viewed&rdquo; box shows only the product itself, as a first-time visitor would see it.</p>
-        <p><b>Right:</b> a new design, live and clickable. <b>Design C</b> is the new layout. <b>Design D</b> keeps the original page structure, section by section, in the Design C look. Links between Store, Education and Industry stay inside the comparison. The Product tab uses the Maker ESP32 Bundle page.</p>
+        <p><b>Right:</b> a new design, live and clickable. <b>Design C</b> is the new layout. <b>Design D</b> keeps the original page structure, section by section, in the Design C look. <b>Design E</b> follows the layout of apple.com/my: full-width product tiles, a thin dark menu bar and a media gallery, with Cytron content only. Links between Store, Education and Industry stay inside the comparison. The Product tab uses the Maker ESP32 Bundle page.</p>
         <p>On phones, the live site's menu links overlap the search bar in the header. That is how the live pages rendered at 390px wide on the capture date, not a screenshot error.</p>
         <p>Sync scroll matches the relative position on each page, so sections line up roughly, not exactly.</p>
       </div>
@@ -159,10 +166,10 @@ a{color:var(--primary)}
 <script>
 (function () {
   var PAGES = {
-    store: { shot: 'store', file: 'index.html', fileD: 'design-d.html', live: 'https://my.cytron.io/', short: 'my.cytron.io', name: 'Store homepage' },
-    edu:   { shot: 'education', file: 'education.html', fileD: 'design-d-education.html', live: 'https://my.cytron.io/education', short: 'my.cytron.io/education', name: 'Education' },
-    ind:   { shot: 'industry', file: 'industry.html', fileD: 'design-d-industry.html', live: 'https://my.cytron.io/raspberry-pi-for-industry', short: 'my.cytron.io/raspberry-pi-for-industry', name: 'Industry & Enterprise' },
-    product: { shot: 'product', ext: 'svg', file: 'product.html', fileD: 'design-d-product.html', live: 'https://my.cytron.io/p-maker-esp32-bundle', short: 'my.cytron.io/p-maker-esp32-bundle', name: 'Product page (Maker ESP32 Bundle)' }
+    store: { shot: 'store', file: 'index.html', fileD: 'design-d.html', fileE: 'design-e.html', live: 'https://my.cytron.io/', short: 'my.cytron.io', name: 'Store homepage' },
+    edu:   { shot: 'education', file: 'education.html', fileD: 'design-d-education.html', fileE: 'design-e-education.html', live: 'https://my.cytron.io/education', short: 'my.cytron.io/education', name: 'Education' },
+    ind:   { shot: 'industry', file: 'industry.html', fileD: 'design-d-industry.html', fileE: 'design-e-industry.html', live: 'https://my.cytron.io/raspberry-pi-for-industry', short: 'my.cytron.io/raspberry-pi-for-industry', name: 'Industry & Enterprise' },
+    product: { shot: 'product', ext: 'svg', file: 'product.html', fileD: 'design-d-product.html', fileE: 'design-e-product.html', live: 'https://my.cytron.io/p-maker-esp32-bundle', short: 'my.cytron.io/p-maker-esp32-bundle', name: 'Product page (Maker ESP32 Bundle)' }
   };
   var W = { desktop: 1440, mobile: 390 };
   var $ = function (id) { return document.getElementById(id); };
@@ -175,9 +182,9 @@ a{color:var(--primary)}
     page: PAGES[q.get('page')] ? q.get('page') : 'store',
     dev: q.get('device') === 'mobile' || q.get('device') === 'desktop' ? q.get('device') : (small.matches ? 'mobile' : 'desktop'),
     show: q.get('show') === 'old' ? 'old' : 'new',
-    design: q.get('design') === 'd' ? 'd' : 'c'
+    design: q.get('design') === 'd' || q.get('design') === 'e' ? q.get('design') : 'c'
   };
-  function fileOf(P) { return state.design === 'd' ? P.fileD : P.file; }
+  function fileOf(P) { return state.design === 'd' ? P.fileD : state.design === 'e' ? P.fileE : P.file; }
 
   function saveUrl() {
     var p = new URLSearchParams(); p.set('page', state.page); p.set('design', state.design); p.set('device', state.dev);
@@ -216,7 +223,7 @@ a{color:var(--primary)}
     press('segShow', 'data-show', state.show);
     stage.setAttribute('data-show', state.show);
     $('oldUrl').textContent = P.short; $('oldLink').href = P.live;
-    $('newUrl').textContent = (state.design === 'd' ? 'Design D · ' : 'Design C · ') + P.name; $('newLink').href = fileOf(P);
+    $('newUrl').textContent = ({ c: 'Design C · ', d: 'Design D · ', e: 'Design E · ' }[state.design]) + P.name; $('newLink').href = fileOf(P);
     var src = 'compare/' + P.shot + '-' + state.dev + '.' + (P.ext || 'webp');
     if (oldImg.getAttribute('src') !== src) {
       $('oldLoad').hidden = false;
@@ -261,7 +268,7 @@ a{color:var(--primary)}
     w.addEventListener('scroll', onFrameScroll, { passive: true });
     // Links inside the mockup can switch page: follow along on the left
     var file = (w.location.pathname.split('/').pop() || 'index.html');
-    for (var k in PAGES) { var dz = PAGES[k].fileD === file ? 'd' : (PAGES[k].file === file ? 'c' : null); if (dz && (k !== state.page || dz !== state.design)) { state.page = k; state.design = dz; render(false); break; } }
+    for (var k in PAGES) { var dz = PAGES[k].fileD === file ? 'd' : PAGES[k].fileE === file ? 'e' : (PAGES[k].file === file ? 'c' : null); if (dz && (k !== state.page || dz !== state.design)) { state.page = k; state.design = dz; render(false); break; } }
     lock.old = now() + 150; oldBody.scrollTop = 0;
   });
 
@@ -277,6 +284,7 @@ a{color:var(--primary)}
   small.addEventListener('change', function () { render(false); });
 
   render(true);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);   // the toolbar height can change once Roboto loads
 })();
 </script>
 </body>

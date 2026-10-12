@@ -23,6 +23,10 @@ A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.
 | `product.html` | Design C: product page (Maker ESP32 Bundle) | New product page layout |
 | `design-d-product.html` | Design D: product page (Maker ESP32 Bundle) | Same sections as the live product page, Design C look |
 | `pdp.css`, `pdp.js` | Product page styles and behaviour (gallery, bundle picker, quantity, Read More) | Shared by both product pages |
+| `design-e.html` | Design E: Store homepage | Layout of apple.com/my, Cytron content |
+| `design-e-education.html`, `design-e-industry.html` | Design E: Education, Industry | |
+| `design-e-product.html` | Design E: product page (Maker ESP32 Bundle) | Buy-page layout |
+| `design-e.css`, `design-e.js` | Design E styles and behaviour (standalone; the product page also loads `pdp.js`) | |
 | `compare.html` | Side-by-side: current my.cytron.io vs the new design | Marketing and IT reviewers |
 | `compare/` | Full-page screenshots of the current my.cytron.io pages (desktop and mobile), used by `compare.html`. The product page screenshots are WebP images wrapped in `.svg` files | |
 
@@ -55,14 +59,23 @@ Both designs use the live [Maker ESP32 Bundle](https://my.cytron.io/p-maker-esp3
 - Design D (`design-d-product.html`): the live page's structure. Gallery with video first, grey info panel (Brands / Code / Warranty, price range, Cashback, bundle chips, Availability, Add to Cart, Explore More, Accessories), then Description, Features and Packing List with Read More, Resources, Related Tutorials carousel, You May Also Need (See More), Reviews and Tags, with Recently Viewed, New Arrivals and Stock Clearance on the right.
 - The cart, wishlist and share buttons only show a "Mockup only" message.
 
+## Design E (apple.com/my layout)
+
+Design E uses the layout language of [apple.com/my](https://www.apple.com/my/): a thin dark menu bar, a one-line ribbon, full-width product tiles that alternate light and dark, 2-up promo tiles, a full-width media gallery with dots and a pause button, and a quiet light-grey footer with a link directory. Only the layout ideas are borrowed. All words, prices, images and the Roboto font are Cytron's.
+
+- Store (`design-e.html`): Maker ESP32, Robo ESP32 and Arduino VENTUNO Q tiles; six promo tiles (IRIV SmartHub CM5, REKA:BIT RBT, Raspberry Pi 5, LO / PO, EDU PICO 2, 5A motor driver); a "Learn by building" tutorial gallery.
+- Education (`design-e-education.html`): Welcome Makers, Resource Hubs and REKA:BIT RBT tiles; levels; four kit tiles; a platform gallery; programs; Telegram community.
+- Industry (`design-e-industry.html`): the IR4.0 video as a full-width tile, trust badges, IRIV PiControl and IRIV EdgeAI CM5 tiles, six promo tiles, Why Raspberry Pi, a success-story gallery and product categories.
+- Product (`design-e-product.html`): a buy page (gallery, bundle choices with contents, quantity, price summary, Add to Cart), then overview, highlights gallery, features, tech specs, what's in the box, resources, tutorials, reviews and accessories.
+
 ## Side-by-side comparison
 
-`compare.html` shows the current my.cytron.io page on the left and a new design (Design C or Design D) on the right, for the Store homepage, Education, Industry & Enterprise and the Maker ESP32 Bundle product page, on desktop or mobile.
+`compare.html` shows the current my.cytron.io page on the left and a new design (Design C, D or E) on the right, for the Store homepage, Education, Industry & Enterprise and the Maker ESP32 Bundle product page, on desktop or mobile.
 
 - The left side is a full-page screenshot captured on 12 Oct 2026. The live site sends `X-Frame-Options: sameorigin`, so it can't be shown live inside another page.
 - The right side is the live mockup, loaded with `?compare` (no chooser popup, no redirect, no mockup badge).
 - "Sync scroll" keeps both sides at the same relative position.
-- Use the "Design C / Design D" switch to choose which new design appears on the right.
+- Use the "Design C / Design D / Design E" switch to choose which new design appears on the right.
 - Links such as `compare.html?page=edu&design=d&device=mobile` or `compare.html?page=product&design=c` open a specific view.
 - Product page screenshot: the YouTube cover can't be captured, so it shows the product photo with a play button, and "Recently Viewed" shows only the product itself.
 
