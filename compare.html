@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Current vs New · Cytron homepage</title>
+<title>Current vs New · Cytron pages</title>
 <link rel="preload" href="fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -104,13 +104,14 @@ a{color:var(--primary)}
 <header class="bar" id="bar">
   <div class="brand">
     <img src="https://static.cytron.io/image/catalog/logo/Cytron-Logo-LIGHT_BLUE_SM.png" alt="Cytron Technologies" width="94" height="26">
-    <b>Current vs New <span>· homepage comparison</span></b>
+    <b>Current vs New <span>· page comparison</span></b>
   </div>
   <div class="ctl">
     <div class="seg" role="group" aria-label="Page" id="segPage">
       <button type="button" data-page="store">Store</button>
       <button type="button" data-page="edu">Education</button>
       <button type="button" data-page="ind">Industry</button>
+      <button type="button" data-page="product">Product</button>
     </div>
     <div class="seg" role="group" aria-label="New design" id="segDesign">
       <button type="button" data-design="3">Design 3</button>
@@ -129,8 +130,8 @@ a{color:var(--primary)}
       <summary aria-label="About this comparison">i</summary>
       <div class="about__pop">
         <h2>About this comparison</h2>
-        <p><b>Left:</b> full-page screenshots of the live my.cytron.io pages, captured on 12 Oct 2026 at 1440px (desktop) and 390px (mobile). The live site doesn't allow itself to be shown inside another page, so screenshots stand in for it. The Industry hero video appears as a still frame, and the floating chat buttons are hidden.</p>
-        <p><b>Right:</b> a new design, live and clickable. <b>Design 3</b> is the new layout. <b>Design D</b> keeps the original page structure, section by section, in the Design 3 look. Links between Store, Education and Industry stay inside the comparison.</p>
+        <p><b>Left:</b> full-page screenshots of the live my.cytron.io pages, captured on 12 Oct 2026 at 1440px (desktop) and 390px (mobile). The live site doesn't allow itself to be shown inside another page, so screenshots stand in for it. The Industry hero video appears as a still frame, and the floating chat buttons are hidden. On the product page, the YouTube cover can&rsquo;t be captured, so it is shown as the product photo with a play button, and the &ldquo;Recently Viewed&rdquo; box shows only the product itself, as a first-time visitor would see it.</p>
+        <p><b>Right:</b> a new design, live and clickable. <b>Design 3</b> is the new layout. <b>Design D</b> keeps the original page structure, section by section, in the Design 3 look. Links between Store, Education and Industry stay inside the comparison. The Product tab uses the Maker ESP32 Bundle page.</p>
         <p>On phones, the live site's menu links overlap the search bar in the header. That is how the live pages rendered at 390px wide on the capture date, not a screenshot error.</p>
         <p>Sync scroll matches the relative position on each page, so sections line up roughly, not exactly.</p>
       </div>
@@ -160,7 +161,8 @@ a{color:var(--primary)}
   var PAGES = {
     store: { shot: 'store', file: 'index.html', fileD: 'design-d.html', live: 'https://my.cytron.io/', short: 'my.cytron.io', name: 'Store homepage' },
     edu:   { shot: 'education', file: 'education.html', fileD: 'design-d-education.html', live: 'https://my.cytron.io/education', short: 'my.cytron.io/education', name: 'Education' },
-    ind:   { shot: 'industry', file: 'industry.html', fileD: 'design-d-industry.html', live: 'https://my.cytron.io/raspberry-pi-for-industry', short: 'my.cytron.io/raspberry-pi-for-industry', name: 'Industry & Enterprise' }
+    ind:   { shot: 'industry', file: 'industry.html', fileD: 'design-d-industry.html', live: 'https://my.cytron.io/raspberry-pi-for-industry', short: 'my.cytron.io/raspberry-pi-for-industry', name: 'Industry & Enterprise' },
+    product: { shot: 'product', ext: 'svg', file: 'product.html', fileD: 'design-d-product.html', live: 'https://my.cytron.io/p-maker-esp32-bundle', short: 'my.cytron.io/p-maker-esp32-bundle', name: 'Product page (Maker ESP32 Bundle)' }
   };
   var W = { desktop: 1440, mobile: 390 };
   var $ = function (id) { return document.getElementById(id); };
@@ -215,7 +217,7 @@ a{color:var(--primary)}
     stage.setAttribute('data-show', state.show);
     $('oldUrl').textContent = P.short; $('oldLink').href = P.live;
     $('newUrl').textContent = (state.design === 'd' ? 'Design D · ' : 'Design 3 · ') + P.name; $('newLink').href = fileOf(P);
-    var src = 'compare/' + P.shot + '-' + state.dev + '.webp';
+    var src = 'compare/' + P.shot + '-' + state.dev + '.' + (P.ext || 'webp');
     if (oldImg.getAttribute('src') !== src) {
       $('oldLoad').hidden = false;
       oldImg.alt = 'Screenshot of the current ' + P.name + ' page on my.cytron.io (' + state.dev + ')';
