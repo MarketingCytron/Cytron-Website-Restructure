@@ -1,101 +1,69 @@
-# Cytron Website Restructure: Homepage concept (Design C)
+# my.cytron.io revamp: Design D (for IT)
 
-A static mockup of a proposed new homepage for [my.cytron.io](https://my.cytron.io/), prepared by Cytron Marketing for review by the IT team.
+This repository holds the **approved design for the my.cytron.io revamp: Design D**.
+It keeps the current site's page structure and content, section by section, in an updated look:
+the Cytron letterhead palette, the Roboto font, cleaner cards and spacing, and orange call-to-action buttons.
 
-**Live preview:** https://marketingcytron.github.io/Cytron-Website-Restructure/
+These are static HTML mockups for IT to build from. They are **not** the live site. Every page is marked
+`noindex, nofollow` and shows a small "internal mockup" badge.
 
-**Compare with the current site:** https://marketingcytron.github.io/Cytron-Website-Restructure/compare.html
+- **Live mockup:** https://marketingcytron.github.io/Cytron-Website-Restructure/
+- **Current site vs Design D, side by side:** https://marketingcytron.github.io/Cytron-Website-Restructure/compare.html
+- **Full design spec:** see the *Design D handoff* document shared by Marketing. It covers sections, tokens, components, behaviour and open items.
 
 ## Pages
 
-| File | Page | Who it is for |
+| File | Page | Replaces on the live site |
 |---|---|---|
-| `index.html` | General homepage + welcome chooser | First-time visitors and guests |
-| `education.html` | Education homepage | Students, teachers, makers |
-| `industry.html` | Industry / Enterprise homepage | Engineers, business owners, professionals |
-| `site.css` | Shared styles and design tokens | |
-| `site.js` | Shared behaviour (menus, slider, tabs, chooser) | |
-| `fonts/` | Roboto web fonts (woff2) | |
-| `design-d.html` | Design D: Store homepage | Same sections as the live site, Design C look |
-| `design-d-education.html` | Design D: Education | |
-| `design-d-industry.html` | Design D: Industry | |
-| `design-d.css`, `design-d.js` | Design D extras (carousels, promo tiles, video hero) | Loaded after `site.css` / `site.js` |
-| `product.html` | Design C: product page (Maker ESP32 Bundle) | New product page layout |
-| `design-d-product.html` | Design D: product page (Maker ESP32 Bundle) | Same sections as the live product page, Design C look |
-| `pdp.css`, `pdp.js` | Product page styles and behaviour (gallery, bundle picker, quantity, Read More) | Shared by both product pages |
-| `design-e.html` | Design E: Store homepage | Layout of apple.com/my, Cytron content |
-| `design-e-education.html`, `design-e-industry.html` | Design E: Education, Industry | |
-| `design-e-product.html` | Design E: product page (Maker ESP32 Bundle) | Buy-page layout |
-| `design-e.css`, `design-e.js` | Design E styles and behaviour (standalone; the product page also loads `pdp.js`) | |
-| `compare.html` | Side-by-side: current my.cytron.io vs the new design | Marketing and IT reviewers |
-| `compare/` | Full-page screenshots of the current my.cytron.io pages (desktop and mobile), used by `compare.html`. The product page screenshots are WebP images wrapped in `.svg` files | |
+| `index.html` | Store homepage | https://my.cytron.io/ |
+| `education.html` | Education | https://my.cytron.io/education |
+| `industry.html` | Industry & Enterprise | https://my.cytron.io/raspberry-pi-for-industry |
+| `product.html` | Product page template (example: Maker ESP32 Bundle) | https://my.cytron.io/p-maker-esp32-bundle |
 
-## How the chooser works
+## Files
 
-1. On a first visit to `index.html`, a popup asks "What type of project are you working on?" with **Education**, **Industry / Enterprise** and **Continue as Guest**.
-2. The choice is remembered in the browser (`localStorage`, key `cytron_audience`: `edu`, `ind` or `guest`).
-3. A returning visitor who chose Education or Industry is sent straight to that homepage.
-4. A bar at the top of every page ("You're browsing: Store / Education / Industry & Enterprise") lets visitors switch at any time.
-5. Like the live site, a personalisation icon sits next to search: a factory on the Industry page, a graduation cap on Education and a shop on the Store page. Its tooltip reads "Industry Content Personalized" (or Education), and clicking it reopens the popup. After a choice the popup shows "Great! Loading your personalized content…", and the tooltip appears briefly on arrival.
-6. For review: add `?welcome` to the URL to force the popup, or `?stay` to stop the redirect.
+| File | Used by | What it holds |
+|---|---|---|
+| `site.css` | all pages | Base styles: tokens (`:root`), Roboto `@font-face`, header, mega-menu, footer, buttons, cards, chooser dialog. Shared with an earlier design, so it contains some rules Design D does not use. |
+| `design-d.css` | all pages | Design D layer on top of `site.css`: sections, carousels, banners, logo rows, and the orange CTA rule (`--cta`). |
+| `pdp.css` | `product.html` | Product page: gallery, bundle picker, quantity, tabs, specs, reviews, side lists. |
+| `site.js` | all pages | Hero slider, mobile menu and dropdowns, audience chooser and "switch anytime" bar. |
+| `design-d.js` | all pages | Carousels (arrows and progress bar), Industry hero video pause/play, chooser "Continue as Guest". |
+| `pdp.js` | `product.html` | Gallery with video, bundle picker (price, code, stock, out-of-stock state), quantity, Read More, See More, "added" toast. |
+| `fonts/` | all pages | Roboto Regular 400, Medium 500 and Bold 600–900, as Latin-subset WOFF2 (about 9 KB each). |
+| `compare.html`, `compare/` | — | The side-by-side review page and its screenshots of the current site (taken 12 Oct 2026). Not part of the build. |
+| `archive/` | — | Earlier design options that were not chosen (Design C, Design E). Reference only. |
 
-On the live OpenCart site the same choice could be stored in the customer session or account instead of the browser.
+There is no build step. Open the folder with any static web server, for example `python3 -m http.server`, and visit `http://localhost:8000/`.
 
-## Design D
-
-Design D keeps the **original my.cytron.io page structure**, section by section and in the same order, but uses the Design C look (letterhead blue, Roboto, light cards).
-
-- Store (`design-d.html`): slider (7 slides, as on the live site), 4 promo tiles, Top Learning Education Kits, Latest Tutorial, Weekly Best Sellers, Maker's Selection, Our Training Partner, Our Top Brands, We do offer, footer.
-- Education (`design-d-education.html`): Welcome Makers banner, Top Learning Education Kits, Which STEM Kits Are Best for Beginners?, Which Platform Is Best for Your STEM Project?, Tutorials / Videos / Resource Hubs, Competitions & Programs, Community, footer.
-- Industry (`design-d-industry.html`): IR4.0 video, trust badges, Raspberry Pi for Industry, Why Raspberry Pi, Meet IRIV, Why IRIV, IRIV Product Family, Industry Feedback, Use Cases & Success Stories, Explore Industrial Products, Meet & Greet, Articles, Design and Customization Service, Keep Me Updated, footer.
-- The header keeps the live site's Store / Industry / Education tabs, menus and search box. The footer keeps its Support / About / Resources / Follow Us columns.
-- Banners with text baked into the image were redrawn as text plus product photo, so the words stay sharp and searchable.
-
-## Product page (Maker ESP32 Bundle)
-
-Both designs use the live [Maker ESP32 Bundle](https://my.cytron.io/p-maker-esp32-bundle) page: same photos, video, prices, bundles, description, features, specification, packing list, resources, tutorials and reviews (snapshot of 12 Oct 2026).
-
-- Design C (`product.html`): new layout. Gallery and buy box side by side, bundles shown as picture cards (price, code, stock and photo update when one is picked), warranty and delivery promises under the button, then a sticky section menu (Overview, Features, Specifications, What's in the box, Resources, Tutorials, Reviews). The packing list is one card per bundle, with "Choose this bundle". A buy bar stays at the bottom of the screen once the buy box scrolls away.
-- Design D (`design-d-product.html`): the live page's structure. Gallery with video first, grey info panel (Brands / Code / Warranty, price range, Cashback, bundle chips, Availability, Add to Cart, Explore More, Accessories), then Description, Features and Packing List with Read More, Resources, Related Tutorials carousel, You May Also Need (See More), Reviews and Tags, with Recently Viewed, New Arrivals and Stock Clearance on the right.
-- The cart, wishlist and share buttons only show a "Mockup only" message.
-
-## Design E (apple.com/my layout)
-
-Design E uses the layout language of [apple.com/my](https://www.apple.com/my/): a thin dark menu bar, a one-line ribbon, full-width product tiles that alternate light and dark, 2-up promo tiles, a full-width media gallery with dots and a pause button, and a quiet light-grey footer with a link directory. Only the layout ideas are borrowed. All words, prices, images and the Roboto font are Cytron's.
-
-- Store (`design-e.html`): Maker ESP32, Robo ESP32 and Arduino VENTUNO Q tiles; six promo tiles (IRIV SmartHub CM5, REKA:BIT RBT, Raspberry Pi 5, LO / PO, EDU PICO 2, 5A motor driver); a "Learn by building" tutorial gallery.
-- Education (`design-e-education.html`): Welcome Makers, Resource Hubs and REKA:BIT RBT tiles; levels; four kit tiles; a platform gallery; programs; Telegram community.
-- Industry (`design-e-industry.html`): the IR4.0 video as a full-width tile, trust badges, IRIV PiControl and IRIV EdgeAI CM5 tiles, six promo tiles, Why Raspberry Pi, a success-story gallery and product categories.
-- Product (`design-e-product.html`): a buy page (gallery, bundle choices with contents, quantity, price summary, Add to Cart), then overview, highlights gallery, features, tech specs, what's in the box, resources, tutorials, reviews and accessories.
-
-## Side-by-side comparison
-
-`compare.html` shows the current my.cytron.io page on the left and a new design (Design C, D or E) on the right, for the Store homepage, Education, Industry & Enterprise and the Maker ESP32 Bundle product page, on desktop or mobile.
-
-- The left side is a full-page screenshot captured on 12 Oct 2026. The live site sends `X-Frame-Options: sameorigin`, so it can't be shown live inside another page.
-- The right side is the live mockup, loaded with `?compare` (no chooser popup, no redirect, no mockup badge).
-- "Sync scroll" keeps both sides at the same relative position.
-- Use the "Design C / Design D / Design E" switch to choose which new design appears on the right.
-- Links such as `compare.html?page=edu&design=d&device=mobile` or `compare.html?page=product&design=c` open a specific view.
-- Product page screenshot: the YouTube cover can't be captured, so it shows the product photo with a play button, and "Recently Viewed" shows only the product itself.
-
-## Notes
-
-- Product photos, logos and links load from Cytron's live site (`static.cytron.io`, `my.cytron.io`).
-- Prices, stock, tutorials and articles are a snapshot from 6-7 Oct 2026.
-- The contact and newsletter forms are for demonstration only and send nothing.
-- Marked `noindex` so search engines don't list it.
-
-## Design tokens (letterhead palette)
-
-All colours and fonts are CSS variables at the top of `site.css`:
+## Design tokens (from `site.css` and `design-d.css`)
 
 | Token | Value | Use |
 |---|---|---|
-| `--brand` | `#00A4DB` | Cytron blue from the letterhead: bars, lines, dots, icons (not for text) |
-| `--primary` | `#007DAA` | Buttons and links (white text passes 4.5:1 contrast) |
-| `--primary-hover` | `#00698F` | Hover state |
-| `--tint` | `#DFF4FA` | Light blue panels |
-| `--ink` / `--text` / `--muted` | `#3C3C3B` / `#4A4A49` / `#6D6D6C` | Headings / body / secondary text |
-| `--line` / `--soft` | `#E4E7E9` / `#F7FBFD` | Borders / section backgrounds |
-| Font | Roboto (Regular 400, Medium 500, Bold 700) | Self-hosted in `fonts/` as woff2, converted from Cytron's Roboto pack (Latin subset) |
+| `--brand` | `#00A4DB` | Cytron blue (letterhead): bars, lines, dots, icons |
+| `--primary` / `--brand-ink` | `#007DAA` | Links, secondary buttons, prices (white text 4.8:1) |
+| `--primary-hover` | `#00698F` | Hover for blue buttons and links |
+| `--cta` | `#E8590C` | **Orange call-to-action buttons** (Shop Now, Order Now, Get Quote Now, Learn More, Book Your Slot Now, Submit, Add to Cart) |
+| `--cta-hover` | `#C2410C` | Hover for orange buttons |
+| `--ink` | `#3C3C3B` | Headings |
+| `--text` | `#4A4A49` | Body text |
+| `--muted` | `#6D6D6C` | Secondary text |
+| `--line` | `#E4E7E9` | Borders and dividers |
+| `--soft` | `#F7FBFD` | Light section background |
+| `--tint` | `#DFF4FA` | Light blue tint |
+| `--font` | `'Roboto', 'Segoe UI', system-ui, sans-serif` | All text |
+| `--wrap` | `1240px` | Content width (with 24px side padding) |
+| `--r` | `8px` | Card radius. Buttons use 4px |
+
+**Button rule:** one orange primary action per block (`.btn--primary`); secondary actions use the blue outline button (`.btn--outline`). An out-of-stock Add to Cart turns grey and is disabled.
+
+**Breakpoints:** 1280, 1100, 900 and 600px (header detail also at 1320, 1240 and 1160px). Below 1100px the header switches to the burger menu.
+
+## Notes for the build
+
+- **Images** are loaded from the live image cache (`static.cytron.io/image/cache/...-WxH.png`), which serves any requested size. Most product photos have white backgrounds and sit on white or `--soft` cards.
+- **Content** is the current site's content, copied from the live site in October 2026. Prices, stock and reviews must come from the store system, not from these files.
+- **Nothing is wired up:** Add to Cart shows a "mockup only" toast, forms do not submit, and search goes to the live search page.
+- **`?compare`** on any page hides the mockup badge and the chooser. It is only for `compare.html`.
+- **Cache-busting:** CSS and JS links carry `?v=` plus the first 8 hex characters of the file's SHA-1.
+- **Accessibility:** white text on the orange `#E8590C` is about 3.6:1, below the WCAG AA 4.5:1 level for 15px text. If AA is required, set `--cta` to `#CF4A0B` (4.5:1).

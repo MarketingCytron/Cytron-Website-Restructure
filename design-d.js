@@ -1,4 +1,4 @@
-// Design D: carousels, hero video control, and links that stay inside Design D.
+// Design D: carousels, hero video control, and ?compare links between the four pages.
 (function () {
   // ---- Carousels: arrows page through the track; a thin bar shows position
   document.querySelectorAll('.d-car').forEach(function (car) {
@@ -34,16 +34,16 @@
     vid.addEventListener('play', label); vid.addEventListener('pause', label); label();
   }
 
-  // ---- Keep ?compare on links between Design D pages (inside compare.html)
+  // ---- Keep ?compare on links between the pages (inside compare.html)
   var compare = /[?&]compare\b/.test(location.search);
   if (compare) {
     document.querySelectorAll('a[href]').forEach(function (a) {
-      var m = a.getAttribute('href').match(/^(design-d(?:-education|-industry)?)\.html(?:\?[^#]*)?(#.*)?$/);
+      var m = a.getAttribute('href').match(/^(index|education|industry|product)\.html(?:\?[^#]*)?(#.*)?$/);
       if (m) a.setAttribute('href', m[1] + '.html?compare' + (m[2] || ''));
     });
   }
 
-  // ---- Chooser "Continue as Guest" returns to the Design D store page, not Design C
+  // ---- Chooser "Continue as Guest" returns to the Store page
   document.addEventListener('click', function (ev) {
     var g = ev.target.closest && ev.target.closest('[data-guest]');
     if (!g) return;
@@ -52,7 +52,7 @@
     if (document.body.getAttribute('data-dd') === 'store') {
       var x = document.querySelector('#welcome [data-close]'); if (x) x.click();
     } else {
-      location.href = 'design-d.html' + (compare ? '?compare' : '');
+      location.href = 'index.html' + (compare ? '?compare' : '');
     }
   }, true);
 })();
