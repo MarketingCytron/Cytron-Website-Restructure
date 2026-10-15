@@ -228,3 +228,10 @@
 .pdp-d .pd-side__list img,
 .pdp-d .pd-side__clear img{background:#fff}
 .pdp-d .pd-acc__row__img{border:1px solid var(--line)}
+
+/* ---------- homepages: product photos sit on white too (Store, Education, Industry) ---------- */
+.d-pc__img,
+.card__img--contain{background:#fff}
+.d-promo,
+.wel__opt{background:#fff}
+.mm__promo{background:#fff;border:1px solid var(--line)}
