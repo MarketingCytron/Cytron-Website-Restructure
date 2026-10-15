@@ -220,3 +220,11 @@
   .d-fcol li a{display:block;padding:8px 0;font-size:14px}
   .d-fsoc a{padding:8px 0}
 }
+
+/* ---------- product page: product photos sit on white (the catalogue images have white backgrounds) ---------- */
+.pdp-d .p-gal__stage,
+.pdp-d .pd-acc__row__img,
+.pdp-d .d-pc__img,
+.pdp-d .pd-side__list img,
+.pdp-d .pd-side__clear img{background:#fff}
+.pdp-d .pd-acc__row__img{border:1px solid var(--line)}
