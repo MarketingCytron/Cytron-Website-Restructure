@@ -24,6 +24,28 @@
     update();
   });
 
+  // ---- Footer: on phones (<=600px) each column folds into a tap-to-open section, like the live site
+  document.documentElement.classList.add('d-js');
+  var fmq = window.matchMedia('(max-width:600px)');
+  var fcols = Array.prototype.slice.call(document.querySelectorAll('.d-fcol'));
+  function fsync() {
+    fcols.forEach(function (col) {
+      var b = col.querySelector('.d-fcol__btn'); if (!b) return;
+      if (fmq.matches) { b.removeAttribute('tabindex'); b.setAttribute('aria-expanded', col.classList.contains('is-open') ? 'true' : 'false'); }
+      else { b.setAttribute('tabindex', '-1'); b.removeAttribute('aria-expanded'); }
+    });
+  }
+  fcols.forEach(function (col) {
+    var b = col.querySelector('.d-fcol__btn'); if (!b) return;
+    b.addEventListener('click', function () {
+      if (!fmq.matches) return;
+      var open = !col.classList.contains('is-open');
+      col.classList.toggle('is-open', open); b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  if (fmq.addEventListener) fmq.addEventListener('change', fsync); else if (fmq.addListener) fmq.addListener(fsync);
+  fsync();
+
   // ---- Hero video: pause / play (autoplays muted, like the live page)
   var vid = document.querySelector('.d-video video'), vbtn = document.querySelector('.d-video__btn');
   if (vid && vbtn) {

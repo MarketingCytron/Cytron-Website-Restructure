@@ -199,3 +199,24 @@
 .btn--primary,.btn[data-toast]{background:var(--cta);border-color:var(--cta);color:#fff}
 .btn--primary:hover,.btn[data-toast]:hover{background:var(--cta-hover);border-color:var(--cta-hover);color:#fff}
 .btn--primary:focus-visible,.btn[data-toast]:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
+
+/* ---------- footer columns: plain headings on wide screens, tap-to-open sections on phones ---------- */
+.d-fcol h3{margin:0 0 14px}
+.d-fcol__btn{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:0;border:0;background:none;font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;text-align:left;cursor:default}
+.d-fcol__btn svg{display:none;flex:none;color:var(--muted);transition:transform .2s}
+@media (max-width:600px){
+  .d-ftr .ftr__top{padding-top:12px;padding-bottom:12px}
+  .d-fcols{grid-template-columns:minmax(0,1fr);gap:0}
+  .d-fcol{border-bottom:1px solid var(--line)}
+  .d-fcol h3{margin:0;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+  .d-fcol__btn{min-height:52px;cursor:pointer}
+  .d-fcol__btn svg{display:block}
+  .d-fcol__btn[aria-expanded="true"] svg{transform:rotate(90deg);color:var(--primary)}
+  .d-fcol__btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .d-js .d-fcol>ul{display:none}
+  .d-js .d-fcol.is-open>ul{display:block;padding:2px 0 16px}
+  .d-js .d-fcol.is-open>.d-fsoc{display:flex}
+  .d-fcol li{margin-bottom:0}
+  .d-fcol li a{display:block;padding:8px 0;font-size:14px}
+  .d-fsoc a{padding:8px 0}
+}
