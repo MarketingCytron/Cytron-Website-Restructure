@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Current vs Design D · Cytron pages</title>
+<link rel="preload" href="fonts/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Roboto-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Roboto';font-weight:400;font-display:swap;src:url(fonts/Roboto-Regular.woff2) format('woff2')}
+@font-face{font-family:'Roboto';font-weight:500;font-display:swap;src:url(fonts/Roboto-Medium.woff2) format('woff2')}
+@font-face{font-family:'Roboto';font-weight:600 900;font-display:swap;src:url(fonts/Roboto-Bold.woff2) format('woff2')}
+:root{
+  --brand:#00A4DB;--primary:#007DAA;--primary-hover:#00698F;--tint:#DFF4FA;
+  --ink:#3C3C3B;--text:#4A4A49;--muted:#6D6D6C;--line:#E4E7E9;--soft:#F7FBFD;
+  --stage:#EEF2F4;--old:#8A8A89;
+  --bar:56px;--lab:40px;
+  --font:'Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font:400 14px/1.45 var(--font);color:var(--text);background:#fff;overflow:hidden}
+button{font:inherit;color:inherit}
+a{color:var(--primary)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- toolbar ---------- */
+.bar{height:var(--bar);display:flex;align-items:center;gap:20px;padding:0 16px;border-top:4px solid var(--brand);border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:5}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;flex:none}
+.brand img{height:26px;width:auto;display:block}
+.brand b{font-weight:700;color:var(--ink);font-size:15px;white-space:nowrap}
+.brand span{color:var(--muted);font-weight:400}
+.ctl{display:flex;align-items:center;gap:14px;margin-left:auto;min-width:0}
+.seg{display:inline-flex;padding:3px;border-radius:999px;background:var(--soft);border:1px solid var(--line);flex:none}
+.seg button{border:0;background:transparent;padding:6px 14px;border-radius:999px;font-weight:500;font-size:13px;color:var(--muted);cursor:pointer;white-space:nowrap}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--primary);box-shadow:0 1px 3px rgba(30,30,30,.12)}
+.seg button:focus-visible,.chk input:focus-visible+span,.lnk:focus-visible,.about summary:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.chk{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;white-space:nowrap;flex:none}
+.chk input{position:absolute;opacity:0}
+.chk span{width:34px;height:20px;border-radius:999px;background:#C9D0D4;position:relative;transition:background .15s}
+.chk span::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .15s}
+.chk input:checked+span{background:var(--primary)}
+.chk input:checked+span::after{transform:translateX(14px)}
+.about{position:relative;flex:none}
+.about summary{list-style:none;cursor:pointer;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700;font-size:13px}
+.about summary::-webkit-details-marker{display:none}
+.about summary:hover{color:var(--primary);border-color:var(--brand)}
+.about[open] summary{color:#fff;background:var(--primary);border-color:var(--primary)}
+.about__pop{position:absolute;right:0;top:40px;width:min(380px,calc(100vw - 32px));background:#fff;border:1px solid var(--line);border-top:3px solid var(--brand);border-radius:10px;box-shadow:0 18px 40px rgba(30,30,30,.16);padding:16px 18px;font-size:13px;line-height:1.55;color:var(--text)}
+.about__pop h2{margin:0 0 8px;font-size:14px;color:var(--ink)}
+.about__pop p{margin:0 0 10px}
+.about__pop p:last-child{margin:0}
+
+/* ---------- panes ---------- */
+.stage{display:grid;grid-template-columns:1fr 1fr;height:calc(100% - var(--bar));background:var(--stage)}
+.pane{display:flex;flex-direction:column;min-width:0;min-height:0;background:#fff}
+.pane+.pane{border-left:1px solid var(--line)}
+.lab{height:var(--lab);flex:none;display:flex;align-items:center;gap:10px;padding:0 14px;border-bottom:1px solid var(--line);background:#fff;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden}
+.tag{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--old)}
+.tag::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.pane--new .tag{color:var(--primary)}
+.lab__url{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis}
+.lab__meta{overflow:hidden;text-overflow:ellipsis}
+.lnk{margin-left:auto;flex:none;text-decoration:none;font-weight:500;font-size:12.5px;display:inline-flex;align-items:center;gap:4px;border-radius:4px}
+.lnk:hover{color:var(--primary-hover);text-decoration:underline}
+.body{position:relative;flex:1;min-height:0;background:var(--stage)}
+.body--scroll{overflow:auto;overscroll-behavior:contain}
+.shot{display:block;width:100%;height:auto;background:#fff}
+.fw{position:absolute;top:0;left:0;transform-origin:0 0;background:#fff}
+.fw iframe{display:block;border:0;width:100%;height:100%;background:#fff}
+.load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;pointer-events:none;transition:opacity .2s}
+.load[hidden]{display:flex;opacity:0}
+
+/* mobile device mode: phone-sized columns centred on the stage */
+.is-mobile .body{display:flex;justify-content:center}
+.is-mobile .phone{width:var(--pw,390px);margin:20px auto;background:#fff;border-radius:22px;box-shadow:0 0 0 8px #2F3336,0 18px 40px rgba(30,30,30,.25);overflow:hidden;flex:none;align-self:flex-start}
+.is-mobile .pane--old .phone{margin-bottom:28px}
+.is-mobile .pane--new .phone{position:relative;height:calc(100% - 40px)}
+.is-mobile .fw{position:absolute}
+
+/* small screens: one side at a time */
+.only{display:none}
+@media (max-width:1100px){
+  .brand b span{display:none}
+}
+@media (max-width:1320px) and (min-width:901px){
+  :root{--bar:auto}
+  .bar{flex-wrap:wrap;gap:8px 16px;padding:8px 16px}
+  .ctl{margin-left:0;width:100%;flex-wrap:wrap;gap:8px 12px}
+  .stage{height:calc(100% - var(--barh,96px))}
+}
+@media (max-width:900px){
+  :root{--bar:auto}
+  .bar{flex-wrap:wrap;gap:8px 12px;padding:8px 12px}
+  .ctl{margin-left:0;width:100%;flex-wrap:wrap;gap:8px 10px}
+  .stage{grid-template-columns:1fr;height:calc(100% - var(--barh,104px))}
+  .only{display:inline-flex}
+  .pane{display:none}
+  .stage[data-show="old"] .pane--old,.stage[data-show="new"] .pane--new{display:flex}
+  .pane+.pane{border-left:0}
+  .chk{display:none}
+  .seg button{padding:6px 11px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="bar" id="bar">
+  <div class="brand">
+    <img src="https://static.cytron.io/image/catalog/logo/Cytron-Logo-LIGHT_BLUE_SM.png" alt="Cytron Technologies" width="94" height="26">
+    <b>Current vs Design D <span>· page comparison</span></b>
+  </div>
+  <div class="ctl">
+    <div class="seg" role="group" aria-label="Page" id="segPage">
+      <button type="button" data-page="store">Store</button>
+      <button type="button" data-page="edu">Education</button>
+      <button type="button" data-page="ind">Industry</button>
+      <button type="button" data-page="product">Product</button>
+    </div>
+    <div class="seg" role="group" aria-label="Device" id="segDev">
+      <button type="button" data-dev="desktop">Desktop</button>
+      <button type="button" data-dev="mobile">Mobile</button>
+    </div>
+    <div class="seg only" role="group" aria-label="Show" id="segShow">
+      <button type="button" data-show="old">Current</button>
+      <button type="button" data-show="new">New</button>
+    </div>
+    <label class="chk" title="Keep both sides at the same relative position while scrolling"><input type="checkbox" id="sync" checked><span aria-hidden="true"></span>Sync scroll</label>
+    <details class="about">
+      <summary aria-label="About this comparison">i</summary>
+      <div class="about__pop">
+        <h2>About this comparison</h2>
+        <p><b>Left:</b> full-page screenshots of the live my.cytron.io pages, captured on 12 Oct 2026 at 1440px (desktop) and 390px (mobile). The live site doesn't allow itself to be shown inside another page, so screenshots stand in for it. The Industry hero video appears as a still frame, and the floating chat buttons are hidden. On the product page, the YouTube cover can&rsquo;t be captured, so it is shown as the product photo with a play button, and the &ldquo;Recently Viewed&rdquo; box shows only the product itself, as a first-time visitor would see it.</p>
+        <p><b>Right:</b> Design D, the chosen design for the revamp: the current page structure and content, section by section, in an updated look with orange call-to-action buttons. It is live and clickable, and links between Store, Education, Industry and Product stay inside the comparison. The Product tab uses the Maker ESP32 Bundle page. Earlier design options are kept in the <a href="archive/">archive</a>.</p>
+        <p>On phones, the live site's menu links overlap the search bar in the header. That is how the live pages rendered at 390px wide on the capture date, not a screenshot error.</p>
+        <p>Sync scroll matches the relative position on each page, so sections line up roughly, not exactly.</p>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main class="stage" id="stage" data-show="new">
+  <section class="pane pane--old" aria-label="Current website">
+    <div class="lab"><span class="tag">Current</span><span class="lab__url" id="oldUrl">my.cytron.io</span><span class="lab__meta">· screenshot, 12 Oct 2026</span><a class="lnk" id="oldLink" href="https://my.cytron.io/" target="_blank" rel="noopener">Open live ↗</a></div>
+    <div class="body body--scroll" id="oldBody">
+      <div class="phone" id="oldWrap"><img class="shot" id="oldImg" alt="" decoding="async"></div>
+      <div class="load" id="oldLoad">Loading screenshot…</div>
+    </div>
+  </section>
+  <section class="pane pane--new" aria-label="New design">
+    <div class="lab"><span class="tag">New</span><span class="lab__url" id="newUrl">Design D</span><span class="lab__meta">· live mockup</span><a class="lnk" id="newLink" href="index.html" target="_blank" rel="noopener">Open full page ↗</a></div>
+    <div class="body" id="newBody">
+      <div class="phone" id="newPhone"><div class="fw" id="fw"><iframe id="frame" title="New design"></iframe></div></div>
+      <div class="load" id="newLoad">Loading new design…</div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var PAGES = {
+    store: { shot: 'store', file: 'index.html', live: 'https://my.cytron.io/', short: 'my.cytron.io', name: 'Store homepage' },
+    edu:   { shot: 'education', file: 'education.html', live: 'https://my.cytron.io/education', short: 'my.cytron.io/education', name: 'Education' },
+    ind:   { shot: 'industry', file: 'industry.html', live: 'https://my.cytron.io/raspberry-pi-for-industry', short: 'my.cytron.io/raspberry-pi-for-industry', name: 'Industry & Enterprise' },
+    product: { shot: 'product', ext: 'svg', file: 'product.html', live: 'https://my.cytron.io/p-maker-esp32-bundle', short: 'my.cytron.io/p-maker-esp32-bundle', name: 'Product page (Maker ESP32 Bundle)' }
+  };
+  var W = { desktop: 1440, mobile: 390 };
+  var $ = function (id) { return document.getElementById(id); };
+  var stage = $('stage'), oldBody = $('oldBody'), newBody = $('newBody'), fw = $('fw'), frame = $('frame');
+  var oldImg = $('oldImg'), oldWrap = $('oldWrap'), newPhone = $('newPhone'), syncBox = $('sync');
+  var small = matchMedia('(max-width:900px)');
+
+  var q = new URLSearchParams(location.search);
+  var state = {
+    page: PAGES[q.get('page')] ? q.get('page') : 'store',
+    dev: q.get('device') === 'mobile' || q.get('device') === 'desktop' ? q.get('device') : (small.matches ? 'mobile' : 'desktop'),
+    show: q.get('show') === 'old' ? 'old' : 'new',
+    design: 'd'
+  };
+  function fileOf(P) { return P.file; }
+
+  function saveUrl() {
+    var p = new URLSearchParams(); p.set('page', state.page); p.set('device', state.dev);
+    if (small.matches) p.set('show', state.show);
+    history.replaceState(null, '', location.pathname + '?' + p.toString());
+  }
+  function press(groupId, attr, val) {
+    $(groupId).querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute(attr) === val)); });
+  }
+
+  // ---- layout: fit the 1440px / 390px page into each pane ----
+  function layout() {
+    $('stage').style.setProperty('--barh', $('bar').offsetHeight + 'px');
+    var mob = state.dev === 'mobile';
+    document.body.classList.toggle('is-mobile', mob);
+    var bw = newBody.clientWidth, bh = newBody.clientHeight;
+    if (mob) {
+      var pw = Math.min(390, Math.max(240, bw - 40));
+      var s = pw / 390;
+      newPhone.style.setProperty('--pw', pw + 'px'); oldWrap.style.setProperty('--pw', Math.min(390, Math.max(240, oldBody.clientWidth - 40)) + 'px');
+      var ph = Math.max(200, bh - 40);
+      fw.style.width = '390px'; fw.style.height = (ph / s) + 'px'; fw.style.transform = 'scale(' + s + ')';
+    } else {
+      newPhone.style.removeProperty('--pw'); oldWrap.style.removeProperty('--pw');
+      var sd = bw / 1440;
+      fw.style.width = '1440px'; fw.style.height = (bh / sd) + 'px'; fw.style.transform = 'scale(' + sd + ')';
+    }
+  }
+
+  // ---- render current state ----
+  function render(reloadFrame) {
+    var P = PAGES[state.page];
+    press('segPage', 'data-page', state.page);
+    press('segDev', 'data-dev', state.dev);
+    press('segShow', 'data-show', state.show);
+    stage.setAttribute('data-show', state.show);
+    $('oldUrl').textContent = P.short; $('oldLink').href = P.live;
+    $('newUrl').textContent = 'Design D · ' + P.name; $('newLink').href = fileOf(P);
+    var src = 'compare/' + P.shot + '-' + state.dev + '.' + (P.ext || 'webp');
+    if (oldImg.getAttribute('src') !== src) {
+      $('oldLoad').hidden = false;
+      oldImg.alt = 'Screenshot of the current ' + P.name + ' page on my.cytron.io (' + state.dev + ')';
+      oldImg.onload = function () { $('oldLoad').hidden = true; };
+      oldImg.src = src; oldBody.scrollTop = 0;
+    }
+    if (reloadFrame) {
+      $('newLoad').hidden = false;
+      frame.src = fileOf(P) + '?compare';
+    }
+    layout(); saveUrl();
+  }
+
+  // ---- scroll sync by relative position ----
+  // A short lock stops the side being moved from echoing back. Scrolls are instant
+  // because the mockup uses smooth scrolling.
+  var lock = { old: 0, neu: 0 };
+  function now() { return Date.now(); }
+  function fwin() { try { return frame.contentWindow; } catch (e) { return null; } }
+  function ratioOld() { var m = oldBody.scrollHeight - oldBody.clientHeight; return m > 0 ? oldBody.scrollTop / m : 0; }
+  function ratioNew() {
+    var w = fwin(); if (!w || !w.document || !w.document.documentElement) return 0;
+    var m = w.document.documentElement.scrollHeight - w.innerHeight; return m > 0 ? w.scrollY / m : 0;
+  }
+  function pushToNew() {
+    var w = fwin(); if (!w || !w.document || !w.document.documentElement) return;
+    var m = w.document.documentElement.scrollHeight - w.innerHeight;
+    lock.neu = now() + 150; w.scrollTo({ top: ratioOld() * m, behavior: 'instant' });
+  }
+  oldBody.addEventListener('scroll', function () {
+    if (now() < lock.old || !syncBox.checked) return;
+    pushToNew();
+  }, { passive: true });
+  function onFrameScroll() {
+    if (now() < lock.neu || !syncBox.checked) return;
+    lock.old = now() + 150; oldBody.scrollTop = ratioNew() * (oldBody.scrollHeight - oldBody.clientHeight);
+  }
+  frame.addEventListener('load', function () {
+    $('newLoad').hidden = true;
+    var w = fwin(); if (!w) return;
+    w.addEventListener('scroll', onFrameScroll, { passive: true });
+    // Links inside the mockup can switch page: follow along on the left
+    var file = (w.location.pathname.split('/').pop() || 'index.html');
+    for (var k in PAGES) { if (PAGES[k].file === file && k !== state.page) { state.page = k; render(false); break; } }
+    lock.old = now() + 150; oldBody.scrollTop = 0;
+  });
+
+  // ---- controls ----
+  $('segPage').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b || b.dataset.page === state.page) return; state.page = b.dataset.page; render(true); });
+  $('segDev').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b || b.dataset.dev === state.dev) return; state.dev = b.dataset.dev; render(true); });
+  $('segShow').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; state.show = b.dataset.show; render(false); });
+  syncBox.addEventListener('change', function () { if (syncBox.checked) pushToNew(); });
+  document.addEventListener('click', function (e) { var d = document.querySelector('.about[open]'); if (d && !d.contains(e.target)) d.removeAttribute('open'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { var d = document.querySelector('.about[open]'); if (d) { d.removeAttribute('open'); d.querySelector('summary').focus(); } } });
+  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(layout, 80); });
+  small.addEventListener('change', function () { render(false); });
+
+  render(true);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);   // the toolbar height can change once Roboto loads
+})();
+</script>
+</body>
+</html>
