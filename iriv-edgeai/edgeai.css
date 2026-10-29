@@ -1,0 +1,33 @@
+/* =====================================================================
+   DESIGN G · IRIV EdgeAI CM5 product page: extras on top of
+   iriv-picontrol/tour.css (shared tour styles). Live AI demo, kits,
+   single terminal block. Scoped under .tour.
+   ===================================================================== */
+/* live demo: a dark band so the simulated camera view reads like a screen */
+.tour .demo-sec{background:#22272B;color:#E9ECEE}
+.tour .demo-sec h2{color:#fff}
+.tour .demo-sec .lede{color:#B4BBC0}
+.tour .demo-sec .eyebrow{color:#7FD6F2}
+.tour .demo-sec .eyebrow::before{background:linear-gradient(#7FD6F2,#7FD6F2) left center/22px 1.5px no-repeat,radial-gradient(circle,#7FD6F2 3px,transparent 3.6px) right center/8px 8px no-repeat}
+.tour .dtabs{display:inline-flex;gap:4px;background:#2F353A;border-radius:99px;padding:5px;margin-top:26px}
+.tour .dtabs button{border:0;background:transparent;color:#B4BBC0;padding:9px 18px;border-radius:99px;font-weight:500;font-size:14px;cursor:pointer}
+.tour .dtabs button:hover{color:#fff}
+.tour .dtabs button.on{background:var(--brand);color:#fff}
+.tour .demo-wrap{max-width:1180px;margin:30px auto 0;padding:0 var(--g)}
+.tour .demo-wrap canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:var(--t-r);background:#0b1220}
+.tour .dsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+@media (max-width:760px){.tour .dsteps{grid-template-columns:1fr 1fr}}
+.tour .dstep{background:#2F353A;border-radius:var(--t-r);padding:16px;border-top:3px solid var(--c)}
+.tour .dstep small{color:var(--c);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.tour .dstep b{display:block;color:#fff;font-size:16px;margin-top:4px}
+.tour .dstep p{margin:6px 0 0;color:#B4BBC0;font-size:14px;line-height:1.45}
+.tour .demo-sec .f-note{max-width:var(--wrap);margin-left:auto;margin-right:auto}
+
+/* kits */
+.tour .kits{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:20px;text-align:left}
+.tour .kits div{background:#fff;border:1px solid var(--t-line);border-radius:var(--t-r);padding:22px}
+.tour .kits b{display:block;font-size:19px;margin-bottom:6px;color:var(--t-ink)}
+.tour .kits p{margin:0;color:var(--t-muted);font-size:15px}
+
+/* one terminal block, centred */
+.tour .blocks.one{grid-template-columns:minmax(0,640px);justify-content:center}
