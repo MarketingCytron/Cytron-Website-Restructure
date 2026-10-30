@@ -120,3 +120,7 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-empty--slim{padding:40px 0 56px}
 .hz-empty--slim .hz-empty__box{padding:28px 24px}
 .hz-empty--slim .hz-empty__box p:last-child{margin-top:6px}
+
+/* ---- Industry 2. Small banners (Design D promo tiles) ---- */
+.hz-promos .d-promos{margin-top:0}
+.hz-promos + .hz-empty--slim{margin-top:56px}
