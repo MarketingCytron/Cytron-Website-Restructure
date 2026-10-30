@@ -107,3 +107,32 @@
   // First visit (or ?welcome): open the popup
   if (!saved || /[?&]welcome\b/.test(location.search)) open();
 })();
+
+// ---- Tabs (brand showcase): click or arrow keys switch panels
+(function () {
+  document.querySelectorAll('[data-h-tabs]').forEach(function (box) {
+    var tabs = [].slice.call(box.querySelectorAll('[role="tab"]'));
+    function select(t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        var p = document.getElementById(x.getAttribute('aria-controls'));
+        if (p) p.hidden = !on;
+      });
+      if (focus) t.focus();
+      t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t, false); });
+      t.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+        if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === 'Home') n = tabs[0];
+        if (e.key === 'End') n = tabs[tabs.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+  });
+})();
