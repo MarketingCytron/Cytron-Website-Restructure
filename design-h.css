@@ -114,3 +114,4 @@ body[data-dd="h"] .d-search{width:300px}
   .hz-sol__h{padding:0}
   .hz-dd{min-width:0}
 }
+.hz-sol__all a{color:var(--primary)!important;font-weight:700!important}
