@@ -136,3 +136,32 @@
     });
   });
 })();
+
+// ---- Add to Cart (mockup): counts on the header cart icon and shows a short message.
+// Products with options (price ends in "++") link to the product page instead, as on the live site.
+(function () {
+  var btns = document.querySelectorAll('[data-h-cart]');
+  if (!btns.length) return;
+  var ico = document.querySelector('[data-h-cartico]');
+  var toast = document.querySelector('.hz-toast'), tt, count = 0, badge = null;
+  function say(msg) {
+    if (!toast) return;
+    toast.textContent = msg; toast.hidden = false;
+    clearTimeout(tt); tt = setTimeout(function () { toast.hidden = true; }, 2600);
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      count++;
+      if (ico) {
+        if (!badge) { badge = document.createElement('span'); badge.className = 'hz-cartico__n'; ico.appendChild(badge); }
+        badge.textContent = count;
+        ico.setAttribute('aria-label', 'Cart, ' + count + (count === 1 ? ' item' : ' items'));
+      }
+      var label = b.querySelector('span');
+      b.classList.add('is-added'); if (label) label.textContent = 'Added';
+      setTimeout(function () { b.classList.remove('is-added'); if (label) label.textContent = 'Add to Cart'; }, 1600);
+      say('Added to cart: ' + b.getAttribute('data-h-cart') + ' (mockup only)');
+    });
+  });
+})();
