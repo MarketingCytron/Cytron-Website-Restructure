@@ -121,14 +121,46 @@
         if (p) p.hidden = !on;
       });
       if (focus) t.focus();
-      t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      // Keep the tab row in view sideways only; never scroll the page up or down
+      var row = t.parentNode;
+      if (row.scrollWidth > row.clientWidth) row.scrollLeft = t.offsetLeft - row.offsetLeft - 16;
+    }
+    // Tabs whose panels are link targets (Solutions: header links #sol-manufacturing etc.)
+    if (box.hasAttribute('data-h-hash')) {
+      var openHash = function (h, scroll) {
+        if (!h || h.length < 2) return;
+        var t = tabs.filter(function (x) { return '#' + x.getAttribute('aria-controls') === h; })[0];
+        if (!t) return;
+        select(t, false);
+        if (scroll) {
+          var sec = box.closest('section') || box;
+          sec.scrollIntoView({ behavior: scroll === 'jump' ? 'auto' : 'smooth', block: 'start' });
+        }
+      };
+      // On page load, images above can still change the layout: jump now, and again once everything has loaded
+      if (location.hash) {
+        openHash(location.hash, 'jump');
+        window.addEventListener('load', function () { setTimeout(function () { openHash(location.hash, 'jump'); }, 150); });
+      }
+      window.addEventListener('hashchange', function () { openHash(location.hash, true); });
+      // Clicking the same menu link twice does not change the hash, so handle clicks too
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        var h = a.getAttribute('href');
+        if (!tabs.some(function (x) { return '#' + x.getAttribute('aria-controls') === h; })) return;
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (history.replaceState) history.replaceState(null, '', h);
+          openHash(h, true);
+          var dd = a.closest('.dd'); if (dd && document.activeElement) document.activeElement.blur();
+        });
+      });
     }
     tabs.forEach(function (t, i) {
       t.addEventListener('click', function () { select(t, false); });
       t.addEventListener('keydown', function (e) {
         var n = null;
-        if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
-        if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = tabs[(i + 1) % tabs.length];
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = tabs[(i - 1 + tabs.length) % tabs.length];
         if (e.key === 'Home') n = tabs[0];
         if (e.key === 'End') n = tabs[tabs.length - 1];
         if (n) { e.preventDefault(); select(n, true); }
