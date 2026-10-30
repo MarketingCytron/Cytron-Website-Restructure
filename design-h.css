@@ -1,0 +1,37 @@
+/* Design H: personalised homepage. Builds on site.css + design-d.css. */
+
+/* One mode at a time (set on <html data-ctx> before the page paints) */
+html[data-ctx="store"] [data-for]:not([data-for="store"]),
+html[data-ctx="education"] [data-for]:not([data-for="education"]),
+html[data-ctx="industry"] [data-for]:not([data-for="industry"]){display:none}
+
+/* Empty homepage placeholder (content comes later) */
+.hz-empty{padding:72px 0 88px;background:var(--soft);border-bottom:1px solid var(--line)}
+.hz-empty__box{max-width:760px;margin:0 auto;padding:56px 32px;border:2px dashed var(--line);border-radius:12px;background:#fff;text-align:center}
+.hz-empty .eyebrow{justify-content:center}
+.hz-empty h1{margin-top:10px;font-size:34px;line-height:1.2;color:var(--ink)}
+.hz-empty p:last-child{margin-top:10px;color:var(--muted)}
+
+/* Popup: live site's wording and order, Design D styling */
+.hz .wel__box{max-width:720px}
+.hz .wel__box:focus{outline:none}
+.hz h2{margin-top:4px}
+.hz .wel__note{margin-top:6px;font-size:14px}
+.hz .wel__opts{margin:26px 0 18px}
+.hz__opt{position:relative;width:100%;font:inherit;color:inherit;cursor:pointer;text-align:center}
+.hz__ico{display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:var(--tint);color:var(--primary);margin-bottom:8px;flex:none}
+.hz__opt:hover .hz__ico,.hz__opt:focus-visible .hz__ico{background:var(--primary);color:#fff}
+.hz__opt .hz__cur{display:none;position:absolute;top:10px;right:10px;padding:3px 8px;border-radius:999px;background:var(--primary);color:#fff;font-size:11px;font-weight:700;letter-spacing:.02em}
+.hz__opt.is-cur{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.hz__opt.is-cur .hz__cur{display:block}
+.hz__init[hidden],.hz__done[hidden]{display:none}
+.hz__done{display:flex;align-items:center;justify-content:center;gap:10px;min-height:150px;font-size:18px;font-weight:700;color:var(--primary)}
+
+@media (max-width:600px){
+  .hz-empty{padding:40px 0 56px}
+  .hz-empty__box{padding:40px 20px}
+  .hz-empty h1{font-size:26px}
+  .hz__opt{text-align:left;align-items:center}
+  .hz__ico{width:48px;height:48px;margin:0}
+  .hz__opt .hz__cur{top:8px;right:8px}
+}
