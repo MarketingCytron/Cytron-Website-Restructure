@@ -144,3 +144,8 @@ body[data-dd="h"] .d-search{width:300px}
   .hz-mode__txt{font-size:14px;align-items:flex-start}
   .hz-mode__lbl{width:100%}
 }
+
+/* ---- Industry 3–4. Articles and Success Stories (Design D card carousels) ---- */
+.hz-promos + .hz-sec{padding-top:72px}
+.hz-sec + .hz-empty--slim{margin-top:72px}
+@media (max-width:900px){.hz-promos + .hz-sec{padding-top:56px}.hz-sec + .hz-empty--slim{margin-top:56px}}
