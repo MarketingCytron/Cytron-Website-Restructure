@@ -199,3 +199,7 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-show__blogo img{width:100%;height:100%;object-fit:contain}
 .hz-show__tab{padding:6px 16px 6px 6px;font-size:14.5px}
 @media (max-width:1320px) and (min-width:901px){.hz-show__tabs{gap:8px}.hz-show__tab{padding-right:12px}}
+
+/* Featured technology now follows the small banners */
+.hz-promos + .hz-sec{padding-top:72px}
+@media (max-width:900px){.hz-promos + .hz-sec{padding-top:56px}}
