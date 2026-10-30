@@ -141,7 +141,7 @@
 // Products with options (price ends in "++") link to the product page instead, as on the live site.
 (function () {
   var btns = document.querySelectorAll('[data-h-cart]');
-  if (!btns.length) return;
+  if (!btns.length && !document.querySelector('[data-h-notify]')) return;
   var ico = document.querySelector('[data-h-cartico]');
   var toast = document.querySelector('.hz-toast'), tt, count = 0, badge = null;
   function say(msg) {
@@ -162,6 +162,16 @@
       b.classList.add('is-added'); if (label) label.textContent = 'Added';
       setTimeout(function () { b.classList.remove('is-added'); if (label) label.textContent = 'Add to Cart'; }, 1600);
       say('Added to cart: ' + b.getAttribute('data-h-cart') + ' (mockup only)');
+    });
+  });
+  // Out of stock: Notify Me (mockup: confirms only; the live site would ask for an email)
+  document.querySelectorAll('[data-h-notify]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var label = b.querySelector('span');
+      b.classList.add('is-added'); if (label) label.textContent = "You'll be notified";
+      setTimeout(function () { b.classList.remove('is-added'); if (label) label.textContent = 'Notify Me'; }, 1800);
+      say("We'll let you know when " + b.getAttribute('data-h-notify') + ' is back in stock (mockup only)');
     });
   });
 })();

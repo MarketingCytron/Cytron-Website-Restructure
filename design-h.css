@@ -215,7 +215,11 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-cart:hover{background:var(--cta-hover);border-color:var(--cta-hover);color:#fff}
 .hz-cart:focus-visible{outline:2px solid var(--cta);outline-offset:2px}
 .hz-cart.is-added{background:#2F855A;border-color:#2F855A}
-.hz-cart--out,.hz-cart--out:hover{background:var(--soft);border-color:var(--line);color:var(--muted);cursor:not-allowed}
+/* Out of stock: blue outline "Notify Me" (secondary style), so it reads differently from orange Add to Cart */
+.hz-cart--notify{background:#fff;border-color:var(--primary);color:var(--primary)}
+.hz-cart--notify:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+.hz-cart--notify:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.hz-cart--notify.is-added{background:#2F855A;border-color:#2F855A;color:#fff}
 /* Header cart count */
 .hz-cartico{position:relative}
 .hz-cartico__n{position:absolute;top:2px;right:0;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--cta);color:#fff;font-size:11px;font-weight:700;line-height:18px;text-align:center}
