@@ -10,7 +10,7 @@
 <link rel="preload" href="fonts/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css?v=05cf86bf">
 <link rel="stylesheet" href="design-d.css?v=5cb0b305">
-<link rel="stylesheet" href="design-h.css?v=7">
+<link rel="stylesheet" href="design-h.css?v=8">
 <script>
 /* Design H: one address, three homepages. Pick the mode before the page paints. */
 (function () {
@@ -45,6 +45,23 @@
     </div>
   </div>
 </header><main id="main">
+<!-- Mode switch inside the page body (in addition to the header icon) -->
+<div class="hz-mode" role="region" aria-label="Personalised content">
+  <div class="wrap hz-mode__in">
+    <p class="hz-mode__txt" data-for="industry"><span class="hz-mode__ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l6 4v-4l6 4V5h4v15z"/></svg></span><span>You&rsquo;re viewing <b>Industry / Enterprise</b> content, for engineers and business owners.</span></p>
+    <p class="hz-mode__txt" data-for="education"><span class="hz-mode__ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg></span><span>You&rsquo;re viewing <b>Education</b> content, for students, teachers and makers.</span></p>
+    <p class="hz-mode__txt" data-for="store"><span class="hz-mode__ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5V20h16v-9.5"/><path d="M3 10l2-6h14l2 6"/><path d="M3 10a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-5h4v5"/></svg></span><span><b>Personalize your homepage:</b> what type of project are you working on?</span></p>
+    <div class="hz-mode__act">
+      <span class="hz-mode__lbl" data-for="industry education">Switch to</span>
+      <span data-for="industry"><button type="button" class="hz-mode__btn" data-h-switch="education"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg><span>Education</span></button></span>
+      <span data-for="education"><button type="button" class="hz-mode__btn" data-h-switch="industry"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l6 4v-4l6 4V5h4v15z"/></svg><span>Industry / Enterprise</span></button></span>
+      <span data-for="store"><button type="button" class="hz-mode__btn" data-h-switch="education"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg><span>Education</span></button></span>
+      <span data-for="store"><button type="button" class="hz-mode__btn" data-h-switch="industry"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l6 4v-4l6 4V5h4v15z"/></svg><span>Industry / Enterprise</span></button></span>
+      <span data-for="industry education"><button type="button" class="hz-mode__guest" data-h-switch="store">View as Guest</button></span>
+    </div>
+  </div>
+</div>
+
 
 <!-- Design H: homepage content per mode goes here, one section at a time. Empty for now. -->
 <section class="hz-empty" data-for="store" aria-labelledby="hz-store">
@@ -135,6 +152,6 @@
 </div>
 <script src="site.js?v=9b181a09"></script>
 <script src="design-d.js?v=e11920b8"></script>
-<script src="design-h.js?v=2"></script>
+<script src="design-h.js?v=3"></script>
 </body>
 </html>

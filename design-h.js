@@ -81,6 +81,10 @@
   }
 
   if (pz) pz.addEventListener('click', function (e) { e.preventDefault(); open(); });
+  // Switch bar in the page body: same flow as the popup (loading message, then reload in the new mode)
+  document.querySelectorAll('[data-h-switch]').forEach(function (b) {
+    b.addEventListener('click', function () { open(); choose(b.getAttribute('data-h-switch')); });
+  });
   dlg.querySelectorAll('[data-ctx]').forEach(function (b) {
     b.addEventListener('click', function () { choose(b.getAttribute('data-ctx')); });
   });
