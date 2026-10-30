@@ -156,19 +156,6 @@ body[data-dd="h"] .d-search{width:300px}
 /* ---- Industry 6. Our Customers (logo carousel, no links) ---- */
 .hz-cust .d-logo:hover{border-color:var(--line)}
 
-/* ---- Industry 5. Our Industry Brands: brand logo + a signature product ---- */
-.hz-bc{display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid var(--line);border-radius:var(--r);background:#fff;transition:border-color .25s,box-shadow .25s}
-.hz-bc:hover{border-color:var(--brand);box-shadow:0 10px 26px rgba(0,125,170,.10)}
-.hz-bc__top{display:flex;align-items:center;gap:12px;min-width:0}
-.hz-bc__logo{flex:none;width:52px;height:52px;border:1px solid var(--line);border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;padding:5px;overflow:hidden}
-.hz-bc__logo img{max-width:100%;max-height:100%;object-fit:contain}
-.hz-bc__name{font-size:16px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hz-bc__img{aspect-ratio:4/3;border-radius:8px;background:var(--soft);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hz-bc__img img{width:78%;height:88%;object-fit:contain;mix-blend-mode:multiply;transition:transform .35s}
-.hz-bc:hover .hz-bc__img img{transform:scale(1.05)}
-.hz-bc__txt{font-size:13.5px;line-height:1.45;color:var(--text);min-height:2.9em}
-.hz-bc .more{margin-top:auto;font-size:13.5px}
-@media (max-width:600px){.hz-bc:hover .hz-bc__img img{transform:none}}
 
 /* ---- Industry. Brand showcase: light tabs (replaces the live dark carousel) ---- */
 .hz-show__tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
@@ -205,3 +192,10 @@ body[data-dd="h"] .d-search{width:300px}
   .hz-show__text .btn{width:100%}
 }
 @media (prefers-reduced-motion:reduce){.hz-show__panel{animation:none}}
+
+/* ---- Merged: Featured technology + brands (8 tabs) ---- */
+.hz-show__brand{display:flex;align-items:center;gap:10px}
+.hz-show__blogo{width:40px;height:40px;border-radius:8px;background:#fff;box-shadow:0 0 0 1px var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.hz-show__blogo img{width:100%;height:100%;object-fit:contain}
+.hz-show__tab{padding:6px 16px 6px 6px;font-size:14.5px}
+@media (max-width:1320px) and (min-width:901px){.hz-show__tabs{gap:8px}.hz-show__tab{padding-right:12px}}
