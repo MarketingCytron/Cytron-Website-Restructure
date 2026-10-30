@@ -226,3 +226,21 @@ body[data-dd="h"] .d-search{width:300px}
 /* Toast */
 .hz-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:300;max-width:calc(100% - 32px);padding:12px 18px;border-radius:6px;background:var(--ink);color:#fff;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
 @media (max-width:600px){.hz-cart{height:38px;font-size:13px;padding:0 8px}.hz-cart svg{display:none}}
+
+
+/* ---------- Build Your System (shop by what it does), from Design G ---------- */
+.si-jobs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.si-job{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:#fff;overflow:hidden;color:var(--ink);transition:border-color .25s,box-shadow .25s}
+.si-job:hover{border-color:var(--brand);box-shadow:0 10px 26px rgba(0,125,170,.10)}
+.si-job__img{height:132px;background:var(--soft);display:flex;align-items:center;justify-content:center;padding:12px}
+.si-job__img img{width:auto;height:108px;max-width:100%;object-fit:contain;mix-blend-mode:multiply}
+.si-job__txt{display:flex;flex-direction:column;gap:2px;padding:12px 14px 14px}
+.si-job__txt small{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)}
+.si-job__txt b{font-size:15px;line-height:1.3;color:var(--ink)}
+.si-job__txt span{font-size:13px;color:var(--muted)}
+.si-job:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+@media (max-width:1024px){.si-jobs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){
+  .si-job__img{height:110px}.si-job__img img{height:88px}
+  .si-jobs{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+}
