@@ -1,9 +1,40 @@
 /* Design H: personalised homepage. Builds on site.css + design-d.css. */
 
 /* One mode at a time (set on <html data-ctx> before the page paints) */
-html[data-ctx="store"] [data-for]:not([data-for="store"]),
-html[data-ctx="education"] [data-for]:not([data-for="education"]),
-html[data-ctx="industry"] [data-for]:not([data-for="industry"]){display:none}
+html[data-ctx="store"] [data-for]:not([data-for~="store"]),
+html[data-ctx="education"] [data-for]:not([data-for~="education"]),
+html[data-ctx="industry"] [data-for]:not([data-for~="industry"]){display:none !important}
+
+/* ---- Header: layout and sizes follow the live my.cytron.io header; colours and font stay Design D ---- */
+body[data-dd="h"] .wrap{max-width:1328px}                      /* 1280px content, like live */
+body[data-dd="h"] .d-ctx .aud__in{height:50px;gap:16px}
+body[data-dd="h"] .d-ctx .aud__seg{padding:2px}
+body[data-dd="h"] .d-ctx .aud__seg a{padding:6px 18px;font-size:16px;font-weight:500}
+body[data-dd="h"] .aud__right{gap:20px}
+/* Personalise icon, now in the top bar */
+.hz-pz{width:32px;height:32px;border-radius:50%;color:var(--ink);display:inline-flex;align-items:center;justify-content:center}
+.hz-pz:hover{color:var(--primary)}
+.hz-pz.pz--on{color:var(--primary)}
+.hz-pz .pz__ico{display:flex}
+/* Country switcher */
+.hz-country>button{display:inline-flex;align-items:center;gap:8px;background:none;border:0;padding:4px 0;font:inherit;font-size:16px;font-weight:500;color:var(--ink);white-space:nowrap;cursor:pointer}
+.hz-country>button img{width:22px;height:auto;border-radius:2px;box-shadow:0 0 0 1px var(--line)}
+.hz-country>button:hover,.hz-country.open>button{color:var(--primary)}
+.hz-caret{margin-left:-2px}
+.hz-country>.dd__panel{left:auto;right:-8px;min-width:190px;padding:8px;border-radius:0 0 8px 8px}
+.hz-country__list li a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;font-size:14px;font-weight:500;color:var(--ink)}
+.hz-country__list li a img{width:20px;height:auto;border-radius:2px;box-shadow:0 0 0 1px var(--line)}
+.hz-country__list li a:hover{background:var(--soft);color:var(--primary)}
+.hz-country__list li a[aria-current]{color:var(--primary);font-weight:700}
+/* Account */
+body[data-dd="h"] .d-acct{font-size:16px;font-weight:500;color:var(--primary)}
+body[data-dd="h"] .d-acct:hover{color:var(--primary-hover)}
+/* Main row */
+body[data-dd="h"] .hdr__in{height:66px}
+body[data-dd="h"] .logo img{width:130px;height:65px;object-fit:contain}
+body[data-dd="h"] .nav__item{padding:0 15px;font-size:16px;font-weight:500}
+body[data-dd="h"] .d-search{width:300px}
+.hz-iriv{min-width:260px}
 
 /* Empty homepage placeholder (content comes later) */
 .hz-empty{padding:72px 0 88px;background:var(--soft);border-bottom:1px solid var(--line)}
@@ -27,7 +58,21 @@ html[data-ctx="industry"] [data-for]:not([data-for="industry"]){display:none}
 .hz__init[hidden],.hz__done[hidden]{display:none}
 .hz__done{display:flex;align-items:center;justify-content:center;gap:10px;min-height:150px;font-size:18px;font-weight:700;color:var(--primary)}
 
+@media (max-width:1320px) and (min-width:1101px){
+  body[data-dd="h"] .nav__item{padding:0 10px}
+  body[data-dd="h"] .d-search{width:240px}
+}
+@media (max-width:1100px){
+  body[data-dd="h"] .hdr__in{height:64px}
+  body[data-dd="h"] .logo img{width:112px;height:56px}
+  body[data-dd="h"] .nav__item{padding:0}
+}
 @media (max-width:600px){
+  body[data-dd="h"] .d-ctx .aud__in{height:46px;gap:8px}
+  body[data-dd="h"] .d-ctx .aud__seg a{padding:5px 11px;font-size:14px}
+  body[data-dd="h"] .aud__right{gap:10px}
+  .hz-country>button span,.hz-caret{display:none}
+  body[data-dd="h"] .d-acct span{display:none}
   .hz-empty{padding:40px 0 56px}
   .hz-empty__box{padding:40px 20px}
   .hz-empty h1{font-size:26px}
