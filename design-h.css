@@ -95,3 +95,22 @@ body[data-dd="h"] .d-search{width:300px}
   .hz-mm__grp+.hz-mm__grp{margin-top:18px}
 }
 @media (max-width:600px){ .hz-mm__cols{grid-template-columns:1fr} }
+
+/* ---- Industry nav: Solutions / Services / Resources dropdowns ---- */
+.hz-dd{min-width:320px}
+.hz-sol{display:none;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:8px;width:640px;padding:16px 10px 12px;border-radius:0 0 8px 8px}
+.dd:hover>.hz-sol,.dd:focus-within>.hz-sol,.dd.open>.hz-sol{display:grid}
+.hz-sol .dd__list{min-width:0;padding:0}
+.hz-sol__col+.hz-sol__col{padding-left:18px;border-left:1px solid var(--line)}
+.hz-sol__h{margin:0 0 6px;padding:0 14px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+.hz-sol__col+.hz-sol__col .hz-sol__h{padding-left:0}
+.hz-sol__kits li a{display:block;padding:8px 0;font-size:14px;font-weight:500;color:var(--ink)}
+.hz-sol__kits li a:hover{color:var(--primary)}
+@media (max-width:1100px){
+  .hz-sol{width:auto;grid-template-columns:1fr;padding:0 0 12px;gap:12px}
+  .dd:hover>.hz-sol{display:none}
+  .dd.open>.hz-sol{display:grid}
+  .hz-sol__col+.hz-sol__col{padding-left:0;border-left:0}
+  .hz-sol__h{padding:0}
+  .hz-dd{min-width:0}
+}
