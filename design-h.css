@@ -115,3 +115,8 @@ body[data-dd="h"] .d-search{width:300px}
   .hz-dd{min-width:0}
 }
 .hz-sol__all a{color:var(--primary)!important;font-weight:700!important}
+
+/* ---- Industry 1. Hero banner (Design D hero) ---- */
+.hz-empty--slim{padding:40px 0 56px}
+.hz-empty--slim .hz-empty__box{padding:28px 24px}
+.hz-empty--slim .hz-empty__box p:last-child{margin-top:6px}
