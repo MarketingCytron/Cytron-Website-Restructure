@@ -80,3 +80,18 @@ body[data-dd="h"] .d-search{width:300px}
   .hz__ico{width:48px;height:48px;margin:0}
   .hz__opt .hz__cur{top:8px;right:8px}
 }
+
+/* ---- Industry: Products mega-menu = live list without the education categories
+        (micro:bit, Arduino Ecosystem, Junior Makers removed) ---- */
+.hz-mm .wrap{padding-top:24px;padding-bottom:28px}
+.hz-mm__cols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 28px}
+.hz-mm__grp+.hz-mm__grp{margin-top:22px}
+.hz-mm .mm__cat{font-size:16px;font-weight:600}
+.hz-mm li a{display:block;padding:3px 0 3px 13px;font-size:14px;font-weight:500;color:var(--muted)}
+.hz-mm li a:hover{color:var(--primary)}
+@media (max-width:1100px){
+  .hz-mm .wrap{padding:0 0 16px}
+  .hz-mm__cols{grid-template-columns:1fr 1fr;gap:18px 20px}
+  .hz-mm__grp+.hz-mm__grp{margin-top:18px}
+}
+@media (max-width:600px){ .hz-mm__cols{grid-template-columns:1fr} }
