@@ -17,11 +17,14 @@
 
   var saved = get();
   var ctx = MODES[saved] ? saved : 'store';
+  // The Industry page always shows the Industry header and nav; the saved homepage choice stays as it is
+  if (document.body.getAttribute('data-h-page') === 'industry') ctx = 'industry';
   document.documentElement.setAttribute('data-ctx', ctx);
 
   // Mockup badge
   var mock = document.querySelector('[data-h-mock]');
-  if (mock) mock.textContent = 'DESIGN H · ' + MODES[ctx].badge + ' homepage · internal mockup';
+  var page = document.body.getAttribute('data-h-page');   // 'industry' on design-h-industry.html
+  if (mock) mock.textContent = page === 'industry' ? 'DESIGN H · Industry page · internal mockup' : 'DESIGN H · ' + MODES[ctx].badge + ' homepage · internal mockup';
 
   // Header icon: blue with a dot when Education or Industry is on, tooltip names the mode
   var pz = document.querySelector('[data-h-pz]');
@@ -44,7 +47,11 @@
 
   // ---- Popup
   var dlg = document.getElementById('pzh');
-  if (!dlg) return;
+  if (!dlg) {
+    // Pages without the popup (Industry page): the header icon opens the homepage chooser
+    if (pz) pz.addEventListener('click', function (e) { e.preventDefault(); location.href = 'design-h.html?welcome'; });
+    return;
+  }
   var init = dlg.querySelector('.hz__init');
   var done = dlg.querySelector('.hz__done');
   var lastFocus = null, busy = false;

@@ -427,3 +427,12 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-sol2__go:hover{background:var(--primary-hover);border-color:var(--primary-hover);color:#fff}
 .hz-sol2__go[hidden]{display:none}
 @media (max-width:760px){.hz-sol2__cta{flex-direction:column;align-items:stretch;padding:16px}.hz-sol2__go{width:100%}}
+
+/* ---------- Industry page (design-h-industry.html): page header ---------- */
+.hz-ihead{padding:40px 0 48px;background:var(--soft);border-bottom:1px solid var(--line)}
+.hz-crumb{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:14px;color:var(--muted)}
+.hz-crumb a{color:var(--primary)}
+.hz-crumb a:hover{text-decoration:underline}
+.hz-ihead h1{margin:10px 0 0;font-size:40px;line-height:1.15;color:var(--ink)}
+.hz-ihead__lead{margin:12px 0 0;max-width:640px;font-size:17px;line-height:1.6;color:var(--muted)}
+@media (max-width:600px){.hz-ihead{padding:28px 0 36px}.hz-ihead h1{font-size:30px}.hz-ihead__lead{font-size:16px}}
