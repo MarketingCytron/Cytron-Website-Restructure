@@ -416,3 +416,15 @@ body[data-dd="h"] .d-search{width:300px}
 
 /* Heading actions (View All link + arrows) stay on one line */
 .d-head>.d-head__act{flex-direction:row;align-items:center;gap:14px}
+
+/* Built on Trusted Platforms: more compact brand box (user, 3 Nov) */
+.hz-show__panel{grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:32px;padding:26px 32px}
+.hz-show__text h3{margin-top:8px;font-size:26px}
+.hz-show__desc{margin-top:8px;font-size:15px;line-height:1.55;max-width:620px}
+.hz-show__chips{margin-top:14px}
+.hz-show__text .btns{margin-top:16px}
+.hz-show__text .btn{height:42px}
+.hz-show__fig{gap:8px}
+.hz-show__img{max-width:220px}
+@media (max-width:900px){.hz-show__panel{grid-template-columns:minmax(0,1fr);gap:18px;padding:22px 20px}.hz-show__img{max-width:170px}.hz-show__text h3{font-size:24px}}
+@media (max-width:600px){.hz-show__text h3{font-size:22px}.hz-show__img{max-width:130px}}
