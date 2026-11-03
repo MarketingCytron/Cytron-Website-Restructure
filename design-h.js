@@ -120,6 +120,11 @@
         var p = document.getElementById(x.getAttribute('aria-controls'));
         if (p) p.hidden = !on;
       });
+      // Items that belong to one tab (e.g. View More link and arrows for the product tabs)
+      var cur = t.getAttribute('aria-controls');
+      box.querySelectorAll('[data-tab-for]').forEach(function (el) { el.hidden = el.getAttribute('data-tab-for') !== cur; });
+      // Carousels in a panel that was hidden measure 0 wide: let them recalculate
+      try { window.dispatchEvent(new Event('resize')); } catch (e) {}
       if (focus) t.focus();
       // Keep the tab row in view sideways only; never scroll the page up or down
       var row = t.parentNode;

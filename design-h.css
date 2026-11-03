@@ -387,3 +387,33 @@ body[data-dd="h"] .d-search{width:300px}
   .hz-bn--small .hz-bn__main{font-size:clamp(17px,5.6cqw,22px)}
 }
 @media (prefers-reduced-motion:reduce){.hz-bn{transition:none}.hz-bn:hover{transform:none}}
+
+/* ---------- Products: Best Sellers / Latest Products / Product on Sale (tabs + 6-up product row) ---------- */
+.hz-vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.hz-ptabs__head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.hz-ptabs__head .d-head__act[hidden]{display:none}
+.hz-ptabs__head .d-head__act{padding-bottom:10px}
+.hz-ptabs__tabs{display:flex;gap:28px;overflow-x:auto;scrollbar-width:none}
+.hz-ptabs__tabs::-webkit-scrollbar{display:none}
+.hz-ptabs__tab{flex:none;padding:0 0 12px;margin-bottom:-1px;border:0;border-bottom:3px solid transparent;background:none;font:inherit;font-size:20px;font-weight:600;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
+.hz-ptabs__tab:hover{color:var(--ink)}
+.hz-ptabs__tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--primary)}
+.hz-ptabs__tab:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+.hz-ptabs__panel[hidden]{display:none}
+.hz-ptabs__panel:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:8px}
+.hz-pcar{--n:6;--gap:14px}
+.hz-pcar .d-pc__img{padding:12px}
+.hz-pcar .d-pc__body{padding:12px 12px 14px;gap:6px}
+.hz-pcar .d-pc__body b{font-size:13.5px}
+.hz-pcar .d-pc__price{font-size:14.5px}
+.hz-pcar .hz-cart{height:36px;font-size:13px}
+@media (max-width:1100px){.hz-pcar{--n:4}}
+@media (max-width:900px){.hz-pcar{--n:3}}
+@media (max-width:700px){
+  .hz-ptabs__head{flex-direction:column;align-items:stretch;gap:0;border-bottom:0}
+  .hz-ptabs__tabs{border-bottom:1px solid var(--line)}
+  .hz-ptabs__head .d-head__act{justify-content:space-between;padding:12px 0 10px;order:2;border-top:0}
+  .hz-ptabs__tab{font-size:17px}
+  .hz-ptabs__tabs{gap:20px;margin:0 calc(-1 * var(--g,16px));padding:0 var(--g,16px)}
+}
+@media (max-width:600px){.hz-pcar{--n:2;--gap:10px}}
