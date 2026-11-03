@@ -52,7 +52,7 @@
 
   // ---- shop by job tiles
   const tiles = document.getElementById('s-tiles');
-  tiles.innerHTML = SHOP_GROUPS.map(([id, name, verb]) => `<button type="button" class="s-tile" data-g="${id}">${svg(id, 28)}<i>${verb}</i><b>${name}</b><small>${P.filter(p => p.g === id).length} products</small></button>`).join('');
+  tiles.innerHTML = SHOP_GROUPS.map(([id, name, verb]) => `<button type="button" class="s-tile" data-g="${id}">${svg(id, 28)}<b>${name}</b><small>${P.filter(p => p.g === id).length} products</small></button>`).join('');
   tiles.addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (!b) return; state.g = b.dataset.g; state.t = ''; render(); document.getElementById('shop').scrollIntoView({ behavior: 'smooth' }); });
 
   // ---- IRIV row
@@ -136,7 +136,7 @@
     // no filters: one section per job, in system order
     out.innerHTML = ORDER.map(id => {
       const L = list.filter(p => p.g === id); if (!L.length) return '';
-      return `<section class="s-group" id="g-${id}"><div class="s-group__head"><div><h3><i>${G[id].verb}</i>${G[id].name}</h3><p>${G[id].desc}</p></div><button type="button" data-fg="${id}">Only these (${L.length}) →</button></div><div class="s-grid">${L.map(card).join('')}</div></section>`;
+      return `<section class="s-group" id="g-${id}"><div class="s-group__head"><div><h3>${G[id].name}</h3><p>${G[id].desc}</p></div><button type="button" data-fg="${id}">Only these (${L.length}) →</button></div><div class="s-grid">${L.map(card).join('')}</div></section>`;
     }).join('');
   }
 
