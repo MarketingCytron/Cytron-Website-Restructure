@@ -94,7 +94,7 @@
   };
   function side() {
     const base = P.filter(p => match(p, 'g'));
-    let h = '<div class="s-sidehead"><b>Filters</b><button type="button" data-close aria-label="Close filters">×</button></div><h3>Shop by job</h3>';
+    let h = '<div class="s-sidehead"><b>Filters</b><button type="button" data-close aria-label="Close filters">×</button></div><h3>Category</h3>';
     h += `<button type="button" class="s-opt${state.g ? '' : ' on'}" data-fg="">All industrial products <small>${base.length}</small></button>`;
     for (const id of ORDER) {
       const n = base.filter(p => p.g === id).length;
