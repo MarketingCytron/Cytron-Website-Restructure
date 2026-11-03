@@ -413,8 +413,6 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-ihead__lead{margin:12px 0 0;max-width:640px;font-size:17px;line-height:1.6;color:var(--muted)}
 @media (max-width:600px){.hz-ihead{padding:28px 0 36px}.hz-ihead h1{font-size:30px}.hz-ihead__lead{font-size:16px}}
 
-/* IRIV Series: same product card as the product tabs, 5 across (one per model) */
-.hz-pcar--5{--n:5}
-@media (max-width:1100px){.hz-pcar--5{--n:4}}
-@media (max-width:900px){.hz-pcar--5{--n:3}}
-@media (max-width:600px){.hz-pcar--5{--n:2}}
+
+/* Heading actions (View All link + arrows) stay on one line */
+.d-head>.d-head__act{flex-direction:row;align-items:center;gap:14px}
