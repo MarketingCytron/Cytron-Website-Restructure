@@ -332,3 +332,58 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-talk__news .hz-talk__sub{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-weight:600;color:var(--primary)}
 @media (max-width:900px){.hz-talk{grid-template-columns:minmax(0,1fr);gap:28px;padding:32px 24px}.hz-talk h2{font-size:28px}}
 @media (max-width:600px){.hz-talk .btns .btn{width:100%}}
+
+/* ---------- Banner template: 1 hero (920 x 440) + 2 small (440 x 210) ----------
+   Fixed: positions, font, sizes. Editable: words (character limits below), text colour, hero button colour and button position.
+   Background layers: --bn-art (product photo, mockup only) on top of --bn-bg (fill, or the one designed banner image on the real site).
+   Character limits: hero main 50 (max 3 lines), hero sub 3 tags of up to 22 each, hero button 24; small main 50 (max 3 lines). */
+.hz-bns{display:grid;grid-template-columns:minmax(0,920fr) minmax(0,440fr);gap:20px;margin-top:24px}
+.hz-bns__side{display:grid;grid-template-rows:1fr 1fr;gap:20px;min-height:0}
+.hz-bn{position:relative;display:block;overflow:hidden;border-radius:14px;container-type:inline-size;color:#fff;text-decoration:none;
+  background-color:#14384C;background-image:var(--bn-art,none),var(--bn-bg,none);background-repeat:no-repeat;background-size:auto 88%,cover,cover;background-position:right 7% center,center,center;
+  transition:box-shadow .25s,transform .25s}
+.hz-bn:hover{box-shadow:0 14px 34px rgba(14,37,51,.22);transform:translateY(-2px)}
+.hz-bn:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.hz-bn[data-text="dark"]{color:var(--ink)}
+.hz-bn__text{position:absolute;z-index:1}
+.hz-bn__main{margin:0;font-weight:700;line-height:1.15;letter-spacing:-.01em;color:inherit;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+/* Hero */
+.hz-bn--hero{aspect-ratio:920/440}
+.hz-bn--hero .hz-bn__text{left:6%;top:13%;width:50%}
+.hz-bn--hero .hz-bn__main{font-size:clamp(22px,4.4cqw,42px)}
+.hz-bn__sub{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(12px,2.6cqw,24px)}
+.hz-bn__sub span{padding:4px 11px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.07);font-size:clamp(11px,1.45cqw,13px);font-weight:500;white-space:nowrap}
+.hz-bn[data-text="dark"] .hz-bn__sub span{border-color:rgba(60,60,59,.22);background:rgba(255,255,255,.6)}
+.hz-bn__btn{position:absolute;z-index:1;bottom:12%;display:inline-flex;align-items:center;height:clamp(38px,5.2cqw,48px);padding:0 clamp(16px,2.6cqw,26px);border-radius:6px;font-size:clamp(13px,1.75cqw,16px);font-weight:600;white-space:nowrap;transition:background .2s,color .2s}
+.hz-bn[data-btn-pos="1"] .hz-bn__btn{left:6%}
+.hz-bn[data-btn-pos="2"] .hz-bn__btn{left:50%;transform:translateX(-50%)}
+.hz-bn[data-btn-pos="3"] .hz-bn__btn{right:6%}
+.hz-bn[data-btn-color="orange"] .hz-bn__btn{background:var(--cta);color:#fff}
+.hz-bn[data-btn-color="orange"]:hover .hz-bn__btn{background:var(--cta-hover)}
+.hz-bn[data-btn-color="blue"] .hz-bn__btn{background:var(--primary);color:#fff}
+.hz-bn[data-btn-color="blue"]:hover .hz-bn__btn{background:var(--primary-hover)}
+.hz-bn[data-btn-color="white"] .hz-bn__btn{background:#fff;color:var(--primary)}
+.hz-bn[data-btn-color="white"]:hover .hz-bn__btn{background:var(--soft)}
+/* Small: layout a = words left, image right; layout b = image left, words right */
+.hz-bn--small{background-size:auto 82%,cover,cover}
+.hz-bn--small .hz-bn__text{top:50%;transform:translateY(-50%);width:52%}
+.hz-bn--small .hz-bn__main{font-size:clamp(16px,5.4cqw,24px)}
+.hz-bn--small[data-layout="a"] .hz-bn__text{left:7%}
+.hz-bn--small[data-layout="b"]{background-position:left 6% center,center,center}
+.hz-bn--small[data-layout="b"] .hz-bn__text{right:7%}
+@media (max-width:900px){
+  .hz-bns{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}
+  .hz-bns__side{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:16px}
+  .hz-bn--small{aspect-ratio:440/210}
+}
+@media (max-width:600px){
+  /* Phones: the hero needs its own taller image on the real site (suggested 750 x 900); words on top, product below */
+  .hz-bn--hero{aspect-ratio:5/6;background-size:auto 44%,cover,cover;background-position:right 7% bottom 21%,center,center}
+  .hz-bn--hero .hz-bn__text{left:7%;top:7%;width:86%}
+  .hz-bn--hero .hz-bn__main{font-size:clamp(24px,8cqw,32px)}
+  .hz-bn--hero .hz-bn__sub span{font-size:12px}
+  .hz-bn[data-btn-pos] .hz-bn__btn{left:7%;right:auto;bottom:6%;transform:none;height:44px;font-size:15px}
+  .hz-bns__side{grid-template-columns:minmax(0,1fr)}
+  .hz-bn--small .hz-bn__main{font-size:clamp(17px,5.6cqw,22px)}
+}
+@media (prefers-reduced-motion:reduce){.hz-bn{transition:none}.hz-bn:hover{transform:none}}
