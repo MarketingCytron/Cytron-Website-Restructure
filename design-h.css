@@ -433,3 +433,9 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-show__img img{width:100%;height:100%}
 @media (max-width:900px){.hz-show__img{max-width:none;height:180px}}
 @media (max-width:600px){.hz-show__img{max-width:none;height:150px}}
+
+/* Solutions: application panel + "See the full solution on our Industry page" in one card (user, 4 Nov) */
+.hz-sol2__box{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;min-width:0}
+.hz-sol2__box .hz-sol2__panel{border:0;border-radius:0}
+.hz-sol2__box .hz-sol2__cta{grid-column:auto;border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 24px}
+@media (max-width:760px){.hz-sol2__box .hz-sol2__cta{padding:16px}}
