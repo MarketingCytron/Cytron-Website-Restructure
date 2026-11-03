@@ -402,7 +402,7 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-ptabs__panel[hidden]{display:none}
 .hz-ptabs__panel:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:8px}
 .hz-pcar{--n:6;--gap:14px}
-.hz-pcar .d-pc__img{padding:12px}
+.hz-pcar .d-pc__img{aspect-ratio:auto;height:150px;padding:10px 12px}   /* shorter cards: fixed photo height instead of a square */
 .hz-pcar .d-pc__body{padding:12px 12px 14px;gap:6px}
 .hz-pcar .d-pc__body b{font-size:13.5px}
 .hz-pcar .d-pc__price{font-size:14.5px}
@@ -416,4 +416,4 @@ body[data-dd="h"] .d-search{width:300px}
   .hz-ptabs__tab{font-size:17px}
   .hz-ptabs__tabs{gap:20px;margin:0 calc(-1 * var(--g,16px));padding:0 var(--g,16px)}
 }
-@media (max-width:600px){.hz-pcar{--n:2;--gap:10px}}
+@media (max-width:600px){.hz-pcar{--n:2;--gap:10px}.hz-pcar .d-pc__img{height:120px}}
