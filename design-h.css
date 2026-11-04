@@ -439,3 +439,11 @@ body[data-dd="h"] .d-search{width:300px}
 .hz-sol2__box .hz-sol2__panel{border:0;border-radius:0}
 .hz-sol2__box .hz-sol2__cta{grid-column:auto;border:0;border-top:1px solid var(--line);border-radius:0;padding:16px 24px}
 @media (max-width:760px){.hz-sol2__box .hz-sol2__cta{padding:16px}}
+/* What We Offer: whole card is the link (4 Nov) */
+a.hz-valc{color:inherit;text-decoration:none;transition:border-color .15s,box-shadow .15s,transform .15s}
+a.hz-valc:hover{border-color:var(--primary);box-shadow:0 6px 18px rgba(16,24,40,.08);transform:translateY(-2px)}
+a.hz-valc:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.hz-valc>div{display:flex;flex-direction:column;align-self:stretch}
+.hz-valc__more{margin-top:auto;padding-top:10px;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--primary)}
+a.hz-valc:hover .hz-valc__more svg{transform:translateX(3px)}
+.hz-valc__more svg{transition:transform .15s}
