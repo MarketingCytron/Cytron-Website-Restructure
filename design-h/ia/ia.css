@@ -157,3 +157,5 @@ html{scroll-padding-top:calc(var(--ia-top) + 16px)}
 }
 .ia-crumbbar{background:var(--soft);padding-top:28px}
 .ia-crumbbar .hz-crumb{margin-bottom:0}
+.ia-video{position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#000}
+.ia-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
