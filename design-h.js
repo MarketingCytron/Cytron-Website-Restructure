@@ -23,8 +23,10 @@
 
   // Mockup badge
   var mock = document.querySelector('[data-h-mock]');
-  var page = document.body.getAttribute('data-h-page');   // 'industry' on design-h-industry.html
-  if (mock) mock.textContent = page === 'industry' ? 'DESIGN H · Industry page · internal mockup' : 'DESIGN H · ' + MODES[ctx].badge + ' homepage · internal mockup';
+  var page = document.body.getAttribute('data-h-page');   // 'industry' on design-h-industry.html, 'tutorials' on the tutorial pages
+  if (mock) mock.textContent = page === 'industry' ? 'DESIGN H · Industry page · internal mockup'
+    : page === 'tutorials' ? 'DESIGN H · Tutorials · ' + MODES[ctx].badge + ' view · internal mockup'
+    : 'DESIGN H · ' + MODES[ctx].badge + ' homepage · internal mockup';
 
   // Header icon: blue with a dot when Education or Industry is on, tooltip names the mode
   var pz = document.querySelector('[data-h-pz]');
