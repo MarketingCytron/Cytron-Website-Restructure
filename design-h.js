@@ -26,7 +26,7 @@
   var mock = document.querySelector('[data-h-mock]');
   var page = document.body.getAttribute('data-h-page');   // 'industry' on design-h-industry.html, 'tutorials' on the tutorial pages
   if (mock) mock.textContent = page === 'industry' ? 'DESIGN H · Industry page · internal mockup'
-    : page === 'industry-articles' ? 'DESIGN H · Industry Articles · internal mockup'
+    : page === 'industry-articles' ? 'DESIGN H · ' + (document.body.getAttribute('data-h-badge') || 'Industry Articles') + ' · internal mockup'
     : page === 'tutorials' ? 'DESIGN H · Tutorials · ' + MODES[ctx].badge + ' view · internal mockup'
     : 'DESIGN H · ' + MODES[ctx].badge + ' homepage · internal mockup';
 
