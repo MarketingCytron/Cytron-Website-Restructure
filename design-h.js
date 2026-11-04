@@ -18,13 +18,15 @@
   var saved = get();
   var ctx = MODES[saved] ? saved : 'store';
   // The Industry page always shows the Industry header and nav; the saved homepage choice stays as it is
-  if (document.body.getAttribute('data-h-page') === 'industry') ctx = 'industry';
+  var hp = document.body.getAttribute('data-h-page');
+  if (hp === 'industry' || hp === 'industry-articles') ctx = 'industry';
   document.documentElement.setAttribute('data-ctx', ctx);
 
   // Mockup badge
   var mock = document.querySelector('[data-h-mock]');
   var page = document.body.getAttribute('data-h-page');   // 'industry' on design-h-industry.html, 'tutorials' on the tutorial pages
   if (mock) mock.textContent = page === 'industry' ? 'DESIGN H · Industry page · internal mockup'
+    : page === 'industry-articles' ? 'DESIGN H · Industry Articles · internal mockup'
     : page === 'tutorials' ? 'DESIGN H · Tutorials · ' + MODES[ctx].badge + ' view · internal mockup'
     : 'DESIGN H · ' + MODES[ctx].badge + ' homepage · internal mockup';
 
