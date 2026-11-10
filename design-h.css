@@ -557,3 +557,19 @@ a.hz-valc:hover .hz-valc__more svg{transform:translateX(3px)}
 /* All hero slides share the dark factory background (10 Nov) */
 .hzh-slide--photo .hzh-product--pic{width:92%;max-width:560px;top:0;align-self:center}
 .hzh-slide--photo .hzh-product--pic img{filter:none;box-shadow:0 24px 48px rgba(0,0,0,.45)}
+
+/* ===== Industry page 2: Cytron in numbers (from draft-ind-LP stats, 10 Nov) ===== */
+.hzs{padding:48px 0;background:#fff;border-bottom:1px solid var(--line)}
+.hzs-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px;text-align:center}
+@media (min-width:768px){.hzs-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1024px){.hzs-list{grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}}
+.hzs-list li:last-child:nth-child(odd){grid-column:1/-1}
+@media (min-width:768px){.hzs-list li:last-child:nth-child(odd){grid-column:auto}}
+.hzs-list li{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 8px}
+.hzs-val{display:inline-flex;align-items:center;color:var(--ink);font-size:clamp(30px,3.6vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.hzs-val--brand{height:1em}
+.hzs-badge{display:block;height:1.1em;width:4.4em;max-width:none}
+.hzs-lbl{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);line-height:1.4}
+.hzs--js [data-hzs]{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform .6s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.hzs--js [data-hzs].is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.hzs--js [data-hzs]{opacity:1;transform:none;transition:none}}

@@ -290,3 +290,34 @@
   });
   show(0);
 })();
+
+/* Industry page 2: numbers strip. Fade in and count up once, when it scrolls into view. */
+(function () {
+  var box = document.querySelector('.hzs');
+  if (!box) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = [].slice.call(box.querySelectorAll('[data-hzs]'));
+  if (reduce || !('IntersectionObserver' in window)) return;
+  box.classList.add('hzs--js');
+  function countUp(el) {
+    var end = parseInt(el.getAttribute('data-count'), 10), suf = el.getAttribute('data-suffix') || '', t0 = null, dur = 1400;
+    if (!end) return;
+    el.textContent = '0' + suf;
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('is-in');
+      [].forEach.call(en.target.querySelectorAll('[data-count]'), countUp);
+      io.unobserve(en.target);
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+  items.forEach(function (el) { io.observe(el); });
+})();
