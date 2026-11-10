@@ -10,7 +10,7 @@
 <link rel="preload" href="fonts/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css?v=05cf86bf">
 <link rel="stylesheet" href="design-d.css?v=5cb0b305">
-<link rel="stylesheet" href="design-h.css?v=30">
+<link rel="stylesheet" href="design-h.css?v=32">
 <script>
 /* Design H Industry page: always shows the Industry header and nav (the saved homepage choice is not changed). */
 document.documentElement.setAttribute('data-ctx', 'industry');
@@ -40,12 +40,62 @@ document.documentElement.setAttribute('data-ctx', 'industry');
 </header><main id="main">
 <!-- Design H Industry page (the page behind the top bar "Industry" tab and the homepage "Explore Cytron Industry" button).
      Sections are added one at a time. Smart City demo (Design G) is reserved for this page. -->
-<section class="hz-ihead" aria-labelledby="hz-ihead-h">
-  <div class="wrap">
-    <nav class="hz-crumb" aria-label="Breadcrumb"><a href="design-h.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Industry</span></nav>
-    <p class="eyebrow">Cytron Industry</p>
-    <h1 id="hz-ihead-h">Smart Technology for Industry</h1>
-    <p class="hz-ihead__lead">Industrial controllers, sensors, connectivity and local engineering support for factories, farms and buildings.</p>
+<!-- Industry page 1. Hero carousel (from draft-ind-LP hero, 10 Nov): 5 slides, tab bar with progress lines, autoplay pauses on hover/focus, pause button, swipe. -->
+<section class="hzh" aria-labelledby="hzh-title">
+  <div class="hzh-car" role="region" aria-roledescription="carousel" aria-label="IRIV products">
+  <div class="hzh-slides">
+    <div class="hzh-slide hzh-slide--photo is-active" id="hzh-s1" style="--hzh-photo:url('design-h/img/ind-hero-factory-bg.webp')" role="group" aria-roledescription="slide" aria-label="1 of 5: PiControl Industrial Controller">
+      <div class="wrap hzh-grid">
+        <div class="hzh-copy">
+          <h1 class="hzh-title" id="hzh-title"><span class="hzh-hl">Monitor, Control and Connect</span> Every Machine</h1>
+          <p class="hzh-sub">IRIV PiControl reads sensors, drives outputs and sends live data to the cloud, from one fanless DIN-rail box powered by Raspberry Pi.</p>
+          <div class="hzh-ctas"><a class="hzh-btn" href="https://my.cytron.io/contact">Get a Quote<span class="hzh-btn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="hzh-link" href="https://my.cytron.io/IRIV-PiControl">View PiControl <span aria-hidden="true">&rarr;</span></a></div>
+        </div>
+        <div class="hzh-visual"><svg class="hzh-neon" viewBox="0 0 100 80" preserveAspectRatio="none" aria-hidden="true" focusable="false"><g class="hzh-neon__glow"><path id="hzh-n1" class="hzh-neon__line" d="M17.6 30.6 C 12 22, 6 14, 2 4" pathLength="1"/><path id="hzh-n2" class="hzh-neon__line" d="M50 37.4 C 46 24, 40 12, 34 2" pathLength="1"/><path id="hzh-n3" class="hzh-neon__line" d="M50 37.4 C 56 24, 62 12, 66 3" pathLength="1"/><path id="hzh-n4" class="hzh-neon__line" d="M77 34.7 C 86 28, 92 18, 96 8" pathLength="1"/><circle class="hzh-neon__node" cx="2" cy="4" r="1.3"/><circle class="hzh-neon__node" cx="34" cy="2" r="1.3"/><circle class="hzh-neon__node" cx="66" cy="3" r="1.3"/><circle class="hzh-neon__node" cx="96" cy="8" r="1.3"/><circle class="hzh-neon__pulse" r=".9"><animateMotion dur="2.6s" begin="0s" repeatCount="indefinite"><mpath href="#hzh-n1"/></animateMotion></circle><circle class="hzh-neon__pulse" r=".9"><animateMotion dur="2.6s" begin=".5s" repeatCount="indefinite"><mpath href="#hzh-n2"/></animateMotion></circle><circle class="hzh-neon__pulse" r=".9"><animateMotion dur="2.6s" begin="1s" repeatCount="indefinite"><mpath href="#hzh-n3"/></animateMotion></circle><circle class="hzh-neon__pulse" r=".9"><animateMotion dur="2.6s" begin="1.5s" repeatCount="indefinite"><mpath href="#hzh-n4"/></animateMotion></circle></g></svg><div class="hzh-product"><img src="design-h/img/ind-hero-picontrol-cm5.webp" width="800" height="800" alt="IRIV PiControl CM5 industrial controller with Wi-Fi antenna, terminal blocks and two Ethernet ports"></div></div>
+      </div>
+    </div>
+    <div class="hzh-slide" id="hzh-s2" role="group" aria-roledescription="slide" aria-label="2 of 5: IO Controller for Modbus &amp; MQTT" aria-hidden="true" inert>
+      <div class="wrap hzh-grid">
+        <div class="hzh-copy">
+          <h2 class="hzh-title">Connect <span class="hzh-hl">Modbus</span> Devices to the Cloud, Site After Site</h2>
+          <p class="hzh-sub">IRIV IO Controller: RS485 Modbus RTU in, MQTT out over Ethernet. Ships pre-loaded with your flows.</p>
+          <div class="hzh-ctas"><a class="hzh-btn" href="https://my.cytron.io/contact">Get a Quote<span class="hzh-btn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="hzh-link" href="https://my.cytron.io/iriv-ioc">View IO Controller <span aria-hidden="true">&rarr;</span></a></div>
+        </div>
+        <div class="hzh-visual"><div class="hzh-product"><img src="design-h/img/ind-hero-io-controller.webp" width="800" height="800" loading="lazy" alt="IRIV IO Controller with orange terminal blocks, RS485 and an Ethernet port"></div></div>
+      </div>
+    </div>
+    <div class="hzh-slide" id="hzh-s3" role="group" aria-roledescription="slide" aria-label="3 of 5: EdgeAI CM5 On-Site Vision" aria-hidden="true" inert>
+      <div class="wrap hzh-grid">
+        <div class="hzh-copy">
+          <h2 class="hzh-title">PPE and Defect Detection, Ready for <span class="hzh-hl">Every Site</span></h2>
+          <p class="hzh-sub">IRIV EdgeAI CM5 runs PPE, defect and people detection next to the camera. Deliver it as your own safety solution.</p>
+          <div class="hzh-ctas"><a class="hzh-btn" href="https://my.cytron.io/contact">Get a Quote<span class="hzh-btn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="hzh-link" href="https://my.cytron.io/iriv-edgeai-cm5-industrial-edge-ai-controller">View EdgeAI CM5 <span aria-hidden="true">&rarr;</span></a></div>
+        </div>
+        <div class="hzh-visual"><div class="hzh-product"><img src="design-h/img/ind-hero-edgeai-cm5.webp" width="800" height="800" loading="lazy" alt="IRIV EdgeAI CM5 with antenna, dual Ethernet, USB 3.0 and HDMI"></div></div>
+      </div>
+    </div>
+    <div class="hzh-slide" id="hzh-s4" role="group" aria-roledescription="slide" aria-label="4 of 5: SmartHub CM5 Signage &amp; Hub" aria-hidden="true" inert>
+      <div class="wrap hzh-grid">
+        <div class="hzh-copy">
+          <h2 class="hzh-title">Signage and Edge Hub in One Box, Built for <span class="hzh-hl">24/7</span></h2>
+          <p class="hzh-sub">IRIV SmartHub CM5 drives two 4K screens around the clock. Brand it, load your content, roll it out.</p>
+          <div class="hzh-ctas"><a class="hzh-btn" href="https://my.cytron.io/contact">Get a Quote<span class="hzh-btn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="hzh-link" href="https://my.cytron.io/smarthub">View SmartHub CM5 <span aria-hidden="true">&rarr;</span></a></div>
+        </div>
+        <div class="hzh-visual"><div class="hzh-product"><img src="design-h/img/ind-hero-smarthub-cm5.webp" width="800" height="800" loading="lazy" alt="IRIV SmartHub CM5 with antenna, Gigabit Ethernet, USB and two HDMI ports"></div></div>
+      </div>
+    </div>
+    <div class="hzh-slide" id="hzh-s5" role="group" aria-roledescription="slide" aria-label="5 of 5: Custom Carrier Boards" aria-hidden="true" inert>
+      <div class="wrap hzh-grid">
+        <div class="hzh-copy">
+          <h2 class="hzh-title">When Off-the-Shelf Doesn&rsquo;t Fit, We <span class="hzh-hl">Design</span> It</h2>
+          <p class="hzh-sub">A separate engineering service from the IRIV series: custom carrier boards and I/O, designed in Penang.</p>
+          <div class="hzh-ctas"><a class="hzh-btn" href="design-h-meet-engineers.html">Start a Custom Project<span class="hzh-btn__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="hzh-link" href="design-h-custom-design.html">See Custom Options <span aria-hidden="true">&rarr;</span></a></div>
+        </div>
+        <div class="hzh-visual"><div class="hzh-product hzh-product--pic"><img src="design-h/img/ind-hero-custom-engineering.webp" width="1100" height="825" loading="lazy" alt="Two engineers reviewing a custom circuit board and its schematic next to an industrial controller"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hzh-bar"><div class="wrap hzh-bar__in"><div class="hzh-tabs" role="tablist" aria-label="Choose a slide"><button class="hzh-tab" type="button" role="tab" id="hzh-t1" aria-controls="hzh-s1" aria-selected="true"><small>IRIV Pi Series</small><span>PiControl Industrial Controller</span><i class="hzh-tab__bar" aria-hidden="true"><b></b></i></button><button class="hzh-tab" type="button" role="tab" id="hzh-t2" aria-controls="hzh-s2" aria-selected="false" tabindex="-1"><small>IRIV Pi Series</small><span>IO Controller for Modbus &amp; MQTT</span><i class="hzh-tab__bar" aria-hidden="true"><b></b></i></button><button class="hzh-tab" type="button" role="tab" id="hzh-t3" aria-controls="hzh-s3" aria-selected="false" tabindex="-1"><small>IRIV EdgeAI Series</small><span>EdgeAI CM5 On-Site Vision</span><i class="hzh-tab__bar" aria-hidden="true"><b></b></i></button><button class="hzh-tab" type="button" role="tab" id="hzh-t4" aria-controls="hzh-s4" aria-selected="false" tabindex="-1"><small>IRIV SmartHub Series</small><span>SmartHub CM5 Signage &amp; Hub</span><i class="hzh-tab__bar" aria-hidden="true"><b></b></i></button><button class="hzh-tab" type="button" role="tab" id="hzh-t5" aria-controls="hzh-s5" aria-selected="false" tabindex="-1"><small>Engineering Service</small><span>Custom Carrier Boards</span><i class="hzh-tab__bar" aria-hidden="true"><b></b></i></button></div><button class="hzh-pause" type="button" aria-label="Pause slideshow" aria-pressed="false"><svg class="hzh-i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><svg class="hzh-i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button></div></div>
   </div>
 </section>
 <!-- Industry page. Promo tiles (moved from the Industry homepage on 3 Nov: IRIV EdgeAI CM5, IRIV SmartHub CM5, Jetson workshop, Cytron workshops) -->
@@ -81,6 +131,6 @@ document.documentElement.setAttribute('data-ctx', 'industry');
 <a class="totop" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></a>
 <script src="site.js?v=9b181a09"></script>
 <script src="design-d.js?v=e11920b8"></script>
-<script src="design-h.js?v=9"></script>
+<script src="design-h.js?v=10"></script>
 </body>
 </html>

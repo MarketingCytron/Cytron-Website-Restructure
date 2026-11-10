@@ -223,3 +223,70 @@
     });
   });
 })();
+
+/* Industry page 1: hero carousel. The active tab's progress bar drives auto-advance (animationend). */
+(function () {
+  var hero = document.querySelector('.hzh');
+  if (!hero) return;
+  hero.classList.add('hzh--js');
+  var car = hero.querySelector('.hzh-car');
+  var slides = [].slice.call(car.querySelectorAll('.hzh-slide'));
+  var tabs = [].slice.call(car.querySelectorAll('.hzh-tab'));
+  var pause = car.querySelector('.hzh-pause');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cur = 0, userPaused = false, hoverPaused = false;
+  function sync() { car.classList.toggle('is-paused', userPaused || hoverPaused); }
+  function show(i, focus) {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach(function (sl, k) {
+      var on = k === cur;
+      sl.classList.toggle('is-active', on);
+      if (on) { sl.removeAttribute('aria-hidden'); sl.inert = false; } else { sl.setAttribute('aria-hidden', 'true'); sl.inert = true; }
+    });
+    tabs.forEach(function (t, k) {
+      var on = k === cur;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      var b = t.querySelector('.hzh-tab__bar b');
+      if (on) { b.style.animation = 'none'; void b.offsetWidth; b.style.animation = ''; }
+    });
+    var t = tabs[cur], list = t.parentNode;
+    if (focus) t.focus();
+    if (list.scrollWidth > list.clientWidth) list.scrollTo({ left: t.offsetLeft - list.offsetLeft - 16, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(i); });
+    t.addEventListener('keydown', function (e) {
+      var k = e.key, n = null;
+      if (k === 'ArrowRight') n = cur + 1; else if (k === 'ArrowLeft') n = cur - 1; else if (k === 'Home') n = 0; else if (k === 'End') n = tabs.length - 1;
+      if (n !== null) { e.preventDefault(); show(n, true); }
+    });
+    t.querySelector('.hzh-tab__bar b').addEventListener('animationend', function (e) {
+      if (e.animationName === 'hzhProgress' && t.getAttribute('aria-selected') === 'true') show(cur + 1);
+    });
+  });
+  if (reduce) {
+    pause.hidden = true;
+  } else {
+    car.classList.add('is-auto');
+    pause.addEventListener('click', function () {
+      userPaused = !userPaused;
+      pause.setAttribute('aria-pressed', String(userPaused));
+      pause.setAttribute('aria-label', userPaused ? 'Play slideshow' : 'Pause slideshow');
+      sync();
+    });
+    var box = car.querySelector('.hzh-slides');
+    box.addEventListener('mouseenter', function () { hoverPaused = true; sync(); });
+    box.addEventListener('mouseleave', function () { hoverPaused = false; sync(); });
+    car.addEventListener('focusin', function () { hoverPaused = true; sync(); });
+    car.addEventListener('focusout', function (e) { if (!car.contains(e.relatedTarget)) { hoverPaused = false; sync(); } });
+  }
+  var tx = null;
+  car.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  car.addEventListener('touchend', function (e) {
+    if (tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50 && !e.target.closest('.hzh-tabs')) show(cur + (dx < 0 ? 1 : -1));
+  });
+  show(0);
+})();
