@@ -397,7 +397,7 @@
     panel.appendChild(el('h3', 'eco__title', n.title));
     panel.appendChild(el('p', 'eco__text', n.text));
     var ul = el('ul', 'eco__items');
-    n.items.forEach(function (it) { var li = el('li'); var a = link(it[2], 'eco__item'); a.appendChild(el('span', 'eco__item-n', it[0])); a.appendChild(el('span', 'eco__item-p', it[1])); li.appendChild(a); ul.appendChild(li); });
+    n.items.forEach(function (it) { var li = el('li'); var a = link(it[2], 'eco__item'); a.appendChild(el('span', 'eco__item-n', it[0])); if (it[1]) a.appendChild(el('span', 'eco__item-p', it[1])); else a.appendChild(el('span', 'eco__item-go', '→')); li.appendChild(a); ul.appendChild(li); });
     panel.appendChild(ul);
     if (n.brands.length) {
       var br = el('div', 'eco__brands');
