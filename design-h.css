@@ -722,3 +722,83 @@ a.hz-valc:hover .hz-valc__more svg{transform:translateX(3px)}
   .hzb-tile--sm .hzb-img{width:42%}
   .hzb-txt b{font-size:20px}
 }
+
+
+/* ===== Industry page 8: Cytron industry ecosystem (ported from design-f.css, 10 Nov) ===== */
+/* ===== Interactive ecosystem map (25 Oct) ===== */
+.eco{display:flex;flex-direction:column;gap:18px}
+.eco__bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.eco__bar-l{font-size:14px;color:var(--muted);margin-right:4px}
+.eco__chip{height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s}
+.eco__chip:hover{border-color:var(--brand)}
+.eco__chip[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:#fff}
+.eco__body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:32px;align-items:center}
+.eco__map{position:relative;width:100%;max-width:600px;aspect-ratio:1/1;margin:0 auto}
+.eco__lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.eco__ring{fill:none;stroke:var(--tint);stroke-width:3.2}
+.eco__ringtext{font-size:2.2px;letter-spacing:.35px;fill:var(--muted);font-weight:500}
+.eco__spokes path{fill:none;stroke:var(--brand);stroke-width:.45;stroke-opacity:.45;stroke-dasharray:1.4 1.2;transition:stroke-opacity .25s,stroke-width .25s}
+.eco--focus .eco__spokes path{stroke-opacity:.12}
+.eco--focus .eco__spokes path.is-on{stroke-opacity:1;stroke-width:.8;stroke-dasharray:none}
+.eco__pulses circle{fill:var(--cta)}
+.eco--still .eco__pulses{display:none}
+.eco__node{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:21%;display:flex;flex-direction:column;align-items:center;gap:4px;padding:0;border:0;background:none;cursor:pointer;text-align:center;transition:opacity .25s}
+.eco__img{display:block;width:72%;aspect-ratio:1/1;border-radius:50%;background:#fff;border:2px solid var(--line);padding:12%;box-shadow:0 6px 18px rgba(0,125,170,.10);transition:border-color .2s,transform .2s}
+.eco__img img{width:100%;height:100%;object-fit:contain}
+.eco__node i{font-style:normal;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)}
+.eco__node b{font-size:13.5px;line-height:1.25;color:var(--ink)}
+.eco__node:hover .eco__img,.eco__node[aria-pressed="true"] .eco__img{border-color:var(--brand);transform:scale(1.05)}
+.eco__node[aria-pressed="true"] .eco__img{border-width:3px}
+.eco__node--hub{width:28%}
+.eco__node--hub .eco__img{width:80%;border:3px solid var(--brand);background:var(--tint)}
+.eco__node--hub b{font-size:15.5px}
+.eco--focus .eco__node{opacity:.3}
+.eco--focus .eco__node.is-on{opacity:1}
+.eco--focus .eco__node.is-on .eco__img{border-color:var(--brand)}
+.eco__panel{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:26px;border:1px solid var(--line);border-radius:12px;background:#fff;min-height:360px;min-width:0}
+.eco__role{font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--primary)}
+.eco__title{font-size:24px;line-height:1.25;color:var(--ink)}
+.eco__text{color:var(--text);font-size:15px}
+.eco__items{display:flex;flex-direction:column;width:100%;border-top:1px solid var(--line)}
+.eco__items li{border-bottom:1px solid var(--line)}
+.eco__item{display:flex;justify-content:space-between;gap:12px;padding:10px 2px;font-size:14.5px;color:var(--ink)}
+.eco__item:hover .eco__item-n{color:var(--primary);text-decoration:underline}
+.eco__item-p{flex:none;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.eco__brands{display:flex;flex-wrap:wrap;gap:8px}
+.eco__brand{display:flex;align-items:center;justify-content:center;width:96px;height:48px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.eco__brand:hover{border-color:var(--brand)}
+.eco__brand img{max-width:100%;max-height:100%;object-fit:contain}
+.eco__steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;counter-reset:es;width:100%}
+.eco__steps li{position:relative;padding-left:38px;counter-increment:es;font-size:15px;color:var(--ink);min-height:26px;display:flex;align-items:center}
+.eco__steps li::before{content:counter(es);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.eco__hint{font-size:13.5px;color:var(--muted)}
+@media (max-width:1100px){.eco__body{grid-template-columns:minmax(0,1fr)}.eco__panel{min-height:0}}
+@media (max-width:640px){
+  .eco__map{aspect-ratio:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:none}
+  .eco__lines{display:none}
+  .eco__node{position:static;transform:none;width:auto;padding:12px 8px;border:1px solid var(--line);border-radius:10px;background:#fff}
+  .eco__node--hub{grid-column:1/-1;order:-1}
+  .eco__img{width:64px;padding:9px}
+  .eco__node--hub .eco__img{width:96px;padding:12px}
+  .eco__node[aria-pressed="true"]{border-color:var(--brand)}
+  .eco__panel{padding:20px}
+}
+
+/* support layer around the ecosystem: icons on the ring + legend */
+.eco__sup{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:8%;aspect-ratio:1/1;border-radius:50%;background:#fff;border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;color:var(--brand-ink);z-index:1;cursor:default}
+.eco__sup svg{width:58%;height:58%}
+.eco__sup>span{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;padding:5px 10px;border-radius:6px;background:var(--ink);color:#fff;font-size:12.5px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .15s}
+.eco__sup:hover>span,.eco__sup:focus-visible>span{opacity:1}
+.eco__legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:12px 16px;border-radius:10px;background:var(--tint)}
+.eco__legend-t{font-size:13px;font-weight:500;color:var(--ink);margin-right:4px}
+.eco__legend-i{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink)}
+.eco__legend-i svg{width:26px;height:26px;padding:4px;border-radius:50%;background:#fff;border:1.5px solid var(--brand);color:var(--brand-ink);flex:none}
+@media (max-width:640px){.eco__sup{display:none}.eco__legend{flex-direction:column;align-items:flex-start}}
+.hze .eco__panel{min-height:380px}
+.hze-partners{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.hze-partners__t{font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hze-brands{display:flex;flex-wrap:wrap;gap:10px}
+.hze-brand{display:flex;align-items:center;justify-content:center;width:112px;height:52px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;transition:border-color .2s}
+.hze-brand:hover{border-color:var(--brand)}
+.hze-brand img{max-width:100%;max-height:100%;object-fit:contain}
+@media (max-width:640px){.hze-brand{width:calc(33.33% - 7px)}}
