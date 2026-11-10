@@ -321,3 +321,52 @@
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
   items.forEach(function (el) { io.observe(el); });
 })();
+
+/* Industry page 5: white-label options. Tiles, arrows and arrow keys switch the option;
+   it auto-advances every 6 s (paused on hover/focus) until a visitor picks one. */
+(function () {
+  var box = document.querySelector('.hzl');
+  if (!box) return;
+  var tabs = [].slice.call(box.querySelectorAll('.hzl-thumb'));
+  var pans = [].slice.call(box.querySelectorAll('.hzl-panel'));
+  var imgs = [].slice.call(box.querySelectorAll('.hzl-media img'));
+  var cur = 0, n = tabs.length, timer = null, stopped = false, hover = false;
+  var curEl = box.querySelector('[data-hzl-cur]'), bar = box.querySelector('[data-hzl-bar]');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(i, focus) {
+    cur = (i + n) % n;
+    tabs.forEach(function (t, k) { var on = k === cur; t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1; });
+    pans.forEach(function (p, k) { var on = k === cur; p.hidden = !on; p.classList.toggle('is-active', on); });
+    imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === cur); });
+    curEl.textContent = (cur < 9 ? '0' : '') + (cur + 1);
+    bar.style.transform = 'scaleX(' + ((cur + 1) / n) + ')';
+    if (focus) tabs[cur].focus();
+  }
+  function stop() { stopped = true; clearInterval(timer); }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { stop(); show(i); });
+    t.addEventListener('keydown', function (e) {
+      var k = e.key, m = null;
+      if (k === 'ArrowRight') m = cur + 1; else if (k === 'ArrowLeft') m = cur - 1; else if (k === 'Home') m = 0; else if (k === 'End') m = n - 1;
+      if (m !== null) { e.preventDefault(); stop(); show(m, true); }
+    });
+  });
+  [].forEach.call(box.querySelectorAll('[data-hzl]'), function (b) {
+    b.addEventListener('click', function () { stop(); show(cur + parseInt(b.getAttribute('data-hzl'), 10)); });
+  });
+  var grid = box.querySelector('.hzl-grid');
+  grid.addEventListener('mouseenter', function () { hover = true; });
+  grid.addEventListener('mouseleave', function () { hover = false; });
+  grid.addEventListener('focusin', function () { hover = true; });
+  grid.addEventListener('focusout', function (e) { if (!grid.contains(e.relatedTarget)) hover = false; });
+  show(0);
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        clearInterval(timer);
+        if (x.isIntersecting && !stopped) timer = setInterval(function () { if (!hover && !document.hidden) show(cur + 1); }, 6000);
+      });
+    }, { threshold: 0.35 });
+    io.observe(grid);
+  }
+})();
