@@ -553,4 +553,7 @@ a.hz-valc:hover .hz-valc__more svg{transform:translateX(3px)}
   .hzh *,.hzh *::before{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .hzh-neon__line{stroke-dashoffset:0}.hzh-neon__node{opacity:.8}
 }
-.hzh-slide--photo .hzh-title{max-width:440px}
+#hzh-s1 .hzh-title{max-width:440px}
+/* All hero slides share the dark factory background (10 Nov) */
+.hzh-slide--photo .hzh-product--pic{width:92%;max-width:560px;top:0;align-self:center}
+.hzh-slide--photo .hzh-product--pic img{filter:none;box-shadow:0 24px 48px rgba(0,0,0,.45)}
