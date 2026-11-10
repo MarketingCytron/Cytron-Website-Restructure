@@ -10,7 +10,7 @@
 <link rel="preload" href="fonts/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css?v=05cf86bf">
 <link rel="stylesheet" href="design-d.css?v=5cb0b305">
-<link rel="stylesheet" href="design-h.css?v=34">
+<link rel="stylesheet" href="design-h.css?v=35">
 <script>
 /* Design H Industry page: always shows the Industry header and nav (the saved homepage choice is not changed). */
 document.documentElement.setAttribute('data-ctx', 'industry');
@@ -108,6 +108,63 @@ document.documentElement.setAttribute('data-ctx', 'industry');
       <li data-hzs style="--d:240ms"><span class="hzs-val" data-count="10" data-suffix="-Yr">10-Yr</span><span class="hzs-lbl">Production longevity</span></li>
       <li data-hzs style="--d:320ms"><span class="hzs-val" data-count="100" data-suffix="%">100%</span><span class="hzs-lbl">Penang in-house SMT</span></li>
     </ul>
+  </div>
+</section>
+<!-- Industry page 3. Use cases (layout from the ChatGPT concept "Find Your Use Cases"; content from 5 live industrial articles on my.cytron.io/tutorial-search?post_type=A, read 10 Nov 2026) -->
+<section class="d-sec wrap hz-sec hzu" aria-labelledby="hzu-h">
+  <div class="d-head"><div><p class="eyebrow">Applications</p><h2 id="hzu-h">Connect What Matters: Find Your Use Case</h2><p class="d-head__sub">Real applications built by our engineers with IRIV controllers, each with a step-by-step guide.</p></div><div class="d-head__act"><a class="more" href="design-h-industry-articles.html">All Industry Articles <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="hzu-box" data-h-tabs>
+    <div class="hzu-tabs" role="tablist" aria-label="Use cases"><button type="button" class="hzu-tab" role="tab" id="hzu-t-mon" aria-controls="hzu-p-mon" aria-selected="true">Machine monitoring</button><button type="button" class="hzu-tab" role="tab" id="hzu-t-energy" aria-controls="hzu-p-energy" aria-selected="false" tabindex="-1">Energy monitoring</button><button type="button" class="hzu-tab" role="tab" id="hzu-t-auto" aria-controls="hzu-p-auto" aria-selected="false" tabindex="-1">Automation &amp; control</button><button type="button" class="hzu-tab" role="tab" id="hzu-t-ai" aria-controls="hzu-p-ai" aria-selected="false" tabindex="-1">Edge AI</button><button type="button" class="hzu-tab" role="tab" id="hzu-t-mes" aria-controls="hzu-p-mes" aria-selected="false" tabindex="-1">Production tracking</button></div>
+    <div class="hzu-panel" role="tabpanel" id="hzu-p-mon" aria-labelledby="hzu-t-mon">
+      <div class="hzu-copy">
+        <h3 class="hzu-h">Turn machine signals <br>into useful insights.</h3>
+        <p class="hzu-p">See how IRIV PiControl and Node-RED detect machine faults and send instant alerts, so maintenance can respond faster.</p>
+        <ul class="hzu-list"><li>Read machine fault signals at the edge</li><li>Turn error codes into messages people understand</li><li>Send instant Telegram alerts to the right person</li></ul>
+        <a class="hzu-go" href="https://my.cytron.io/tutorial/instant-machine-fault-alerts-iriv-picontrol">Read the application guide <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="hzu-prod" href="https://my.cytron.io/p-iriv-picontrol-cm4-industrial-controller"><img src="design-h/img/ind-hero-picontrol-cm5.webp" width="56" height="56" alt="" loading="lazy"><span><small>Suggested starting point</small><b>IRIV PiControl</b></span></a>
+      </div>
+      <a class="hzu-media" href="https://my.cytron.io/tutorial/instant-machine-fault-alerts-iriv-picontrol"><img src="https://static.cytron.io/image/tutorial/instant-machine-fault-alerts-iriv-picontrol/get-instant-machine-fault-alerts-with-iriv-picontrol.png" width="1280" height="720" loading="lazy" alt="Machine fault alerts application guide cover"><span class="hzu-cap">Application guide &middot; Machine fault alerts</span></a>
+    </div>
+    <div class="hzu-panel" role="tabpanel" id="hzu-p-energy" aria-labelledby="hzu-t-energy" hidden>
+      <div class="hzu-copy">
+        <h3 class="hzu-h">See machine power use <br>as it happens.</h3>
+        <p class="hzu-p">See how IRIV PiControl helps factories monitor machine electrical data in real time and support earlier maintenance.</p>
+        <ul class="hzu-list"><li>Replace manual meter checks with live data</li><li>View machine electrical data on one dashboard</li><li>Spot abnormal behaviour before it becomes downtime</li></ul>
+        <a class="hzu-go" href="https://my.cytron.io/tutorial/industrial-energy-monitoring-iriv-picontrol">Read the application guide <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="hzu-prod" href="https://my.cytron.io/p-iriv-picontrol-cm4-industrial-controller"><img src="design-h/img/ind-hero-picontrol-cm5.webp" width="56" height="56" alt="" loading="lazy"><span><small>Suggested starting point</small><b>IRIV PiControl</b></span></a>
+      </div>
+      <a class="hzu-media" href="https://my.cytron.io/tutorial/industrial-energy-monitoring-iriv-picontrol"><img src="https://static.cytron.io/image/tutorial/industrial-energy-monitoring-iriv-picontrol/real-time-industrial-energy-monitoring-with-iriv-picontrol.png" width="1280" height="720" loading="lazy" alt="Industrial energy monitoring application guide cover"><span class="hzu-cap">Application guide &middot; Industrial energy monitoring</span></a>
+    </div>
+    <div class="hzu-panel" role="tabpanel" id="hzu-p-auto" aria-labelledby="hzu-t-auto" hidden>
+      <div class="hzu-copy">
+        <h3 class="hzu-h">Bring every PLC <br>onto one dashboard.</h3>
+        <p class="hzu-p">Collect data from different PLCs in Node-RED, store it in InfluxDB and display it on one industrial dashboard with IRIV PiControl.</p>
+        <ul class="hzu-list"><li>Connect data from different PLC brands</li><li>Store readings in InfluxDB for history and trends</li><li>Access the dashboard remotely</li></ul>
+        <a class="hzu-go" href="https://my.cytron.io/tutorial/from-plc-to-dashboard-with-node-red">Read the application guide <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="hzu-prod" href="https://my.cytron.io/p-iriv-picontrol-cm4-industrial-controller"><img src="design-h/img/ind-hero-picontrol-cm5.webp" width="56" height="56" alt="" loading="lazy"><span><small>Suggested starting point</small><b>IRIV PiControl</b></span></a>
+      </div>
+      <a class="hzu-media" href="https://my.cytron.io/tutorial/from-plc-to-dashboard-with-node-red"><img src="https://static.cytron.io/image/tutorial/from-plc-to-dashboard-with-node-red/from-plc-to-dashboard-industrial-data-monitoring-with-node-red.png" width="1280" height="720" loading="lazy" alt="From PLC to dashboard application guide cover"><span class="hzu-cap">Application guide &middot; From PLC to dashboard</span></a>
+    </div>
+    <div class="hzu-panel" role="tabpanel" id="hzu-p-ai" aria-labelledby="hzu-t-ai" hidden>
+      <div class="hzu-copy">
+        <h3 class="hzu-h">Check PPE compliance <br>in every safety zone.</h3>
+        <p class="hzu-p">See how IRIV EdgeAI CM5 monitors PPE compliance within designated factory safety zones using AI computer vision.</p>
+        <ul class="hzu-list"><li>Draw PPE monitoring zones on the camera view</li><li>Detect helmets and safety vests on site, in real time</li><li>Get notified when someone enters without PPE</li></ul>
+        <a class="hzu-go" href="https://my.cytron.io/tutorial/ai-ppe-zone-monitoring-iriv-edgeai-cm5">Read the application guide <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="hzu-prod" href="https://my.cytron.io/p-iriv-edge-ai-cm5"><img src="design-h/img/ind-hero-edgeai-cm5.webp" width="56" height="56" alt="" loading="lazy"><span><small>Suggested starting point</small><b>IRIV EdgeAI CM5</b></span></a>
+      </div>
+      <a class="hzu-media" href="https://my.cytron.io/tutorial/ai-ppe-zone-monitoring-iriv-edgeai-cm5"><img src="https://static.cytron.io/image/tutorial/ai-ppe-zone-monitoring-iriv-edgeai-cm5/ai-ppe-zone-monitoring-with-iriv-edgeai-cm5.png" width="1280" height="720" loading="lazy" alt="AI PPE zone monitoring application guide cover"><span class="hzu-cap">Application guide &middot; AI PPE zone monitoring</span></a>
+    </div>
+    <div class="hzu-panel" role="tabpanel" id="hzu-p-mes" aria-labelledby="hzu-t-mes" hidden>
+      <div class="hzu-copy">
+        <h3 class="hzu-h">Track production jobs <br>on a simple MES.</h3>
+        <p class="hzu-p">See how IRIV SmartHub CM5 and Node-RED support a simple MES-style system for tracking production jobs, status and performance.</p>
+        <ul class="hzu-list"><li>Create production jobs and track their status</li><li>Show production summaries and indicators</li><li>Measure cycle time per SKU and OEE</li></ul>
+        <a class="hzu-go" href="https://my.cytron.io/tutorial/iriv-smarthub-cm5-simple-mes-system">Read the application guide <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="hzu-prod" href="https://my.cytron.io/p-iriv-smarthub-cm5"><img src="design-h/img/ind-hero-smarthub-cm5.webp" width="56" height="56" alt="" loading="lazy"><span><small>Suggested starting point</small><b>IRIV SmartHub CM5</b></span></a>
+      </div>
+      <a class="hzu-media" href="https://my.cytron.io/tutorial/iriv-smarthub-cm5-simple-mes-system"><img src="https://static.cytron.io/image/tutorial/iriv-smarthub-cm5-simple-mes-system/can-iriv-smarthub-cm5-create-mes-system.png" width="1280" height="720" loading="lazy" alt="Simple MES with SmartHub CM5 application guide cover"><span class="hzu-cap">Application guide &middot; Simple MES with SmartHub CM5</span></a>
+    </div>
   </div>
 </section>
 <!-- Industry page. Promo tiles (moved from the Industry homepage on 3 Nov: IRIV EdgeAI CM5, IRIV SmartHub CM5, Jetson workshop, Cytron workshops) -->
