@@ -611,3 +611,16 @@ a.hz-valc:hover .hz-valc__more svg{transform:translateX(3px)}
   .hzu-media{order:-1}
   .hzu-h br{display:none}
 }
+
+/* ===== Industry page 4: Find Your Way to Work with Cytron (from Design F, 10 Nov) ===== */
+.hzw-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.hzw-card{display:flex;flex-direction:column;gap:12px;padding:26px;border:1px solid var(--line);border-radius:10px;background:#fff;min-width:0;transition:border-color .2s,box-shadow .2s}
+.hzw-card:hover{border-color:#cfe3ec;box-shadow:0 6px 18px rgba(16,24,40,.06)}
+.hzw-card>svg{width:34px;height:34px;color:var(--brand-ink)}
+.hzw-who{margin:6px 0 0;font-size:12.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hzw-card h3{margin:0;font-size:20px;line-height:1.3;color:var(--ink)}
+.hzw-ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.hzw-ticks li{position:relative;padding-left:24px;font-size:15px;line-height:1.5;color:var(--text)}
+.hzw-ticks li::before{content:"";position:absolute;left:2px;top:7px;width:11px;height:6px;border-left:2px solid var(--brand);border-bottom:2px solid var(--brand);transform:rotate(-45deg)}
+.hzw-card .btns{margin-top:auto;padding-top:8px}
+@media (max-width:900px){.hzw-grid{grid-template-columns:minmax(0,1fr)}.hzw-card h3 br{display:none}}
