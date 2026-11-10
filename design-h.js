@@ -394,7 +394,6 @@
     var n = D.nodes[k]; if (!n) return;
     nodes.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-node') === k ? 'true' : 'false'); });
     panel.innerHTML = '';
-    panel.appendChild(el('p', 'eco__role', n.role));
     panel.appendChild(el('h3', 'eco__title', n.title));
     panel.appendChild(el('p', 'eco__text', n.text));
     var ul = el('ul', 'eco__items');
