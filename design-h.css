@@ -872,3 +872,29 @@ a.hz-valc:hover .hz-valc__more svg{transform:translateX(3px)}
 /* Success stories: solution tag on each card */
 .d-tc__img{position:relative}
 .hzt-tag{position:absolute;left:10px;top:10px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--primary);font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+
+/* ===== IRIV Series landing page (design-h-iriv.html, 11 Nov) ===== */
+.hzi-crumb{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;font-size:13.5px;color:var(--muted)}
+.hzi-crumb a{color:var(--primary);text-decoration:none}
+.hzi-crumb a:hover{text-decoration:underline}
+.hzp-group{margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}
+.hzp-group:first-of-type{margin-top:8px;padding-top:0;border-top:0}
+.hzp-ghead{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);column-gap:32px;align-items:baseline;margin-bottom:16px}
+.hzp-ghead small{grid-column:1;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--primary)}
+.hzp-ghead h3{grid-column:1;margin:4px 0 0;font-size:22px;color:var(--ink)}
+.hzp-ghead p{grid-column:2;grid-row:1/3;margin:0;font-size:15px;line-height:1.6;color:var(--muted);align-self:center}
+.hzp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.hzp-card{display:flex;gap:16px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:inherit;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.hzp-card:hover{border-color:var(--primary);box-shadow:0 8px 20px rgba(16,24,40,.07)}
+.hzp-card:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.hzp-img{flex:0 0 108px;height:108px;display:flex;align-items:center;justify-content:center}
+.hzp-img img{max-width:100%;max-height:100%;object-fit:contain}
+.hzp-body{display:flex;flex-direction:column;gap:6px;min-width:0}
+.hzp-body b{font-size:16px;color:var(--ink)}
+.hzp-spec{font-size:13.5px;line-height:1.5;color:var(--muted)}
+.hzp-tags{display:flex;flex-wrap:wrap;gap:6px}
+.hzp-tags span{padding:2px 9px;border-radius:999px;background:var(--tint);color:var(--brand-ink);font-size:12px;font-weight:500}
+.hzp-go{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--primary)}
+.hzk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1023px){.hzp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hzk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.hzp-ghead{grid-template-columns:minmax(0,1fr)}.hzp-ghead p{grid-column:1;grid-row:auto;margin-top:6px}.hzp-grid,.hzk-grid{grid-template-columns:minmax(0,1fr)}}
