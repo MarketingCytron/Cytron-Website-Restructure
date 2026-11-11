@@ -805,3 +805,24 @@ a.hz-valc:hover .hz-valc__more svg{transform:translateX(3px)}
 /* Ecosystem without prices (11 Nov): a small arrow shows each line opens the product page */
 .eco__item-go{flex:none;color:var(--muted);transition:transform .2s,color .2s}
 .eco__item:hover .eco__item-go{color:var(--primary);transform:translateX(3px)}
+
+/* Industry page 6 simplified (11 Nov): one clickable card to the Custom Design & Manufacturing page */
+.hzc-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);align-items:center;gap:40px;padding:36px 40px;border:1px solid var(--line);border-radius:14px;background:#fff;color:inherit;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.hzc-card:hover{border-color:var(--primary);box-shadow:0 10px 28px rgba(16,24,40,.08)}
+.hzc-card:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+.hzc-card__text{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.hzc-card__h{display:block;font-size:32px;line-height:1.25;font-weight:700;color:var(--ink);text-wrap:balance}
+.hzc-card__p{display:block;max-width:560px;font-size:16px;line-height:1.6;color:var(--muted)}
+.hzc-card__btn{margin-top:6px;gap:10px;max-width:100%;height:auto;min-height:44px;padding-top:10px;padding-bottom:10px;white-space:normal;text-align:left;line-height:1.3}
+.hzc-card__btn svg{transition:transform .2s}
+.hzc-card:hover .hzc-card__btn{background:var(--cta-hover);border-color:var(--cta-hover)}
+.hzc-card:hover .hzc-card__btn svg{transform:translateX(3px)}
+.hzc-card__img{display:block}
+.hzc-card__img img{display:block;width:100%;max-width:340px;height:auto;margin-left:auto;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.hzc-card:hover .hzc-card__img img{transform:scale(1.03)}
+@media (max-width:900px){
+  .hzc-card{grid-template-columns:minmax(0,1fr);gap:20px;padding:24px}
+  .hzc-card__img{order:-1}
+  .hzc-card__img img{max-width:260px;margin:0 auto}
+  .hzc-card__h{font-size:26px}
+}
