@@ -188,8 +188,9 @@
 // ---- Add to Cart (mockup): counts on the header cart icon and shows a short message.
 // Products with options (price ends in "++") link to the product page instead, as on the live site.
 (function () {
+  // Delegated, so buttons added later (for example by the AI assistant) also work.
   var btns = document.querySelectorAll('[data-h-cart]');
-  if (!btns.length && !document.querySelector('[data-h-notify]')) return;
+  if (!btns.length && !document.querySelector('[data-h-notify]') && !document.querySelector('[data-h-ai]')) return;
   var ico = document.querySelector('[data-h-cartico]');
   var toast = document.querySelector('.hz-toast'), tt, count = 0, badge = null;
   function say(msg) {
@@ -197,8 +198,10 @@
     toast.textContent = msg; toast.hidden = false;
     clearTimeout(tt); tt = setTimeout(function () { toast.hidden = true; }, 2600);
   }
-  btns.forEach(function (b) {
-    b.addEventListener('click', function (e) {
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-h-cart]');
+    if (!b) return;
+    (function () {
       e.preventDefault(); e.stopPropagation();
       count++;
       if (ico) {
@@ -210,7 +213,7 @@
       b.classList.add('is-added'); if (label) label.textContent = 'Added';
       setTimeout(function () { b.classList.remove('is-added'); if (label) label.textContent = 'Add to Cart'; }, 1600);
       say('Added to cart: ' + b.getAttribute('data-h-cart') + ' (mockup only)');
-    });
+    })();
   });
   // Out of stock: Notify Me (mockup: confirms only; the live site would ask for an email)
   document.querySelectorAll('[data-h-notify]').forEach(function (b) {
