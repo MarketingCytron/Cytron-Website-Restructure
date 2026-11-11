@@ -910,3 +910,5 @@ a.hz-valc:hover .hz-valc__more svg{transform:translateX(3px)}
 .hzr-quote figcaption small{display:block;font-size:13.5px;color:var(--muted)}
 @media (max-width:1023px){.hzr-quotes{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.hzr-quotes{grid-template-columns:1fr}}
+/* Reviewer photos (11 Nov): cropped from the live IRIV testimonial images (1080x1350, photo circle ~360px wide at --cx/--cy) */
+.hzr-av--photo{--a:56;width:56px;height:56px;background-color:#fff;background-image:var(--img);background-repeat:no-repeat;background-size:calc(1080px * var(--a) / 340) auto;background-position:calc((170 - var(--cx)) * var(--a) / 340 * 1px) calc((170 - var(--cy)) * var(--a) / 340 * 1px);box-shadow:0 0 0 2px #fff,0 0 0 3px var(--line)}
