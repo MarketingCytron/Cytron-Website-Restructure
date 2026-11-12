@@ -1042,3 +1042,37 @@ a.hai__cart:hover{background:var(--cta);color:#fff}
 }
 html.hai-open .hz-toast{bottom:140px}
 html.hai-open [data-h-mock]{display:none}
+
+/* ---------- 12 Nov: homepage selling sections ---------- */
+/* Industry Deals strip */
+.hz-deals__box{padding:24px 24px 20px;border:1px solid #F6D3BF;border-radius:12px;background:linear-gradient(180deg,#FFF6F0 0,#fff 70%)}
+.hz-deals .eyebrow{color:var(--cta)}
+.hz-deals .eyebrow::before{background:linear-gradient(var(--cta),var(--cta)) left center/22px 1.5px no-repeat,radial-gradient(circle,var(--cta) 3px,transparent 3.6px) right center/8px 8px no-repeat}
+.hz-deals .d-badge--off{background:var(--cta);border-color:var(--cta)}
+.hz-deals .d-pc__price s{margin-left:6px}
+@media (max-width:600px){.hz-deals__box{padding:18px 14px 14px;margin:0 -8px}}
+/* NVIDIA row */
+.hz-nv__eb img{width:22px;height:22px;border-radius:4px;object-fit:contain}
+/* Shop this solution (inside the Solutions tabs) */
+.hz-solp{grid-column:1 / -1;margin-top:-6px;padding-top:4px;border-top:1px solid var(--line)}
+.hz-solp .hz-sol2__h{margin-top:14px}
+.hz-solp__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hz-solp__c{display:flex;gap:10px;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff;transition:border-color .2s}
+.hz-solp__c:hover{border-color:var(--brand)}
+.hz-solp__img{flex:none;width:64px;height:64px;border-radius:6px;overflow:hidden;background:#fff}
+.hz-solp__img img{width:100%;height:100%;object-fit:contain}
+.hz-solp__b{display:flex;flex-direction:column;justify-content:space-between;gap:6px;min-width:0;flex:1}
+.hz-solp__n{font-size:13px;font-weight:600;line-height:1.35;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hz-solp__n:hover{color:var(--primary);text-decoration:underline}
+.hz-solp__row{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.hz-solp__pr{font-size:14px;color:var(--ink)}
+.hz-solp__btn.hz-cart{width:auto;height:32px;margin:0;padding:0 10px;font-size:12.5px}
+.hz-solp__btn svg{width:14px;height:14px}
+@media (max-width:1100px){.hz-solp__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.hz-solp__grid{grid-template-columns:minmax(0,1fr)}.hz-solp__btn.hz-cart svg{display:inline}}
+/* Kits & Training heading sits above the tabs */
+.hz-kits__head{margin-bottom:6px}
+/* Industry page: Learn with Cytron (workshop posters are square) */
+@media (min-width:1101px){.hz-deals .hz-pcar{--n:5}}
+.hz-pc .d-pc__price:has(s){display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px}
+.hz-pc .d-pc__price s{margin-left:0;white-space:nowrap}
