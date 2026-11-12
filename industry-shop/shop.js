@@ -42,8 +42,8 @@
 
   function card(p) {
     const tour = SHOP_TOURS[p.u];
-    const badge = p.badge ? `<span class="s-badge${p.badge === 'Out of stock' ? ' s-badge--out' : p.badge === 'New' ? ' s-badge--new' : ''}">${p.badge}</span>` : '';
-    return `<article class="s-card">${badge}<a class="s-card__img" href="${tour || url(p)}"${tour ? '' : ' target="_blank" rel="noopener"'}><img src="${SHOP_IMG + p.i}" alt="" loading="lazy" width="268" height="268"></a>
+    const badge = p.badge ? `<span class="s-badge${p.badge === 'Out of stock' || p.badge === 'Enquiry' ? ' s-badge--out' : p.badge === 'New' ? ' s-badge--new' : ''}">${p.badge}</span>` : '';
+    return `<article class="s-card">${badge}<a class="s-card__img" href="${tour || url(p)}"${tour ? '' : ' target="_blank" rel="noopener"'} tabindex="-1" aria-hidden="true"><img src="${SHOP_IMG + p.i}" alt="" loading="lazy" width="268" height="268"></a>
       <div class="s-card__body"><span class="s-card__brand">${p.b === 'Other' ? '&nbsp;' : p.b}</span>
       <a class="s-card__name" href="${url(p)}" target="_blank" rel="noopener" title="${esc(p.n)}">${esc(p.n)}</a><span class="s-card__sub">${p.t}</span>
       <div class="s-card__price">${p.from ? '<small>From </small>' : ''}${rm(p.p)}${p.old ? `<s>${rm(p.old)}</s>` : ''}</div>
