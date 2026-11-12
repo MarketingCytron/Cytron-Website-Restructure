@@ -429,3 +429,72 @@
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) map.classList.add('eco--still');
   showScenario('');
 })();
+
+/* Homepage hero slider (12 Nov). The active dot's progress bar drives auto-advance (animationend), like the Industry page hero. */
+(function () {
+  [].forEach.call(document.querySelectorAll('[data-hz-slider]'), function (sl) {
+    var slides = [].slice.call(sl.querySelectorAll('.hz-sl__slide'));
+    var dots = [].slice.call(sl.querySelectorAll('.hz-sl__dot'));
+    var pause = sl.querySelector('.hz-sl__pause');
+    var track = sl.querySelector('.hz-sl__track');
+    if (slides.length < 2) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var cur = 0, userPaused = false, hoverPaused = false;
+    function sync() {
+      var p = userPaused || hoverPaused || document.hidden;
+      sl.classList.toggle('is-paused', p);
+      track.setAttribute('aria-live', userPaused || reduce ? 'polite' : 'off');
+    }
+    function show(i) {
+      cur = (i + slides.length) % slides.length;
+      slides.forEach(function (s, k) {
+        var on = k === cur;
+        s.classList.toggle('is-active', on);
+        if (on) { s.removeAttribute('aria-hidden'); s.inert = false; } else { s.setAttribute('aria-hidden', 'true'); s.inert = true; }
+      });
+      dots.forEach(function (d, k) {
+        var b = d.querySelector('b');
+        if (k === cur) { d.setAttribute('aria-current', 'true'); b.style.animation = 'none'; void b.offsetWidth; b.style.animation = ''; }
+        else d.removeAttribute('aria-current');
+      });
+    }
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { show(i); });
+      d.querySelector('b').addEventListener('animationend', function (e) {
+        if (e.animationName === 'hzSlProg' && d.getAttribute('aria-current') === 'true') show(cur + 1);
+      });
+    });
+    sl.querySelector('[data-hz-sl-prev]').addEventListener('click', function () { show(cur - 1); });
+    sl.querySelector('[data-hz-sl-next]').addEventListener('click', function () { show(cur + 1); });
+    sl.addEventListener('keydown', function (e) {
+      if (e.target.closest('.hz-sl__nav') && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+        e.preventDefault(); show(cur + (e.key === 'ArrowRight' ? 1 : -1)); dots[cur].focus();
+      }
+    });
+    if (reduce) {
+      pause.hidden = true;
+    } else {
+      sl.classList.add('is-auto');
+      pause.addEventListener('click', function () {
+        userPaused = !userPaused;
+        pause.setAttribute('aria-pressed', String(userPaused));
+        pause.setAttribute('aria-label', userPaused ? 'Play slideshow' : 'Pause slideshow');
+        sync();
+      });
+      sl.addEventListener('mouseenter', function () { hoverPaused = true; sync(); });
+      sl.addEventListener('mouseleave', function () { hoverPaused = false; sync(); });
+      sl.addEventListener('focusin', function () { hoverPaused = true; sync(); });
+      sl.addEventListener('focusout', function (e) { if (!sl.contains(e.relatedTarget)) { hoverPaused = false; sync(); } });
+      document.addEventListener('visibilitychange', sync);
+    }
+    var tx = null, ty = null;
+    track.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (tx === null) return;
+      var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { e.preventDefault(); show(cur + (dx < 0 ? 1 : -1)); }
+    });
+    sync();
+    show(0);
+  });
+})();

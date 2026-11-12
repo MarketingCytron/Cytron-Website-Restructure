@@ -1143,3 +1143,49 @@ html.hai-open [data-h-mock]{display:none}
 .hzf-more a:hover{text-decoration:underline}
 @media (max-width:900px){.hzf-grid{grid-template-columns:minmax(0,1fr);gap:20px}.hzf-intro{position:static}.hzf-intro h2{font-size:24px}.hzf-q summary{font-size:16px}.hzf-a{padding-right:4px}}
 @media (prefers-reduced-motion:reduce){.hzf-ic::before,.hzf-ic::after{transition:none}}
+
+/* ===== Homepage hero slider (12 Nov): live Industry carousel banners in the hz-bn template ===== */
+.hz-vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.hz-sl{position:relative;min-width:0;border-radius:14px;overflow:hidden;transition:box-shadow .25s}
+.hz-sl:hover{box-shadow:0 14px 34px rgba(14,37,51,.22)}
+.hz-sl__track{display:grid}
+.hz-sl__slide{grid-area:1/1;min-width:0;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s}
+.hz-sl__slide.is-active{opacity:1;visibility:visible;transition:opacity .6s ease,visibility 0s}
+.hz-sl .hz-bn{border-radius:0}
+.hz-sl .hz-bn:hover{box-shadow:none;transform:none}
+.hz-sl .hz-bn:focus-visible{outline-offset:-4px}
+/* light slides: product photos on white melt into the background */
+.hz-bn[data-text="dark"]{background-color:#EEF3F6;background-blend-mode:multiply,normal,normal}
+.hz-bn__tag{display:inline-block;max-width:100%;margin-bottom:clamp(8px,1.6cqw,14px);padding:4px 10px;border-radius:4px;background:var(--cta);color:#fff;font-size:clamp(11px,1.4cqw,13px);font-weight:700;letter-spacing:.02em;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hz-bn[data-text="dark"] .hz-bn__tag{background:var(--primary)}
+.hz-sl .hz-bn--hero .hz-bn__text{top:11%}
+/* arrows */
+.hz-sl__arrow{position:absolute;top:50%;z-index:3;display:grid;place-items:center;width:42px;height:42px;margin-top:-21px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink,#3C3C3B);box-shadow:0 4px 14px rgba(14,37,51,.18);cursor:pointer;opacity:0;transition:opacity .2s,background .2s}
+.hz-sl__arrow--prev{left:14px}
+.hz-sl__arrow--next{right:14px}
+.hz-sl:hover .hz-sl__arrow,.hz-sl__arrow:focus-visible{opacity:1}
+.hz-sl__arrow:hover{background:#fff;color:var(--primary)}
+.hz-sl__arrow:focus-visible,.hz-sl__dot:focus-visible,.hz-sl__pause:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+@media (hover:none){.hz-sl__arrow{display:none}}
+/* dots with progress + pause */
+.hz-sl__nav{position:absolute;left:50%;bottom:14px;z-index:3;display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;background:rgba(14,37,51,.42);transform:translateX(-50%);backdrop-filter:blur(4px)}
+.hz-sl__dot{position:relative;width:8px;height:8px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.55);cursor:pointer;overflow:hidden;transition:width .3s,background .2s}
+.hz-sl__dot:hover{background:#fff}
+.hz-sl__dot[aria-current="true"]{width:30px;background:rgba(255,255,255,.4)}
+.hz-sl__dot b{position:absolute;inset:0;width:0;background:#fff;border-radius:inherit}
+.hz-sl__dot[aria-current="true"] b{width:100%}
+.hz-sl.is-auto .hz-sl__dot[aria-current="true"] b{width:auto;right:100%;animation:hzSlProg 6s linear forwards}
+.hz-sl.is-auto.is-paused .hz-sl__dot b{animation-play-state:paused}
+@keyframes hzSlProg{to{right:0}}
+.hz-sl__pause{display:grid;place-items:center;width:20px;height:20px;margin-left:2px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;cursor:pointer}
+.hz-sl__pause:hover{background:rgba(255,255,255,.32)}
+.hz-sl__pause .i-play{display:none}
+.hz-sl__pause[aria-pressed="true"] .i-play{display:inline}
+.hz-sl__pause[aria-pressed="true"] .i-pause{display:none}
+@media (max-width:600px){
+  .hz-sl .hz-bn--hero .hz-bn__text{top:6%}
+  .hz-sl .hz-bn[data-btn-pos] .hz-bn__btn{bottom:calc(6% + 34px)}
+  .hz-sl .hz-bn--hero{background-position:right 7% bottom calc(21% + 30px),center,center}
+  .hz-sl__nav{bottom:10px}
+}
+@media (prefers-reduced-motion:reduce){.hz-sl__slide,.hz-sl__slide.is-active{transition:none}.hz-sl__dot{transition:none}}

@@ -10,7 +10,7 @@
 <link rel="preload" href="fonts/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css?v=05cf86bf">
 <link rel="stylesheet" href="design-d.css?v=5cb0b305">
-<link rel="stylesheet" href="design-h.css?v=55">
+<link rel="stylesheet" href="design-h.css?v=56">
 <script>
 /* Design H: one address, three homepages. Pick the mode before the page paints. */
 (function () {
@@ -77,13 +77,75 @@
      Small banners have 2 layouts (data-layout="a": words left, image right; "b": image left, words right).
      In this mockup the background is built from a colour fill (--bn-bg) + product photo (--bn-art); on the real site it is one designed image in --bn-bg. -->
 <section class="wrap hz-bns" data-for="industry store" aria-label="Featured">
-  <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/IRIV-PiControl" data-text="light" data-btn-color="orange" data-btn-pos="1"
-     style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(0,164,219,.30) 0,rgba(0,164,219,0) 70%),linear-gradient(120deg,#0E2533 0%,#14384C 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/V-IRIV-PICONTROL/iriv-pi-control-b-800x800.png)">
-    <div class="hz-bn__text">
-      <h1 class="hz-bn__main">IRIV PiControl CM4 / CM5 Industrial Edge Controller</h1>
-      <span class="hz-bn__sub"><span>Raspberry Pi CM4 / CM5</span><span>Node-RED</span><span>DIN rail mount</span></span></div>
-    <span class="hz-bn__btn">Explore IRIV PiControl</span>
-  </a>
+  <h1 class="hz-vh">Cytron Industry Store: industrial controllers, sensors, networking and AI hardware</h1>
+  <!-- Hero slider (12 Nov): the 5 banners from the live my.cytron.io Industry homepage carousel, redrawn in this banner template.
+       Each slide is one hero banner (same rules as above) plus an optional short label (.hz-bn__tag, max 32 characters).
+       Light slides (data-text="dark") use a product photo on white; the photo is blended into the background (multiply).
+       Auto-advances every 6 s; pauses on hover, keyboard focus, the pause button, or a hidden tab; no auto-play with reduced motion. -->
+  <div class="hz-sl" data-hz-slider role="region" aria-roledescription="carousel" aria-label="Featured products">
+    <div class="hz-sl__track" aria-live="off">
+      <div class="hz-sl__slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 5: IRIV EdgeAI Safety Box">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/iriv-edgeai-safety-box" data-text="light" data-btn-color="orange" data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(0,164,219,.30) 0,rgba(0,164,219,0) 70%),linear-gradient(120deg,#0E2533 0%,#14384C 100%);--bn-art:url(https://static.cytron.io/image/catalog/cms-block/iriv-edge-ai-safety-box/iriv-edgeai-controller.png)">
+          <div class="hz-bn__text">
+            <span class="hz-bn__tag">IRIV EdgeAI Safety Box</span>
+            <h2 class="hz-bn__main">Know your PPE compliance. In real time.</h2>
+            <span class="hz-bn__sub"><span>Helmet &amp; hi-vis detection</span><span>Works with your existing CCTV</span><span>Every shift</span></span></div>
+          <span class="hz-bn__btn">Learn More</span>
+        </a>
+      </div>
+      <div class="hz-sl__slide" role="group" aria-roledescription="slide" aria-label="2 of 5: Cellular HAT for Raspberry Pi">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/4g-5g-cellular-raspberry-pi-hat-with-antenna" data-text="dark" data-btn-color="blue" data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(0,164,219,.22) 0,rgba(255,255,255,0) 70%),linear-gradient(120deg,#F5F8FA 0%,#E6EEF3 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/V-HAT-EBD0/npi-product-20-800x800.png)">
+          <div class="hz-bn__text">
+            <span class="hz-bn__tag">No WiFi? No problem.</span>
+            <h2 class="hz-bn__main">Teltonika 4G/5G Cellular HAT for Raspberry Pi</h2>
+            <span class="hz-bn__sub"><span>4G &amp; 5G high-speed internet</span><span>Raspberry Pi 4 &amp; 5</span><span>Antennas by Cytron</span></span></div>
+          <span class="hz-bn__btn">Buy Now</span>
+        </a>
+      </div>
+      <div class="hz-sl__slide" role="group" aria-roledescription="slide" aria-label="3 of 5: Raspberry Pi 4 Model B 3GB">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-raspberry-pi-4-model-b-3gb" data-text="dark" data-btn-color="orange" data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(197,26,74,.14) 0,rgba(255,255,255,0) 70%),linear-gradient(120deg,#F5F8FA 0%,#E6EEF3 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/RASPBERRY-PI-4B-3G/raspberry-pi-4b-3g-b-800x800.jpg)">
+          <div class="hz-bn__text">
+            <span class="hz-bn__tag">Raspberry Pi Approved Reseller</span>
+            <h2 class="hz-bn__main">Code, build, automate and create with Raspberry Pi 4 Model B</h2>
+            <span class="hz-bn__sub"><span>3GB RAM</span><span>Ready stock</span><span>Now in Malaysia</span></span></div>
+          <span class="hz-bn__btn">Get Yours Now</span>
+        </a>
+      </div>
+      <div class="hz-sl__slide" role="group" aria-roledescription="slide" aria-label="4 of 5: Raspberry Pi Touch Display 2">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-raspberry-pi-10.1-inch-dsi-touch-screen-display-2" data-text="dark" data-btn-color="blue" data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(197,26,74,.12) 0,rgba(255,255,255,0) 70%),linear-gradient(120deg,#F5F8FA 0%,#E6EEF3 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/RPI-TD2-10/rpi-td2-10-800x800.png)">
+          <div class="hz-bn__text">
+            <span class="hz-bn__tag">New launch &middot; Raspberry Pi Touch Display 2</span>
+            <h2 class="hz-bn__main">Larger screen. Better control.</h2>
+            <span class="hz-bn__sub"><span>10.1&Prime; portrait display</span><span>10-point multi-touch</span><span>1200 &times; 1920</span><span>For Raspberry Pi 5 &amp; CM</span></span></div>
+          <span class="hz-bn__btn">Learn More</span>
+        </a>
+      </div>
+      <div class="hz-sl__slide" role="group" aria-roledescription="slide" aria-label="5 of 5: iMD16 Industrial Motor Driver">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-16amp-7-30v-industrial-dc-motor-driver" data-text="dark" data-btn-color="orange" data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(232,89,12,.14) 0,rgba(255,255,255,0) 70%),linear-gradient(120deg,#F5F8FA 0%,#E6EEF3 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/IMD16/imd16-a-800x800.png)">
+          <div class="hz-bn__text">
+            <span class="hz-bn__tag">New &middot; Industrial Series</span>
+            <h2 class="hz-bn__main">iMD16 Industrial Motor Driver, ready to install</h2>
+            <span class="hz-bn__sub"><span>16A, 7&ndash;30V DC</span><span>Metal enclosure</span><span>Built-in controls</span></span></div>
+          <span class="hz-bn__btn">Explore Now</span>
+        </a>
+      </div>
+    </div>
+    <button type="button" class="hz-sl__arrow hz-sl__arrow--prev" data-hz-sl-prev aria-label="Previous slide"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" class="hz-sl__arrow hz-sl__arrow--next" data-hz-sl-next aria-label="Next slide"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="hz-sl__nav">
+      <button type="button" class="hz-sl__dot" aria-label="Show slide 1: IRIV EdgeAI Safety Box" aria-current="true"><b></b></button>
+      <button type="button" class="hz-sl__dot" aria-label="Show slide 2: Cellular HAT for Raspberry Pi"><b></b></button>
+      <button type="button" class="hz-sl__dot" aria-label="Show slide 3: Raspberry Pi 4 Model B 3GB"><b></b></button>
+      <button type="button" class="hz-sl__dot" aria-label="Show slide 4: Raspberry Pi Touch Display 2"><b></b></button>
+      <button type="button" class="hz-sl__dot" aria-label="Show slide 5: iMD16 Industrial Motor Driver"><b></b></button>
+      <button type="button" class="hz-sl__pause" aria-label="Pause slideshow" aria-pressed="false"><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path class="i-pause" d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/><path class="i-play" d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
   <div class="hz-bns__side">
     <a class="hz-bn hz-bn--small" href="https://my.cytron.io/iriv-edgeai-cm5-industrial-edge-ai-controller" data-text="light" data-layout="a"
        style="--bn-bg:radial-gradient(55% 90% at 80% 50%,rgba(0,164,219,.28) 0,rgba(0,164,219,0) 70%),linear-gradient(120deg,#0E2533 0%,#14384C 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/V-IRIV-EAI5/iriv-edgeai-cm5-view-1-1-800x800.png)">
@@ -175,7 +237,7 @@
 <div class="hz-toast" role="status" aria-live="polite" hidden></div>
 <script src="site.js?v=9b181a09"></script>
 <script src="design-d.js?v=e11920b8"></script>
-<script src="design-h.js?v=16"></script>
+<script src="design-h.js?v=17"></script>
 <script src="design-h-ai.js?v=4"></script>
 </body>
 </html>
