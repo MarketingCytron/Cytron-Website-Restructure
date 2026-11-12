@@ -1119,3 +1119,27 @@ html.hai-open [data-h-mock]{display:none}
 .d-badge--enq{background:#FFF7E6;color:#8A5A00;border-color:#F3D9A4}
 .hz-enq{display:inline-block;align-self:flex-start;padding:1px 7px;border-radius:3px;background:#FFF7E6;color:#8A5A00;border:1px solid #F3D9A4;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.6}
 .hz-solp__row .hz-enq{margin-right:auto}
+
+/* ---------- 12 Nov: Industry page buyer FAQ ---------- */
+.hzf-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:48px;align-items:start}
+.hzf-intro{position:sticky;top:110px}
+.hzf-intro h2{margin-top:6px;font-size:30px;line-height:1.2;color:var(--ink)}
+.hzf-intro .d-head__sub{margin-top:10px}
+.hzf-intro .btn{margin-top:20px}
+.hzf-alt{margin-top:12px;font-size:14px;color:var(--muted)}
+.hzf-alt a{color:var(--primary);font-weight:600}
+.hzf-list{border-top:1px solid var(--line)}
+.hzf-q{border-bottom:1px solid var(--line)}
+.hzf-q summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 4px;cursor:pointer;list-style:none;font-size:17px;font-weight:600;line-height:1.4;color:var(--ink)}
+.hzf-q summary::-webkit-details-marker{display:none}
+.hzf-q summary:hover{color:var(--primary)}
+.hzf-ic{position:relative;flex:none;width:28px;height:28px;border-radius:50%;background:var(--tint)}
+.hzf-ic::before,.hzf-ic::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;background:var(--primary);border-radius:1px;transition:transform .2s}
+.hzf-ic::after{transform:rotate(90deg)}
+.hzf-q[open] .hzf-ic::after{transform:rotate(0)}
+.hzf-a{padding:0 44px 20px 4px;color:var(--text);font-size:15.5px;line-height:1.65}
+.hzf-more{margin-top:8px;font-size:14px}
+.hzf-more a{color:var(--primary);font-weight:600}
+.hzf-more a:hover{text-decoration:underline}
+@media (max-width:900px){.hzf-grid{grid-template-columns:minmax(0,1fr);gap:20px}.hzf-intro{position:static}.hzf-intro h2{font-size:24px}.hzf-q summary{font-size:16px}.hzf-a{padding-right:4px}}
+@media (prefers-reduced-motion:reduce){.hzf-ic::before,.hzf-ic::after{transition:none}}
