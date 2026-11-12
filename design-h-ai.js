@@ -10,7 +10,7 @@
   var IMG = 'https://static.cytron.io/image/cache/catalog/products/';
   var P = {
     ioc_mqtt: { n: 'IRIV IO Controller MQTT', p: 'RM334.95', u: 'https://my.cytron.io/p-iriv-io-controller-mqtt-ir4.0-industrial-i-o-controller-with-mqtt-ready', i: IMG + 'IRIV-IOC-MQTT/ppp3.1-268x268.png' },
-    acrel: { n: 'Acrel ADL Power Meter', p: '', u: 'https://my.cytron.io/acrel/p-adl-power-meter', i: IMG + 'V-ADL-PMETER/v-adl-pmeter-main-800x800.jpg' },
+    acrel: { n: 'Acrel ADL Power Meter', p: 'RM149.00++', u: 'https://my.cytron.io/p-adl-power-meter', i: IMG + 'V-ADL-PMETER/v-adl-pmeter-main-800x800.jpg' },
     rs485usb: { n: 'USB to RS485 Converter', p: 'RM29.00', u: 'https://my.cytron.io/p-usb-to-rs485-converter', i: IMG + 'CA-RS485-USB/ca-rs485-usb-a-268x268.jpg' },
     ug56: { n: 'UG56 Industrial LoRaWAN® Gateway', p: 'RM998.75', u: 'https://my.cytron.io/p-ug56-industrial-lorawan-gateway-without-cellular', i: IMG + 'LR-UG56-NC/lr56-h-268x268.png' },
     uc100: { n: 'UC100 IoT Controller (Modbus RTU to LoRaWAN)', p: 'RM223.85++', u: 'https://my.cytron.io/p-uc100-iot-controller-modbus-rtu-to-lorawan', i: IMG + 'V-LR-UC100/milesight-uc100-002-800x800-268x268.jpg' },
