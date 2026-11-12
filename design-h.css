@@ -1112,3 +1112,5 @@ html.hai-open [data-h-mock]{display:none}
 @media (max-width:600px){.hz-bs__car.hz-pcar{--n:2}.hz-bs__h{font-size:11.5px}}
 /* Shop by Category: 14 cards = 2 rows of 7 on wide screens */
 @media (min-width:1101px){.si-jobs{grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}.si-job__img{height:116px}.si-job__img img{height:92px}.si-job__txt{padding:10px 12px 12px}.si-job__txt b{font-size:14px}}
+.si-job__txt small{font-size:10.5px;letter-spacing:.06em;line-height:1.3}
+@media (max-width:600px){.si-job__txt small{font-size:9.5px;letter-spacing:.03em}}
