@@ -1076,3 +1076,11 @@ html.hai-open [data-h-mock]{display:none}
 @media (min-width:1101px){.hz-deals .hz-pcar{--n:5}}
 .hz-pc .d-pc__price:has(s){display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px}
 .hz-pc .d-pc__price s{margin-left:0;white-space:nowrap}
+/* 12 Nov: 15 categories, so phones show 3 compact cards per row */
+@media (max-width:600px){
+  .si-jobs{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .si-job__img{height:84px;padding:8px}.si-job__img img{height:68px}
+  .si-job__txt{padding:8px 8px 10px}
+  .si-job__txt b{font-size:12.5px}
+  .si-job__txt span{font-size:11.5px}
+}
