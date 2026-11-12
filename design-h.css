@@ -1114,3 +1114,8 @@ html.hai-open [data-h-mock]{display:none}
 @media (min-width:1101px){.si-jobs{grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}.si-job__img{height:116px}.si-job__img img{height:92px}.si-job__txt{padding:10px 12px 12px}.si-job__txt b{font-size:14px}}
 .si-job__txt small{font-size:10.5px;letter-spacing:.06em;line-height:1.3}
 @media (max-width:600px){.si-job__txt small{font-size:9.5px;letter-spacing:.03em}}
+
+/* 12 Nov audit: Enquiry items (no local stock on the live store, "Availability: Enquiry"; still orderable) */
+.d-badge--enq{background:#FFF7E6;color:#8A5A00;border-color:#F3D9A4}
+.hz-enq{display:inline-block;align-self:flex-start;padding:1px 7px;border-radius:3px;background:#FFF7E6;color:#8A5A00;border:1px solid #F3D9A4;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.6}
+.hz-solp__row .hz-enq{margin-right:auto}

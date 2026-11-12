@@ -17,7 +17,7 @@
     sht40: { n: 'SHT40 Temperature & Humidity Sensor (RS485)', p: 'RM35.00++', u: 'https://my.cytron.io/p-sht40-rs485-temperature-and-humidity-sensor', i: IMG + 'V-SN-HUTE-RS485/v-sn-hute-rs485-main-268x268.png' },
     safetybox: { n: 'IRIV EdgeAI Safety Box: PPE and Zone Monitoring', p: 'RM7,999.00', u: 'https://my.cytron.io/p-iriv-edgeai-safety-box-kit', i: IMG + 'KIT-IRIV-EAI-PPE/safety-box-b-268x268.png' },
     edgeai: { n: 'IRIV EdgeAI CM5 Industrial AI Controller', p: 'RM2,487.00++', u: 'https://my.cytron.io/p-iriv-edge-ai-cm5', i: IMG + 'V-IRIV-EAI5/iriv-edgeai-cm5-view-1-1-268x268.png' },
-    eaitrain: { n: 'IRIV EdgeAI Training: Getting Started with EdgeAI Vision', p: 'RM5,000.00', u: 'https://my.cytron.io/iriv-edge-ai-training-page', i: IMG + 'V-KIT-IRIV-EAI/edge-ai-kit-a-268x268.png' },
+    eaitrain: { enq: true, n: 'IRIV EdgeAI Training: Getting Started with EdgeAI Vision', p: 'RM5,000.00', u: 'https://my.cytron.io/iriv-edge-ai-training-page', i: IMG + 'V-KIT-IRIV-EAI/edge-ai-kit-a-268x268.png' },
     imd16: { n: '16Amp 7-30V Industrial DC Motor Driver', p: 'RM163.80', u: 'https://my.cytron.io/p-16amp-7-30v-industrial-dc-motor-driver', i: IMG + 'IMD16/imd16-a-268x268.png' },
     md20a: { n: '20Amp 6V-30V DC Motor Driver', p: 'RM97.44', u: 'https://my.cytron.io/p-20amp-6v-30v-dc-motor-driver', i: IMG + 'MD20A/MD20A%20-%20800x800-268x268.jpeg' },
     md25hv: { n: '25Amp 7V-58V High Voltage DC Motor Driver', p: 'RM273.00', u: 'https://my.cytron.io/p-25amp-7v-58v-high-voltage-dc-motor-driver', i: IMG + 'MD25HV/High%20Voltage%20Motor%20Driver%20MD25HV-268x268.jpg' },
@@ -128,7 +128,7 @@
     c.innerHTML = '<span class="hai__pimg"><img src="' + p.i + '" alt="" width="64" height="64" loading="lazy"></span>' +
       '<span class="hai__pbody"><a class="hai__pname" href="' + p.u + '" target="_blank" rel="noopener">' + esc(p.n) + '</a>' +
       '<span class="hai__pwhy">' + esc(why) + '</span>' +
-      '<span class="hai__prow"><b class="hai__price">' + (p.p ? esc(p.p) : '') + '</b>' +
+      (p.enq ? '<span class="hz-enq">Enquiry</span>' : '') + '<span class="hai__prow"><b class="hai__price">' + (p.p ? esc(p.p) : '') + '</b>' +
       (opt ? '<a class="hai__cart" href="' + p.u + '" target="_blank" rel="noopener">' + (p.p ? 'View options' : 'View price') + '</a>'
            : '<button type="button" class="hai__cart" data-h-cart="' + esc(p.n) + '">' + CART + '<span>Add to Cart</span></button>') +
       '</span></span>';
