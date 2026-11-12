@@ -38,7 +38,7 @@
   const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   const url = p => SHOP_URL + p.u;
   const PRICES = [['u100', 'Under RM100', 0, 100], ['100', 'RM100 – RM500', 100, 500], ['500', 'RM500 – RM2,000', 500, 2000], ['2k', 'Over RM2,000', 2000, 1e9]];
-  const BRANDS = ['Cytron', 'Milesight', 'Teltonika', 'Seeed', 'Meanwell', 'Argon', 'Edatec', 'Raspberry Pi', 'Other'];
+  const BRANDS = ['Cytron', 'NVIDIA', 'Milesight', 'Teltonika', 'Seeed', 'Meanwell', 'Argon', 'Edatec', 'Raspberry Pi', 'Other'];
 
   function card(p) {
     const tour = SHOP_TOURS[p.u];
