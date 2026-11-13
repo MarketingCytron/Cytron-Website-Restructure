@@ -498,3 +498,53 @@
     show(0);
   });
 })();
+
+/* Banner photo cut-out (mockup only, 13 Nov). Product photos from static.cytron.io sit on white; on the navy slides
+   the white is flood-filled from the edges and made transparent, and its light-grey shadow becomes a soft dark shadow.
+   If the photo can't be read (no CORS), the original photo is shown. The real site uses one designed image per slide. */
+(function () {
+  var els = [].slice.call(document.querySelectorAll('.hz-bn[data-cutout]'));
+  if (!els.length) return;
+  function cut(img) {
+    var w = img.width, h = img.height, c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    var x = c.getContext('2d'); x.drawImage(img, 0, 0);
+    var im = x.getImageData(0, 0, w, h), d = im.data, n = w * h;
+    var seen = new Uint8Array(n), stack = new Int32Array(n), sp = 0;
+    function bg(i) { var o = i * 4, r = d[o], g = d[o + 1], b = d[o + 2], mx = Math.max(r, g, b), mn = Math.min(r, g, b); return mn >= 178 && mx - mn <= 28; }
+    function push(i) { if (!seen[i] && bg(i)) { seen[i] = 1; stack[sp++] = i; } }
+    for (var k = 0; k < w; k++) { push(k); push(n - w + k); }
+    for (k = 0; k < h; k++) { push(k * w); push(k * w + w - 1); }
+    while (sp) {
+      var i = stack[--sp], px = i % w;
+      if (px > 0) push(i - 1);
+      if (px < w - 1) push(i + 1);
+      if (i >= w) push(i - w);
+      if (i < n - w) push(i + w);
+    }
+    for (i = 0; i < n; i++) {
+      var edge = !seen[i] && ((i % w > 0 && seen[i - 1]) || (i % w < w - 1 && seen[i + 1]) || (i >= w && seen[i - w]) || (i < n - w && seen[i + w]));
+      if (!seen[i] && !edge) continue;
+      var o = i * 4, l = 0.299 * d[o] + 0.587 * d[o + 1] + 0.114 * d[o + 2];
+      if (edge && l < 200) continue;
+      var a = Math.max(0, Math.min(255, (255 - l) * 1.6));
+      d[o] = d[o + 1] = d[o + 2] = 0; d[o + 3] = edge ? Math.max(a, 90) : a;
+    }
+    x.putImageData(im, 0, 0);
+    return c;
+  }
+  els.forEach(function (el) {
+    var m = /--bn-art:\s*url\(([^)]+)\)/.exec(el.getAttribute('style') || '');
+    if (!m) { el.classList.add('is-cut'); return; }
+    var src = m[1].replace(/^['"]|['"]$/g, '');
+    fetch(src, { mode: 'cors' }).then(function (r) { if (!r.ok) throw 0; return r.blob(); })
+      .then(function (b) { return createImageBitmap(b); })
+      .then(function (img) {
+        cut(img).toBlob(function (out) {
+          if (out) el.style.setProperty('--bn-art', 'url(' + URL.createObjectURL(out) + ')');
+          el.classList.add('is-cut');
+        }, 'image/png');
+      })
+      .catch(function () { el.classList.add('is-cut'); });
+  });
+})();

@@ -1189,3 +1189,5 @@ html.hai-open [data-h-mock]{display:none}
   .hz-sl__nav{bottom:10px}
 }
 @media (prefers-reduced-motion:reduce){.hz-sl__slide,.hz-sl__slide.is-active{transition:none}.hz-sl__dot{transition:none}}
+/* Slider photos on white are cut out by design-h.js (data-cutout); until then only the background shows */
+.hz-bn[data-cutout]:not(.is-cut){background-image:var(--bn-bg,none)}

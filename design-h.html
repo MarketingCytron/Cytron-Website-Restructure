@@ -10,7 +10,7 @@
 <link rel="preload" href="fonts/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css?v=05cf86bf">
 <link rel="stylesheet" href="design-d.css?v=5cb0b305">
-<link rel="stylesheet" href="design-h.css?v=56">
+<link rel="stylesheet" href="design-h.css?v=57">
 <script>
 /* Design H: one address, three homepages. Pick the mode before the page paints. */
 (function () {
@@ -80,7 +80,8 @@
   <h1 class="hz-vh">Cytron Industry Store: industrial controllers, sensors, networking and AI hardware</h1>
   <!-- Hero slider (12 Nov): the 5 banners from the live my.cytron.io Industry homepage carousel, redrawn in this banner template.
        Each slide is one hero banner (same rules as above) plus an optional short label (.hz-bn__tag, max 32 characters).
-       Light slides (data-text="dark") use a product photo on white; the photo is blended into the background (multiply).
+       All slides use the Safety Box navy background (user, 13 Nov). Product photos on white are cut out in the browser (data-cutout, design-h.js):
+       the white background becomes transparent and its grey shadow turns into a soft dark shadow. Mockup only; the real site uses one designed image per slide.
        Auto-advances every 6 s; pauses on hover, keyboard focus, the pause button, or a hidden tab; no auto-play with reduced motion. -->
   <div class="hz-sl" data-hz-slider role="region" aria-roledescription="carousel" aria-label="Featured products">
     <div class="hz-sl__track" aria-live="off">
@@ -95,8 +96,8 @@
         </a>
       </div>
       <div class="hz-sl__slide" role="group" aria-roledescription="slide" aria-label="2 of 5: Cellular HAT for Raspberry Pi">
-        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/4g-5g-cellular-raspberry-pi-hat-with-antenna" data-text="dark" data-btn-color="blue" data-btn-pos="1"
-           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(0,164,219,.22) 0,rgba(255,255,255,0) 70%),linear-gradient(120deg,#F5F8FA 0%,#E6EEF3 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/V-HAT-EBD0/npi-product-20-800x800.png)">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/4g-5g-cellular-raspberry-pi-hat-with-antenna" data-text="light" data-btn-color="orange" data-cutout data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(0,164,219,.30) 0,rgba(0,164,219,0) 70%),linear-gradient(120deg,#0E2533 0%,#14384C 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/V-HAT-EBD0/npi-product-20-800x800.png)">
           <div class="hz-bn__text">
             <span class="hz-bn__tag">No WiFi? No problem.</span>
             <h2 class="hz-bn__main">Teltonika 4G/5G Cellular HAT for Raspberry Pi</h2>
@@ -105,8 +106,8 @@
         </a>
       </div>
       <div class="hz-sl__slide" role="group" aria-roledescription="slide" aria-label="3 of 5: Raspberry Pi 4 Model B 3GB">
-        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-raspberry-pi-4-model-b-3gb" data-text="dark" data-btn-color="orange" data-btn-pos="1"
-           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(197,26,74,.14) 0,rgba(255,255,255,0) 70%),linear-gradient(120deg,#F5F8FA 0%,#E6EEF3 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/RASPBERRY-PI-4B-3G/raspberry-pi-4b-3g-b-800x800.jpg)">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-raspberry-pi-4-model-b-3gb" data-text="light" data-btn-color="orange" data-cutout data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(0,164,219,.30) 0,rgba(0,164,219,0) 70%),linear-gradient(120deg,#0E2533 0%,#14384C 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/V-RPI-4B-1G/RASPBERRY-PI-4B%20Iso-800x800.jpg)">
           <div class="hz-bn__text">
             <span class="hz-bn__tag">Raspberry Pi Approved Reseller</span>
             <h2 class="hz-bn__main">Code, build, automate and create with Raspberry Pi 4 Model B</h2>
@@ -115,8 +116,8 @@
         </a>
       </div>
       <div class="hz-sl__slide" role="group" aria-roledescription="slide" aria-label="4 of 5: Raspberry Pi Touch Display 2">
-        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-raspberry-pi-10.1-inch-dsi-touch-screen-display-2" data-text="dark" data-btn-color="blue" data-btn-pos="1"
-           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(197,26,74,.12) 0,rgba(255,255,255,0) 70%),linear-gradient(120deg,#F5F8FA 0%,#E6EEF3 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/RPI-TD2-10/rpi-td2-10-800x800.png)">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-raspberry-pi-10.1-inch-dsi-touch-screen-display-2" data-text="light" data-btn-color="orange" data-cutout data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(0,164,219,.30) 0,rgba(0,164,219,0) 70%),linear-gradient(120deg,#0E2533 0%,#14384C 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/RPI-TD2-10/rpi-td2-10-800x800.png)">
           <div class="hz-bn__text">
             <span class="hz-bn__tag">New launch &middot; Raspberry Pi Touch Display 2</span>
             <h2 class="hz-bn__main">Larger screen. Better control.</h2>
@@ -125,8 +126,8 @@
         </a>
       </div>
       <div class="hz-sl__slide" role="group" aria-roledescription="slide" aria-label="5 of 5: iMD16 Industrial Motor Driver">
-        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-16amp-7-30v-industrial-dc-motor-driver" data-text="dark" data-btn-color="orange" data-btn-pos="1"
-           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(232,89,12,.14) 0,rgba(255,255,255,0) 70%),linear-gradient(120deg,#F5F8FA 0%,#E6EEF3 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/IMD16/imd16-a-800x800.png)">
+        <a class="hz-bn hz-bn--hero" href="https://my.cytron.io/p-16amp-7-30v-industrial-dc-motor-driver" data-text="light" data-btn-color="orange" data-cutout data-btn-pos="1"
+           style="--bn-bg:radial-gradient(60% 85% at 76% 50%,rgba(0,164,219,.30) 0,rgba(0,164,219,0) 70%),linear-gradient(120deg,#0E2533 0%,#14384C 100%);--bn-art:url(https://static.cytron.io/image/cache/catalog/products/IMD16/imd16-a-800x800.png)">
           <div class="hz-bn__text">
             <span class="hz-bn__tag">New &middot; Industrial Series</span>
             <h2 class="hz-bn__main">iMD16 Industrial Motor Driver, ready to install</h2>
@@ -237,7 +238,7 @@
 <div class="hz-toast" role="status" aria-live="polite" hidden></div>
 <script src="site.js?v=9b181a09"></script>
 <script src="design-d.js?v=e11920b8"></script>
-<script src="design-h.js?v=17"></script>
+<script src="design-h.js?v=18"></script>
 <script src="design-h-ai.js?v=4"></script>
 </body>
 </html>
