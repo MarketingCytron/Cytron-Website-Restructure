@@ -1223,7 +1223,7 @@ html.hai-open [data-h-mock]{display:none}
 .hz-bn__scene--photo::after{content:"";position:absolute;inset:0;background:var(--scn-tint,rgba(14,37,51,.2))}
 .hz-scene-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s}
 /* square store photo with white bars top and bottom: enlarge so the bars are cropped */
-.hz-scene-img--sq{inset:auto;left:50%;top:50%;width:150%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%)}
+.hz-scene-img--sq{inset:auto;left:50%;top:50%;width:115%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%)}
 .hz-bn--small:hover .hz-scene-img{transform:scale(1.04)}
 .hz-bn--small:hover .hz-scene-img--sq{transform:translate(-50%,-50%) scale(1.04)}
 .hz-bn--small .hz-bn__scene--photo ~ .hz-bn__text{width:54%}
