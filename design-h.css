@@ -1217,3 +1217,22 @@ html.hai-open [data-h-mock]{display:none}
   .hz-scn{top:-4%}
 }
 @media (prefers-reduced-motion:reduce){.hz-sl__slide.is-active .hz-det,.hz-sl__slide.is-active .hz-hud i{animation:none}}
+
+/* Small banners with a photo (14 Nov): workshops + custom design. Photo on the right, faded into the colour fill */
+.hz-bn--small .hz-bn__scene--photo{top:0;bottom:0;height:auto;width:58%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 45%);mask-image:linear-gradient(90deg,transparent 0,#000 45%)}
+.hz-bn__scene--photo::after{content:"";position:absolute;inset:0;background:var(--scn-tint,rgba(14,37,51,.2))}
+.hz-scene-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s}
+/* square store photo with white bars top and bottom: enlarge so the bars are cropped */
+.hz-scene-img--sq{inset:auto;left:50%;top:50%;width:150%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%)}
+.hz-bn--small:hover .hz-scene-img{transform:scale(1.04)}
+.hz-bn--small:hover .hz-scene-img--sq{transform:translate(-50%,-50%) scale(1.04)}
+.hz-bn--small .hz-bn__scene--photo ~ .hz-bn__text{width:54%}
+.hz-bn--small .hz-bn__main{text-shadow:0 1px 10px rgba(14,37,51,.35)}
+@media (prefers-reduced-motion:reduce){.hz-scene-img{transition:none}}
+
+/* Enquiry items (14 Nov, user): no Add to Cart. The button opens the product page to send an enquiry */
+.hz-cart--enq{background:#fff;border-color:var(--primary);color:var(--primary)}
+.hz-cart--enq:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+.hz-cart--enq:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+a.hai__cart.hai__cart--enq{background:#fff;border:1px solid var(--primary);color:var(--primary)}
+a.hai__cart.hai__cart--enq:hover{background:var(--primary);color:#fff}

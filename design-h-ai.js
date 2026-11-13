@@ -128,8 +128,9 @@
     c.innerHTML = '<span class="hai__pimg"><img src="' + p.i + '" alt="" width="64" height="64" loading="lazy"></span>' +
       '<span class="hai__pbody"><a class="hai__pname" href="' + p.u + '" target="_blank" rel="noopener">' + esc(p.n) + '</a>' +
       '<span class="hai__pwhy">' + esc(why) + '</span>' +
-      (p.enq ? '<span class="hz-enq">Enquiry</span>' : '') + '<span class="hai__prow"><b class="hai__price">' + (p.p ? esc(p.p) : '') + '</b>' +
-      (opt ? '<a class="hai__cart" href="' + p.u + '" target="_blank" rel="noopener">' + (p.p ? 'View options' : 'View price') + '</a>'
+      '<span class="hai__prow"><b class="hai__price">' + (p.p ? esc(p.p) : '') + '</b>' +
+      (p.enq ? '<a class="hai__cart hai__cart--enq" href="' + p.u + '" target="_blank" rel="noopener">Enquiry</a>'
+           : opt ? '<a class="hai__cart" href="' + p.u + '" target="_blank" rel="noopener">' + (p.p ? 'View options' : 'View price') + '</a>'
            : '<button type="button" class="hai__cart" data-h-cart="' + esc(p.n) + '">' + CART + '<span>Add to Cart</span></button>') +
       '</span></span>';
     return c;
