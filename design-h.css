@@ -1191,3 +1191,29 @@ html.hai-open [data-h-mock]{display:none}
 @media (prefers-reduced-motion:reduce){.hz-sl__slide,.hz-sl__slide.is-active{transition:none}.hz-sl__dot{transition:none}}
 /* Slider photos on white are cut out by design-h.js (data-cutout); until then only the background shows */
 .hz-bn[data-cutout]:not(.is-cut){background-image:var(--bn-bg,none)}
+
+/* Slider: per-slide photo size (13 Nov). Trimmed cut-out photos need their own height. */
+.hz-sl .hz-bn--hero{background-size:var(--bn-art-size,auto 88%),cover,cover}
+/* PPE application slide: CCTV-style scene with detection boxes, faded into the navy on the left */
+.hz-bn[data-scene] .hz-bn__text{width:47%}
+.hz-bn__scene{position:absolute;top:0;right:0;bottom:0;width:54%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 32%);mask-image:linear-gradient(90deg,transparent 0,#000 32%)}
+.hz-scn{position:absolute;left:0;right:0;top:-6%;aspect-ratio:928/1152}
+.hz-scn img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.82) contrast(1.05)}
+.hz-scn::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,37,51,.45) 0,rgba(14,37,51,.12) 45%,rgba(14,37,51,.2) 100%)}
+.hz-det{position:absolute;z-index:1;border:2px solid #4ADE80;border-radius:4px;box-shadow:0 0 0 1px rgba(0,0,0,.25),0 0 14px rgba(74,222,128,.35)}
+.hz-det b{position:absolute;left:-2px;bottom:100%;margin-bottom:3px;padding:2px 7px;border-radius:3px;background:#22C55E;color:#052E16;font-size:clamp(10px,1.3cqw,12px);font-weight:700;line-height:1.4;white-space:nowrap}
+.hz-hud{position:absolute;z-index:1;top:6%;right:4%;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:rgba(14,37,51,.78);color:#fff;font-size:clamp(10px,1.25cqw,12px);font-weight:600;letter-spacing:.03em;white-space:nowrap}
+.hz-hud i{width:7px;height:7px;border-radius:50%;background:#EF4444;box-shadow:0 0 0 3px rgba(239,68,68,.25)}
+.hz-sl__slide.is-active .hz-det{animation:hzDet .6s .35s both}
+.hz-sl__slide.is-active .hz-det + .hz-det{animation-delay:.7s}
+.hz-sl__slide.is-active .hz-hud i{animation:hzBlink 1.4s infinite}
+@keyframes hzDet{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
+@keyframes hzBlink{50%{opacity:.25}}
+@media (max-width:600px){
+  .hz-sl .hz-bn--hero{background-size:var(--bn-art-size-m,auto 44%),cover,cover}
+  .hz-bn[data-scene] .hz-bn__text{width:86%}
+  .hz-hud{display:none}
+  .hz-bn__scene{top:auto;height:45%;width:64%;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%);mask-image:linear-gradient(180deg,transparent 0,#000 30%)}
+  .hz-scn{top:-4%}
+}
+@media (prefers-reduced-motion:reduce){.hz-sl__slide.is-active .hz-det,.hz-sl__slide.is-active .hz-hud i{animation:none}}
