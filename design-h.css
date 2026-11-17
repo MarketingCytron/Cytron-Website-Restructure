@@ -1236,3 +1236,8 @@ html.hai-open [data-h-mock]{display:none}
 .hz-cart--enq:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
 a.hai__cart.hai__cart--enq{background:#fff;border:1px solid var(--primary);color:var(--primary)}
 a.hai__cart.hai__cart--enq:hover{background:var(--primary);color:#fff}
+
+/* On Sale tab (17 Nov): the old Industry Deals strip moved into the product tabs */
+.hz-ptabs__n{display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:4px;padding:0 6px;border-radius:999px;background:var(--cta);color:#fff;font-size:11.5px;font-weight:700;line-height:1;vertical-align:2px}
+#hz-ppan-sale .d-badge--off{background:var(--cta);border-color:var(--cta);color:#fff}
+#hz-ppan-sale .d-pc__price s{margin-left:6px}
