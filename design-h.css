@@ -1298,3 +1298,17 @@ a.hai__cart.hai__cart--enq:hover{background:var(--primary);color:#fff}
   .hz-catc__foot{font-size:11px;gap:8px;padding-top:10px}.hz-catc__foot i{width:28px;height:28px}
 }
 @media (prefers-reduced-motion:reduce){.hz-catc,.hz-catc__art img{transition:none}.hz-catc:hover{transform:none}}
+
+/* Shop by Category cards a bit smaller (26 Nov, user) */
+.hz-cats{gap:14px}
+.hz-catc{min-height:158px;padding:18px 18px 14px}
+.hz-catc--wide{min-height:172px}
+.hz-catc__txt b{font-size:16px}
+.hz-catc--wide .hz-catc__txt b{font-size:19px}
+.hz-catc__txt > span{font-size:13px;line-height:1.45}
+.hz-catc__foot{padding-top:12px;font-size:12px}
+.hz-catc__foot i{width:30px;height:30px}
+.hz-catc__art{width:56%;height:80%}
+.hz-catc--wide .hz-catc__art{width:42%;height:96%}
+@media (max-width:1100px){.hz-catc--wide{min-height:158px}.hz-catc--wide .hz-catc__art{width:56%;height:80%}.hz-catc--wide .hz-catc__txt b{font-size:16px}}
+@media (max-width:600px){.hz-catc,.hz-catc--wide{min-height:118px;padding:12px 10px 10px}.hz-catc__txt b,.hz-catc--wide .hz-catc__txt b{font-size:13.5px}.hz-catc__foot i{width:26px;height:26px}.hz-catc__art,.hz-catc--wide .hz-catc__art{width:58%;height:60%}}
