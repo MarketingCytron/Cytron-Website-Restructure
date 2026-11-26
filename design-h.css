@@ -1252,3 +1252,49 @@ a.hai__cart.hai__cart--enq:hover{background:var(--primary);color:#fff}
 .hz-show__tab:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
 @media (max-width:1320px) and (min-width:901px){.hz-show__tab{padding:8px}.hz-show__tab[aria-selected="true"]{padding:7px}}
 @media (max-width:600px){.hz-show__tab{width:68px;height:68px;padding:6px;border-radius:12px}.hz-show__tab[aria-selected="true"]{padding:5px}}
+
+/* ===== Shop by Category, dark photo cards (26 Nov, user: like the "Featured Product Series" reference) =====
+   Same 14 categories and links. Each card: dark background, product photo cut out on the right, title + one line, arrow + product count. */
+.hz-cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.hz-catc{position:relative;display:flex;flex-direction:column;min-height:196px;padding:22px 22px 18px;border-radius:12px;overflow:hidden;isolation:isolate;color:#fff;text-decoration:none;
+  background:radial-gradient(70% 90% at 82% 70%,rgba(0,164,219,.22) 0,rgba(0,164,219,0) 65%),linear-gradient(135deg,#16232B 0%,#0B141A 100%);
+  box-shadow:0 1px 0 rgba(255,255,255,.04) inset;transition:transform .25s,box-shadow .25s}
+.hz-catc::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:22px 22px;
+  -webkit-mask-image:linear-gradient(115deg,transparent 30%,#000 75%);mask-image:linear-gradient(115deg,transparent 30%,#000 75%)}
+.hz-catc:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(11,20,26,.28);color:#fff}
+.hz-catc:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.hz-catc--wide{grid-column:span 2;min-height:220px}
+.hz-catc__art{position:absolute;right:-4%;bottom:-6%;z-index:-1;width:62%;height:86%;display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none}
+.hz-catc--wide .hz-catc__art{width:46%;height:100%;right:2%;bottom:-4%}
+.hz-catc__art img{width:100%;height:100%;object-fit:contain;object-position:right bottom;opacity:0;transform:scale(.98);transition:opacity .45s,transform .45s;filter:drop-shadow(0 14px 18px rgba(0,0,0,.45))}
+.hz-catc__art img.is-cut{opacity:.95}
+.hz-catc__art img.is-raw{background:#fff;border-radius:10px;padding:6px;width:auto;height:70%;object-fit:contain}
+.hz-catc:hover .hz-catc__art img.is-cut{transform:scale(1.05)}
+.hz-catc__txt{position:relative;display:flex;flex-direction:column;gap:6px;max-width:62%}
+.hz-catc--wide .hz-catc__txt{max-width:52%}
+.hz-catc__txt small{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7FD3F0}
+.hz-catc__txt b{font-size:18px;line-height:1.25;font-weight:700;color:#fff}
+.hz-catc--wide .hz-catc__txt b{font-size:22px}
+.hz-catc__txt > span{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.78)}
+.hz-catc__foot{position:relative;display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:16px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.72)}
+.hz-catc__foot i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.06);color:#fff;transition:background .25s,border-color .25s}
+.hz-catc:hover .hz-catc__foot i{background:var(--cta);border-color:var(--cta)}
+@media (max-width:1100px){
+  .hz-cats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hz-catc--wide{grid-column:span 1;min-height:196px}
+  .hz-catc--wide .hz-catc__art{width:62%;height:86%;right:-4%;bottom:-6%}
+  .hz-catc--wide .hz-catc__txt{max-width:62%}.hz-catc--wide .hz-catc__txt b{font-size:18px}
+}
+@media (max-width:760px){.hz-cats{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media (max-width:600px){
+  .hz-cats{gap:10px}
+  .hz-catc,.hz-catc--wide{min-height:136px;padding:14px 12px 12px;border-radius:10px}
+  .hz-catc__txt,.hz-catc--wide .hz-catc__txt{max-width:100%}
+  .hz-catc__txt b,.hz-catc--wide .hz-catc__txt b{font-size:14.5px}
+  .hz-catc__txt > span{display:none}
+  .hz-catc__txt small{font-size:9.5px}
+  .hz-catc__art,.hz-catc--wide .hz-catc__art{width:64%;height:64%;right:-6%;bottom:-6%}
+  .hz-catc__foot{font-size:11px;gap:8px;padding-top:10px}.hz-catc__foot i{width:28px;height:28px}
+}
+@media (prefers-reduced-motion:reduce){.hz-catc,.hz-catc__art img{transition:none}.hz-catc:hover{transform:none}}
